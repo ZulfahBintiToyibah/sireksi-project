@@ -1,0 +1,17 @@
+.borderLeft {
+    border-left: 0.25rem solid #3C096C;
+}
+
+.text-home{
+    color: #3C096C;
+}
+
+.bg-side {
+    background-color: #3C096C;
+    background-image: linear-gradient(180deg, #3C096C 5%, #3C096C 100%);
+    background-size: cover;
+}
+
+.borderCard {
+    border: solid #3C096C;
+}
