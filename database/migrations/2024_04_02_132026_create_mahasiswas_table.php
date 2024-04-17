@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDosensTable extends Migration
+class CreateMahasiswasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,17 @@ class CreateDosensTable extends Migration
      */
     public function up()
     {
-        Schema::create('dosens', function (Blueprint $table) {
+        Schema::create('mahasiswas', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('nip');
+            $table->bigInteger('nim');
             $table->string('nama');
+            $table->enum('jenkel', ['Laki-Laki', 'Perempuan'])->nullable();
             $table->unsignedBigInteger('prodis_id');
             $table->foreign('prodis_id')->references('id')->on('prodis')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('password')->nullable();
+            $table->string('no_telp')->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('foto')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +36,6 @@ class CreateDosensTable extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('dosens');
+        Schema::dropIfExists('mahasiswas');
     }
 }

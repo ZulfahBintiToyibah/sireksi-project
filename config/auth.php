@@ -40,6 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'aslab' => [
+            'driver' => 'session',
+            'provider' => 'aslabs',
+        ],
+        'mahasiswa' => [
+            'driver' => 'session',
+            'provider' => 'mahasiswas',
+        ],
     ],
 
     /*
@@ -64,11 +72,20 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        'aslabs' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Aslab::class,
+        ],
+        'mahasiswas' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Mahasiswa::class,
+        ],
 
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+        
     ],
 
     /*

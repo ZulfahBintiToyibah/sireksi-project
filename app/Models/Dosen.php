@@ -16,4 +16,4 @@ class Dosen extends Model
     {
         return $this->belongsTo(Prodi::class);
     }
-}
+} 

@@ -54,6 +54,14 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider mt-3">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Master Data
+            </div>
             
             <!-- Nav Item - Data Pengguna -->
             <li class="nav-item">
@@ -65,7 +73,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="#">Asisten Laboratorium</a>
-                        <a class="collapse-item" href="#">Mahasiswa</a>
+                        <a class="collapse-item" href="{{ route('mahasiswa') }}">Mahasiswa</a>
                     </div>
                 </div>
             </li>
@@ -82,7 +90,6 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="#"><i class="fas fa-fw fa-book mr-1"></i>Data Skripsi</a>
                         <a class="collapse-item" href="{{ route('kodeskripsi') }}"><i class="fa fa-fw fa-server mr-1"></i>Data Kode Skripsi</a>
-                        <a class="collapse-item" href="#"><i class="fas fa-fw fa-solid fa-check-circle"></i> Pengumpulan Skripsi</a>
                     </div>
                 </div>
             </li>
@@ -95,14 +102,28 @@
             </li>
 
             <!-- Nav Item - Dosen Pembimbing -->
-            <li class="nav-item mb-3">
-                <a class="nav-link pb-0" href="#">
-                <i class="fas fa-fw fa-sharp fa-solid fa-clipboard"></i>
+            <li class="nav-item">
+                <a class="nav-link pb-0" href="{{ route('dospem') }}">
+                    <i class="fas fa-fw fa-sharp fa-solid fa-clipboard"></i>
                     <span>Dosen Pembimbing</span></a>
             </li>
 
+            <!-- Nav Item - Pengumpulan Skripsi -->
+            <li class="nav-item">
+                <a class="nav-link pb-0" href="{{ route('konfirmasi') }}">
+                <i class="fas fa-fw fa-solid fa-check-circle" aria-hidden="true"></i>
+                    <span>Konfirmasi Pengumpulan</span></a>
+            </li>
+
+            <!-- Nav Item - Rekap Pengumpulan -->
+            <li class="nav-item">
+                <a class="nav-link pb-0" href="">
+                <i class="fas fa-fw fa-solid fa-file" aria-hidden="true"></i>
+                    <span>Rekap Pengumpulan</span></a>
+            </li>
+
             <!-- Divider -->
-            <hr class="sidebar-divider">
+            <hr class="sidebar-divider mt-3">
 
             <!-- Heading -->
             <div class="sidebar-heading">
@@ -158,7 +179,6 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <div class="topbar-divider d-none d-sm-block"></div>
@@ -177,6 +197,7 @@
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
+                                </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

@@ -18,9 +18,11 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'nama',
+        'username',
         'email',
         'password',
+        'jenkel',
     ];
 
     /**
@@ -42,8 +44,5 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function kodeskripsis()
-    {
-        return $this->hasMany(Kodeskripsi::class);
-    }
+    
 }

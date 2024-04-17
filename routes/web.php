@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\KodeskripsiController;
 use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\DosenController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +17,18 @@ use App\Http\Controllers\DosenController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('login', function () {
+    return view('auth/login');
+})->name('login');
 
 Route::get('dashboard', function () {
     return view('admin/dashboard');
 })->name('dashboard');
 
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/loginproces', [AuthController::class, 'processLogin'])->name('loginproces');
+
+// ROUTE ADMIN
 Route::get('/kodeskripsi', [KodeskripsiController::class, 'index'])->name('kodeskripsi');
 Route::get('/create-kodeskripsi', [KodeskripsiController::class, 'create'])->name('create-kodeskripsi');
 Route::post('/insert-kodeskripsi', [KodeskripsiController::class, 'store'])->name('insert-kodeskripsi');
@@ -40,3 +49,15 @@ Route::post('/insert-dospem', [DosenController::class, 'store'])->name('insert-d
 Route::get('/tampil-dospem/{id}', [DosenController::class, 'show'])->name('tampil-dospem');
 Route::post('/update-dospem/{id}', [DosenController::class, 'edit'])->name('update-dospem');
 Route::get('/delete-dospem/{id}', [DosenController::class, 'destroy'])->name('delete-dospem');
+
+Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
+Route::get('/create-mahasiswa', [MahasiswaController::class, 'create'])->name('create-mahasiswa');
+Route::post('/insert-mahasiswa', [MahasiswaController::class, 'store'])->name('insert-mahasiswa');
+Route::get('/tampil-mahasiswa/{id}', [MahasiswaController::class, 'show'])->name('tampil-mahasiswa');
+Route::get('/detail-mahasiswa/{id}', [MahasiswaController::class, 'detail'])->name('detail-mahasiswa');
+Route::post('/update-mahasiswa/{id}', [MahasiswaController::class, 'edit'])->name('update-mahasiswa');
+Route::get('/delete-mahasiswa/{id}', [MahasiswaController::class, 'destroy'])->name('delete-mahasiswa');
+
+Route::get('konfirmasi', function () {
+    return view('konfirmasi_pengumpulan/data-konfirmasi');
+})->name('konfirmasi');

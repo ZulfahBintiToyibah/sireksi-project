@@ -5,11 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Kodeskripsi extends Model
+class Auth extends Model
 {
     use HasFactory;
-
-    protected $guarded = ['id'];
-
-    
 }

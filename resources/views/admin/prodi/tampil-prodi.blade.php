@@ -19,23 +19,6 @@
                     <div class="card-body">
                         <form action="/update-prodi/{{ $prodis->id }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            {{-- <div class="row mb-3 g-3 align-items-center">
-                                <div class="col-md-2">
-                                    <label for="nama_prodi" class="col-form-label text-dark">Nama Prodi</label>
-                                </div>
-                                <div class="col-md-10">
-                                    <input type="text" id="nama_prodi" class="form-control text-dark" name="nama_prodi" value="{{ $prodis->nama_prodi }}">
-                                </div>
-                            </div>
-                            <div class="row mb-3 g-3 align-items-center">
-                                <div class="col-md-2">
-                                    <label for="ket_prodi" class="col-form-label text-dark">Keterangan</label>
-                                </div>
-                                <div class="col-md-10">
-                                    <input type="text" id="ket_prodi" class="form-control text-dark" name="ket_prodi" value="{{ $prodis->ket_prodi }}">
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-primary float-right btn-block" name="submit">Submit</button> --}}
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="mb-3">

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateAslabsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('aslabs', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->unsignedBigInteger('mahasiswas_id');
+            $table->foreign('mahasiswas_id')->references('id')->on('mahasiswas')->onUpdate('cascade')->onDelete('cascade');
             $table->string('username');
-            $table->string('email')->nullable();
             $table->string('password')->nullable();
-            $table->enum('jenkel', ['Laki-Laki', 'Perempuan'])->nullable();
+            $table->string('jabatan');
             $table->timestamps();
         });
     }
@@ -31,6 +31,7 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('aslabs');
     }
 }
