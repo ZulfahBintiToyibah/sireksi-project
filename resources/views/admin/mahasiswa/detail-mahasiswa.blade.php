@@ -16,13 +16,12 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-11">
                         <table class="table table-bordered shadow">
                             <tr>
-                                <td class="align-middle" width="35%" rowspan="7">
-                                    <img src="{{ asset('storage/' . $mahasiswas->foto) }}" class="img-fluid shadow" alt="" width="100%">
+                                <td class="align-middle" width="25%" rowspan="7">
+                                    <img src="{{ asset('storage/foto-mahasiswa/' . $mahasiswas->foto) }}" class="img-fluid shadow" alt="" width="100%">
                                 </td>
-                                
                                 <td class="align-middle text-dark judul-buku" colspan="2">
                                     <b>Biodata Mahasiswa</b>
                                 </td>
@@ -46,6 +45,10 @@
                             <tr>
                                 <td class="align-middle text-dark">No Telepon</td>
                                 <td class="align-middle text-dark">{{ $mahasiswas->no_telp }}</td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle text-dark">Alamat</td>
+                                <td class="align-middle text-dark">{{ $mahasiswas->alamat }}</td>
                             </tr>
                         </table>
                     </div>

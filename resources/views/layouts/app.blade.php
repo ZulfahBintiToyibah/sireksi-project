@@ -72,7 +72,7 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Asisten Laboratorium</a>
+                        <a class="collapse-item" href="{{ route('aslab') }}">Asisten Laboratorium</a>
                         <a class="collapse-item" href="{{ route('mahasiswa') }}">Mahasiswa</a>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
 
             <!-- Nav Item - Pengumpulan Skripsi -->
             <li class="nav-item">
-                <a class="nav-link pb-0" href="{{ route('konfirmasi') }}">
+                <a class="nav-link pb-0" href="">
                 <i class="fas fa-fw fa-solid fa-check-circle" aria-hidden="true"></i>
                     <span>Konfirmasi Pengumpulan</span></a>
             </li>

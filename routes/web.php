@@ -6,6 +6,7 @@ use App\Http\Controllers\KodeskripsiController;
 use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AslabController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +59,11 @@ Route::get('/detail-mahasiswa/{id}', [MahasiswaController::class, 'detail'])->na
 Route::post('/update-mahasiswa/{id}', [MahasiswaController::class, 'edit'])->name('update-mahasiswa');
 Route::get('/delete-mahasiswa/{id}', [MahasiswaController::class, 'destroy'])->name('delete-mahasiswa');
 
-Route::get('konfirmasi', function () {
-    return view('konfirmasi_pengumpulan/data-konfirmasi');
-})->name('konfirmasi');
+Route::get('/aslab', [AslabController::class, 'index'])->name('aslab');
+Route::get('/create-aslab', [AslabController::class, 'create'])->name('create-aslab');
+Route::post('/insert-aslab', [AslabController::class, 'store'])->name('insert-aslab');
+Route::get('/tampil-aslab/{id}', [AslabController::class, 'show'])->name('tampil-aslab');
+Route::get('/detail-aslab/{id}', [AslabController::class, 'detail'])->name('detail-aslab');
+Route::post('/update-aslab/{id}', [AslabController::class, 'edit'])->name('update-aslab');
+Route::get('/delete-aslab/{id}', [AslabController::class, 'destroy'])->name('delete-aslab');
+

@@ -15,11 +15,13 @@ class CreateAslabsTable extends Migration
     {
         Schema::create('aslabs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('mahasiswas_id');
-            $table->foreign('mahasiswas_id')->references('id')->on('mahasiswas')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('nama');
             $table->string('username');
             $table->string('password')->nullable();
-            $table->string('jabatan');
+            $table->enum('jenkel', ['Laki-Laki', 'Perempuan'])->nullable();
+            $table->string('email')->nullable();
+            $table->string('jabatan')->nullable();
+            $table->string('foto')->nullable();
             $table->timestamps();
         });
     }
