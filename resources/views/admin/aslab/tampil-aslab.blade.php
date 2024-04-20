@@ -1,3 +1,4 @@
+TAMPIL
 @extends('../layouts/app')
 
 @section('container')
@@ -69,8 +70,7 @@
                                 <div class="row">
                                     <div class="col-md-8 m-auto">
                                         <div class="text-center">
-                                            <img src="../template/img/preview/preview.png" class="card-img rounded" id="preview-img">
-                                        </div>
+                                            <img src="{{ $aslabs->foto ? asset('storage/foto-aslab/' . $aslabs->foto) : asset('template/img/preview/preview.png') }}" class="card-img rounded" id="preview-img">                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -81,4 +81,18 @@
         </div>
     </div>
 </div>
+<script>
+    function previewImage(event) {
+        console.log("File terpilih:", event.target.files[0]);
+        var reader = new FileReader();
+        reader.onload = function() {
+            var output = document.getElementById('preview-img');
+            output.src = reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+    var fileInput = document.getElementById('foto');
+    fileInput.addEventListener('change', previewImage);
+</script>
+
 @endsection

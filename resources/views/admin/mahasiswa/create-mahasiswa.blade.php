@@ -58,6 +58,14 @@
                                                 <label for="alamat" class="form-label">Alamat</label>
                                                 <input type="text" class="form-control" id="alamat" name="alamat">
                                             </div>
+                                            <div class="mb-3">
+                                                <label for="role" class="form-label">Jenis Kelamin</label><br>
+                                                <select class="form-control" name="role">
+                                                    <option value="">-- Pilih Role --</option>
+                                                    <option value="1">Asisten Laboratorium</option>
+                                                    <option value="2">Mahasiswa</option>
+                                                </select>
+                                            </div>
                                             <div class="mb-5">
                                                 <label for="foto" class="form-label">Masukkan Foto</label>
                                                 <input type="file" class="form-control" id="foto" name="foto">
@@ -90,4 +98,17 @@
         </div>
     </div>
 </div>
+<script>
+    function previewImage(event) {
+        console.log("File terpilih:", event.target.files[0]);
+        var reader = new FileReader();
+        reader.onload = function() {
+            var output = document.getElementById('preview-img');
+            output.src = reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+    var fileInput = document.getElementById('foto');
+    fileInput.addEventListener('change', previewImage);
+</script>
 @endsection

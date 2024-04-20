@@ -1,3 +1,4 @@
+DETAIL
 @extends('../layouts/app')
 
 @section('container')

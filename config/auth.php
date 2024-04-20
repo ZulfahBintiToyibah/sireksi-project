@@ -36,13 +36,9 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'admin' => [
             'driver' => 'session',
             'provider' => 'users',
-        ],
-        'aslab' => [
-            'driver' => 'session',
-            'provider' => 'aslabs',
         ],
         'mahasiswa' => [
             'driver' => 'session',
@@ -71,10 +67,6 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
-        ],
-        'aslabs' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Aslab::class,
         ],
         'mahasiswas' => [
             'driver' => 'eloquent',

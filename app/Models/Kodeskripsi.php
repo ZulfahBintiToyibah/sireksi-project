@@ -11,5 +11,8 @@ class Kodeskripsi extends Model
 
     protected $guarded = ['id'];
 
-    
+    public function skripsis()
+    {
+        return $this->hasMany(Skripsi::class);
+    }
 }

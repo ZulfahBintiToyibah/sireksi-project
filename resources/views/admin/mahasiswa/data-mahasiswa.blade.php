@@ -34,11 +34,12 @@
                         <thead>
                             <tr>
                                 <th class="text-dark" width="5%" style="text-align: center;">No</th>
-                                <th class="text-dark" width="15%">NIM</th>
-                                <th class="text-dark" width="25%">Nama</th>
-                                <th class="text-dark" width="15%">Program Studi</th>
-                                <th class="text-dark" width="13%">Jenis Kelamin</th>
-                                <th class="text-dark" width="13%">Alamat</th>
+                                <th class="text-dark" width="13%">NIM</th>
+                                <th class="text-dark" width="18%">Nama</th>
+                                <th class="text-dark" width="13%">Program Studi</th>
+                                <th class="text-dark" width="12%">Jenis Kelamin</th>
+                                <th class="text-dark" width="11%">Alamat</th>
+                                <th class="text-dark" width="12%">Role</th>
                                 <th class="text-dark" width="14%" style="text-align: center;">Aksi</th>
                             </tr>
                         </thead>
@@ -51,6 +52,15 @@
                                 <td class="align-middle text-dark">{{ $mahasiswa->prodis->nama_prodi }}</td>
                                 <td class="align-middle text-dark">{{ $mahasiswa->jenkel }}</td>
                                 <td class="align-middle text-dark">{{ $mahasiswa->alamat }}</td>
+                                <td class="align-middle text-dark">
+                                    @if($mahasiswa->role == 1)
+                                        Asisten Lab
+                                    @elseif($mahasiswa->role == 2)
+                                        Mahasiswa
+                                    @else
+                                        Role Tidak Diketahui
+                                    @endif
+                                </td>
                                 <td class="align-middle text-center">
                                     <a href="/detail-mahasiswa/{{ $mahasiswa->id }}" class="badge badge-primary"><i class="fas fa-fw fa-regular fa-eye"></i></a> | <a href="/tampil-mahasiswa/{{ $mahasiswa->id }}" class="badge badge-success"><i class="fas fa-fw fa-edit"></i></a> | 
                                     <a href="javascript:if(confirm('Anda yakin ingin menghapus data Program Studi'))window.location.href = '/delete-mahasiswa/{{ $mahasiswa->id }}'" class="badge badge-danger"><i class="fas fa-fw fa-trash"></i></a>

@@ -35,9 +35,9 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block" style="background-image: url('template/img/login/bg-login.png'); background-size: cover; padding: 244px 0;">
+                            <div class="col-lg-6 d-none d-lg-block" style="background-image: url('template/img/login/login_bg.png'); background-size: cover; padding: 244px 0;">
                                 <div class="logo text-center">
-                                    <img src="template/img/login/uLibrary-logo.png" alt="uLibrary Logo" style="width: 300px;">
+                                    <img src="template/img/login/lOGO SIREKSI.png" alt="uLibrary Logo" style="width: 300px;">
                                 </div>
                             </div>
                             <div class="col-lg-6" style="padding: 80px 0;">
@@ -53,6 +53,13 @@
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user" placeholder="Password" name="password" autocomplete="off">
                                         </div>
+                                        <div class="form-group">
+                                            <select class="form-control" name="role" id="exampleFormControlSelect1">
+                                              <option value="">-- Pilih Level Pengguna --</option> 
+                                              <option value="admin">Admin</option>
+                                              <option value="mahasiswa">Mahasiswa</option>
+                                            </select>
+                                          </div>
                                         <button type="submit" name="login" class="btn btn-user btn-block" style="background-color: #3C096C; color: #F4F4F4; font-size: 14px; border: 1px solid #3C096C;">
                                             Login
                                         </button>

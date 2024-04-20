@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Auth;
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 
 class AuthController extends Controller
@@ -12,37 +13,22 @@ class AuthController extends Controller
         return view ('auth.login');
     }
 
-    public function processLogin(Request $request) {
-    if ($request->type == "web") {
-        if (auth()->guard('web')->attempt(['username' => $request->username, 'password' => $request->password])) {
-            return view('admin.dashboard');
-        } else {
-            return back()->withErrors([
-                'message' => 'Invalid username or password.',
-            ]);
+     public function processLogin(Request $request) {
+        if ($request->role=="mahasiswa"){
+            if (auth()->guard('mahasiswa')->attempt(['nim' => $request->username, 'password' => $request->password])) {
+                // User is logged in
+                if (auth()->guard('mahasiswa')->user()->role == 1) {
+                    return view('aslab.dashboard');
+                } 
+                else if (auth()->guard('mahasiswa')->user()->role == 2){
+                    return view('mahasiswa.dashboard');
+                }
+            } 
+        } elseif ($request->role == "admin"){
+            if (auth()->guard('admin')->attempt(['username' =>$request->username, 'password' => $request->password])) {
+                return view('admin.dashboard');
+            }
         }
-    } elseif ($request->type == "aslab") {
-        if (auth()->guard('aslab')->attempt(['username' => $request->username, 'password' => $request->password])) {
-            return view('aslab.index');
-        } else {
-            return back()->withErrors([
-                'message' => 'Invalid username or password.',
-            ]);
-        }
-    } elseif ($request->type == "mahasiswa") {
-        if (auth()->guard('mahasiswa')->attempt(['nim' =>$request->username, 'password' => $request->password])) {
-            return view('mahasiswa.dashboard');
-        } else {
-            return back()->withErrors([
-                'message' => 'Invalid username or password.',
-            ]);
-        }
+        dd('Autentikasi gagal');
     }
-    
-    // Jika tidak masuk ke salah satu kondisi di atas
-    return back()->withErrors([
-        'message' => 'Invalid authentication type.',
-    ]);
-}
-
 }

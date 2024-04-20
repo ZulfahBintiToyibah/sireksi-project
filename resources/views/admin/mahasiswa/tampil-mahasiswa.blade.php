@@ -57,6 +57,14 @@
                                                 <label for="alamat" class="form-label">Alamat</label>
                                                 <input type="text" class="form-control" id="alamat" name="alamat" value="{{ $mahasiswas->alamat }}">
                                             </div>
+                                            <div class="mb-3">
+                                                <label for="role" class="form-label">Role</label><br>
+                                                <select class="form-control" name="role">
+                                                    <option value="">-- Pilih Role --</option>
+                                                    <option value="1" {{ $mahasiswas->role == '1' ? 'selected' : '' }}>Asisten Laboratorium</option>
+                                                    <option value="2" {{ $mahasiswas->role == '2' ? 'selected' : '' }}>Mahasiswa</option>
+                                                </select>
+                                            </div>
                                             <div class="mb-5">
                                                 <label for="foto" class="form-label">Masukkan Foto</label>
                                                 <input type="file" class="form-control" id="foto" name="foto" value="{{ $mahasiswas->foto }}">
@@ -77,8 +85,7 @@
                                 <div class="row">
                                     <div class="col-md-8 m-auto">
                                         <div class="text-center">
-                                            <img src="../template/img/preview/preview.png" class="card-img rounded" id="preview-img">
-                                        </div>
+                                            <img src="{{ $mahasiswas->foto ? asset('storage/foto-mahasiswa/' . $mahasiswas->foto) : asset('template/img/preview/preview.png') }}" class="card-img rounded" id="preview-img">                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -89,4 +96,17 @@
         </div>
     </div>
 </div>
+<script>
+    function previewImage(event) {
+        console.log("File terpilih:", event.target.files[0]);
+        var reader = new FileReader();
+        reader.onload = function() {
+            var output = document.getElementById('preview-img');
+            output.src = reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+    var fileInput = document.getElementById('foto');
+    fileInput.addEventListener('change', previewImage);
+</script>
 @endsection

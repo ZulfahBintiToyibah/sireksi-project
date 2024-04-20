@@ -15,11 +15,6 @@ class CreatePengumpulansTable extends Migration
     {
         Schema::create('pengumpulans', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('skripsis_id');
-            $table->foreign('skripsis_id')->references('id')->on('skripsis')->onUpdate('cascade')->onDelete('cascade');
-            $table->unsignedBigInteger('aslabs_id');
-            $table->foreign('aslabs_id')->references('id')->on('aslabs')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('status_pengumpulan');
             $table->timestamps();
         });
     }
@@ -31,7 +26,6 @@ class CreatePengumpulansTable extends Migration
      */
     public function down()
     {
-        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('pengumpulans');
     }
 }

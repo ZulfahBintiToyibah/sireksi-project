@@ -16,4 +16,9 @@ class Dosen extends Model
     {
         return $this->belongsTo(Prodi::class);
     }
+    
+    public function skripsis()
+    {
+        return $this->hasMany(Skripsi::class);
+    }
 } 

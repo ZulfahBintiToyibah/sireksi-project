@@ -3,7 +3,7 @@
 @section('container')
 <div class="container-fluid">
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Dashboard Mahasiswa</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Dashboard Aslab</h1>
                     <div class="row">
                     <!-- Card di Dashboard -->
                     <div class="col-xl-3 col-md-6 mb-4">

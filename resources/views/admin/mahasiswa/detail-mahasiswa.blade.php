@@ -16,10 +16,10 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-11">
+                    <div class="col-md-12">
                         <table class="table table-bordered shadow">
                             <tr>
-                                <td class="align-middle" width="25%" rowspan="7">
+                                <td class="align-middle" width="25%" rowspan="8">
                                     <img src="{{ asset('storage/foto-mahasiswa/' . $mahasiswas->foto) }}" class="img-fluid shadow" alt="" width="100%">
                                 </td>
                                 <td class="align-middle text-dark judul-buku" colspan="2">
@@ -50,6 +50,19 @@
                                 <td class="align-middle text-dark">Alamat</td>
                                 <td class="align-middle text-dark">{{ $mahasiswas->alamat }}</td>
                             </tr>
+                            <tr>
+                                <td class="align-middle text-dark">Role</td>
+                                <td class="align-middle text-dark">
+                                    @if($mahasiswas->role == 1)
+                                        Asisten Laboratorium
+                                    @elseif($mahasiswas->role == 2)
+                                        Mahasiswa
+                                    @else
+                                        Role Tidak Diketahui
+                                    @endif
+                                </td>
+                            </tr>
+                            <tr>
                         </table>
                     </div>
                 </div>

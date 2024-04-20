@@ -31,15 +31,11 @@
 
         <!-- Sidebar -->
         <ul class="navbar-nav bg-side sidebar sidebar-dark accordion" id="accordionSidebar">
-
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon">
-                    <i class="fa fa-graduation-cap"></i>
+                    <img src="template/img/login/lOGO SIREKSI.png" alt="Sireksi Logo" style="width: 185px; height: auto;">  
                 </div>
-                <div class="sidebar-brand-text mx-3">SIREKSI</div>
             </a>
-
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -64,23 +60,23 @@
             </div>
             
             <!-- Nav Item - Data Pengguna -->
-            <li class="nav-item">
-                <a class="nav-link collapsed pb-0" href="#" data-toggle="collapse" data-target="#collapseTwo"
+            {{-- <li class="nav-item">
+                <a class="nav-link collapsed pb-0" href="{{ route('mahasiswa') }}" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fa fa-users" aria-hidden="true"></i>
                     <span>Data Pengguna</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('aslab') }}">Asisten Laboratorium</a>
-                        <a class="collapse-item" href="{{ route('mahasiswa') }}">Mahasiswa</a>
-                    </div>
-                </div>
+                </a> --}}
+
+            <li class="nav-item">
+                    <a class="nav-link collapsed pb-0" href="{{ route('mahasiswa') }}">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                        <span>Data Pengguna</span></a>
+                </li>
             </li>
 
             <!-- Nav Item - Skripsi -->
             <li class="nav-item">
-                <a class="nav-link collapsed pb-0" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                <a class="nav-link collapsed pb-0" href="" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-solid fa-book"></i>
                     <span>Skripsi</span>
@@ -88,7 +84,7 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#"><i class="fas fa-fw fa-book mr-1"></i>Data Skripsi</a>
+                        <a class="collapse-item" href="{{ route('skripsi') }}"><i class="fas fa-fw fa-book mr-1"></i>Data Skripsi</a>
                         <a class="collapse-item" href="{{ route('kodeskripsi') }}"><i class="fa fa-fw fa-server mr-1"></i>Data Kode Skripsi</a>
                     </div>
                 </div>

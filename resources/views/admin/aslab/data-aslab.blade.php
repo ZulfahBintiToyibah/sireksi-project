@@ -11,7 +11,7 @@
             <div class="card-header py-3 d-flex justify-content-between align-items-center">
                 <h6 class="m-0 font-weight-bold text-dark card-title"><i class="fas fa-fw fa-sharp fa-solid fa-clipboard"></i> Daftar Data Asisten Laboratorium</h6>
                 <div class="card-tools">
-                    <a href="{{ route('create-aslab') }}" class="btn btn-primary btn-sm float-right"><i class="fas fa-fw fa-plus"></i> Tambah Data Asisten Laboratorium</a>
+                    <a href="{{ route('aslab') }}" class="btn btn-primary btn-sm float-right"><i class="fas fa-fw fa-plus"></i> Tambah Data Asisten Laboratorium</a>
                 </div> 
             </div>
             <div class="card-body p-3">
@@ -34,23 +34,23 @@
                         <thead>
                             <tr>
                                 <th class="text-dark" width="5%" style="text-align: center;">No</th>
-                                <th class="text-dark" width="20%">Nama</th>
-                                <th class="text-dark" width="15%">Username</th>
+                                <th class="text-dark" width="15%">NIM</th>
+                                <th class="text-dark" width="25%">Nama</th>
+                                <th class="text-dark" width="13%">Program Studi</th>
                                 <th class="text-dark" width="13%">Jenis Kelamin</th>
-                                <th class="text-dark" width="20%">Email</th>
-                                <th class="text-dark" width="13%">Jabatan</th>
+                                <th class="text-dark" width="15%">Alamat</th>
                                 <th class="text-dark" width="14%" style="text-align: center;">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($aslabs as $aslab)
+                            @foreach ($mahasiswas as $aslab)
                             <tr>
-                                <td class="text-center align-middle text-dark">{{ $loop->iteration + ($aslabs->currentPage() - 1) * $aslabs->perPage() }}</td>
+                                <td class="text-center align-middle text-dark">{{ $loop->iteration + ($mahasiswas->currentPage() - 1) * $mahasiswas->perPage() }}</td>
+                                <td class="align-middle text-dark">{{ $aslab->nim }}</td>
                                 <td class="align-middle text-dark">{{ $aslab->nama }}</td>
-                                <td class="align-middle text-dark">{{ $aslab->username }}</td>
+                                <td class="align-middle text-dark">{{ $aslab->prodis->nama_prodi }}</td>
                                 <td class="align-middle text-dark">{{ $aslab->jenkel }}</td>
-                                <td class="align-middle text-dark">{{ $aslab->email }}</td>
-                                <td class="align-middle text-dark">{{ $aslab->jabatan }}</td>
+                                <td class="align-middle text-dark">{{ $aslab->alamat }}</td>
                                 <td class="align-middle text-center">
                                     <a href="/detail-aslab/{{ $aslab->id }}" class="badge badge-primary"><i class="fas fa-fw fa-regular fa-eye"></i></a> | <a href="/tampil-aslab/{{ $aslab->id }}" class="badge badge-success"><i class="fas fa-fw fa-edit"></i></a> | 
                                     <a href="javascript:if(confirm('Anda yakin ingin menghapus data Program Studi'))window.location.href = '/delete-aslab/{{ $aslab->id }}'" class="badge badge-danger"><i class="fas fa-fw fa-trash"></i></a>
@@ -60,7 +60,7 @@
                         </tbody>
                     </table>
                     <div class="pagination pagination-sm float-right">
-                    {{ $aslabs->links() }}
+                    {{ $mahasiswas->links() }}
                     </div>
                 </div>
             </div>

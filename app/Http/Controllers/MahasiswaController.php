@@ -9,25 +9,26 @@ use App\Models\Prodi;
 
 class MahasiswaController extends Controller
 {
-    public function index(Request $request){
-        if($request->has('search')){
-            $mahasiswas = Mahasiswa::where('nim', 'LIKE', '%' . $request->search . '%')
-                        ->orWhere('nama', 'LIKE', '%' . $request->search . '%')
-                        ->paginate(5);
-        }else {
-            $mahasiswas = Mahasiswa::with('prodis')->paginate(5);
-        }
-        return view('admin.mahasiswa.data-mahasiswa', [
-            'mahasiswas' => $mahasiswas
-        ]);
-    } 
+    public function index(Request $request)
+{
+    if ($request->has('search')) {
+        $mahasiswas = Mahasiswa::where('nama', 'LIKE', '%' . $request->search . '%')
+            ->orWhere('role', 'LIKE', '%' . $request->search . '%')
+            ->paginate(5);
+    } else {
+        $mahasiswas = Mahasiswa::with('prodis')->paginate(5);
+    }
+    return view('admin.mahasiswa.data-mahasiswa', [
+        'mahasiswas' => $mahasiswas
+    ]);
+}
 
     public function create(){
         $mahasiswas = Prodi::all();
 
         return view('admin.mahasiswa.create-mahasiswa', compact('mahasiswas'));
     }
-
+    
     public function store(Request $request){
         $validateData = $request->validate([
             'nim' => 'required|max:20',
@@ -37,6 +38,7 @@ class MahasiswaController extends Controller
             'no_telp' => 'nullable|max:255',
             'alamat' => 'nullable|max:255',
             'foto' => 'nullable|file|mimes:png,jpg,jpeg|max:1024',
+            'role' => 'required|max:11',
         ]);
         
         // Set username (NIM) dan password
@@ -61,7 +63,8 @@ class MahasiswaController extends Controller
             'prodis_id' => $request->prodis_id,
             'no_telp' => $request->no_telp,
             'alamat' => $request->alamat,
-            'foto' => $filename,// Simpan nama file foto atau null jika tidak ada foto      
+            'foto' => $filename,// Simpan nama file foto atau null jika tidak ada foto
+            'role' => $request->role,      
         ]);
     
         return redirect()->route('mahasiswa')->with('success', 'Data Berhasil Ditambahkan!');
@@ -86,6 +89,7 @@ class MahasiswaController extends Controller
             'no_telp' => 'nullable|max:255',
             'alamat' => 'nullable|max:255',
             'foto' => 'nullable|file|mimes:png,jpg,jpeg|max:1024',
+            'role' => 'required|max:11',
         ]);
     
         // Update data mahasiswa
@@ -95,6 +99,7 @@ class MahasiswaController extends Controller
         $mahasiswa->prodis_id = $request->prodis_id;
         $mahasiswa->no_telp = $request->no_telp;
         $mahasiswa->alamat = $request->alamat;
+        $mahasiswa->role = $request->role;
         
     
         // Cek jika ada file foto yang diunggah
