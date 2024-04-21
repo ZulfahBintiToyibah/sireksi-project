@@ -8,6 +8,7 @@ use App\Http\Controllers\DosenController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AslabController;
 use App\Http\Controllers\SkripsiController;
+use App\Http\Controllers\ProfiladminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +20,6 @@ use App\Http\Controllers\SkripsiController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('login', function () {
-    return view('auth/login');
-})->name('login');
 
 Route::get('dashboard', function () {
     return view('admin/dashboard');
@@ -61,9 +59,11 @@ Route::post('/update-mahasiswa/{id}', [MahasiswaController::class, 'edit'])->nam
 Route::get('/delete-mahasiswa/{id}', [MahasiswaController::class, 'destroy'])->name('delete-mahasiswa');
 
 Route::get('/skripsi', [SkripsiController::class, 'index'])->name('skripsi');
-Route::get('/create-skripsi', [SkripsiController::class, 'create'])->name('create-skripsi');
-Route::post('/insert-skripsi', [SkripsiController::class, 'store'])->name('insert-skripsi');
 Route::get('/tampil-skripsi/{id}', [SkripsiController::class, 'show'])->name('tampil-skripsi');
 Route::get('/detail-skripsi/{id}', [SkripsiController::class, 'detail'])->name('detail-skripsi');
 Route::post('/update-skripsi/{id}', [SkripsiController::class, 'edit'])->name('update-skripsi');
 Route::get('/delete-skripsi/{id}', [SkripsiController::class, 'destroy'])->name('delete-skripsi');
+
+Route::get('/profiladmin', [ProfiladminController::class, 'index'])->name('profiladmin');
+Route::get('/tampil-profiladmin/{id}', [ProfiladminController::class, 'show'])->name('tampil-profiladmin');
+Route::post('/update-profiladmin/{id}', [ProfiladminController::class, 'edit'])->name('update-profiladmin');

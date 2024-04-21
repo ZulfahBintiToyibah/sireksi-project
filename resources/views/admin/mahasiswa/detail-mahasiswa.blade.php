@@ -8,7 +8,7 @@
     <div class="col-lg-12">
         <!-- Default Card Example -->
         <div class="card shadow border-primary">
-            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <div class="card-header py-2 d-flex justify-content-between align-items-center">
                 <h6 class="m-0 font-weight-bold text-dark card-title">Form Detail Mahasiswa</h6>
                 <div class="card-tools">
                     <a href="{{ route('mahasiswa') }}" class="btn btn-primary btn-sm float-right"><i class="fas fa-fw fa-solid fa-arrow-left"></i> Kembali</a>
@@ -19,7 +19,7 @@
                     <div class="col-md-12">
                         <table class="table table-bordered shadow">
                             <tr>
-                                <td class="align-middle" width="25%" rowspan="8">
+                                <td class="align-middle" width="28%" rowspan="8">
                                     <img src="{{ asset('storage/foto-mahasiswa/' . $mahasiswas->foto) }}" class="img-fluid shadow" alt="" width="100%">
                                 </td>
                                 <td class="align-middle text-dark judul-buku" colspan="2">
@@ -27,7 +27,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="align-middle text-dark" width="17%">NIM</td>
+                                <td class="align-middle text-dark" width="24%">Nomor Induk Mahasiswa (NIM)</td>
                                 <td class="align-middle text-dark" width="48%">{{ $mahasiswas->nim }}</td>
                             </tr>
                             <tr>

@@ -24,7 +24,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label for="nim" class="form-label">NIM</label>
+                                                <label for="nim" class="form-label">Nomor Induk Mahasiswa (NIM)</label>
                                                 <input type="number" class="form-control" id="nim" name="nim" value="{{ $mahasiswas->nim }}">
                                             </div>
                                             <div class="mb-3">

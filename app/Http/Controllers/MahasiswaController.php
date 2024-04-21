@@ -14,9 +14,9 @@ class MahasiswaController extends Controller
     if ($request->has('search')) {
         $mahasiswas = Mahasiswa::where('nama', 'LIKE', '%' . $request->search . '%')
             ->orWhere('role', 'LIKE', '%' . $request->search . '%')
-            ->paginate(5);
+            ->paginate(10);
     } else {
-        $mahasiswas = Mahasiswa::with('prodis')->paginate(5);
+        $mahasiswas = Mahasiswa::with('prodis')->paginate(10);
     }
     return view('admin.mahasiswa.data-mahasiswa', [
         'mahasiswas' => $mahasiswas

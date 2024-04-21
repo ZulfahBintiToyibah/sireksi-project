@@ -10,9 +10,6 @@
         <div class="card border-primary">
             <div class="card-header py-3 d-flex justify-content-between align-items-center">
                 <h6 class="m-0 font-weight-bold text-dark card-title"><i class="fas fa-fw fa-sharp fa-solid fa-clipboard"></i> Daftar Data Skripsi</h6>
-                <div class="card-tools">
-                    <a href="{{ route('create-skripsi') }}" class="btn btn-primary btn-sm float-right"><i class="fas fa-fw fa-plus"></i> Tambah Data Skripsi</a>
-                </div> 
             </div>
             <div class="card-body p-3">
                 <div class="row mb-2">
@@ -34,11 +31,10 @@
                         <thead>
                             <tr>
                                 <th class="text-dark" width="2%" style="text-align: center;">No</th>
-                                <th class="text-dark" width="12%">Nama</th>
-                                <th class="text-dark" width="21%">Judul</th>
-                                <th class="text-dark" width="29%">Abstrak</th>
-                                <th class="text-dark" width="12%">Program Studi</th>
-                                <th class="text-dark" width="8%">Tahun</th>
+                                <th class="text-dark" width="15%" style="text-align: center;">Nama</th>
+                                <th class="text-dark" width="26%" style="text-align: center;">Judul</th>
+                                <th class="text-dark" width="28%" style="text-align: center;">Abstrak</th>
+                                <th class="text-dark" width="13%" style="text-align: center;">Kode Skripsi</th>
                                 <th class="text-dark" width="14%" style="text-align: center;">Aksi</th>
                             </tr>
                         </thead>
@@ -48,10 +44,8 @@
                                 <td class="text-center align-middle text-dark">{{ $loop->iteration + ($skripsis->currentPage() - 1) * $skripsis->perPage() }}</td>
                                 <td class="align-middle text-dark">{{ $skripsi->mahasiswas->nama }}</td>
                                 <td class="align-middle text-dark">{{ $skripsi->judul }}</td>
-                                <td class="align-middle text-dark">{{ $skripsi->abstrak }}</td>
-                                <td class="align-middle text-dark">{{ $skripsi->mahasiswas->nama_prodi }}</td>
-                                <td class="align-middle text-dark">{{ $skripsi->tahun }}</td>
-                                <td class="align-middle text-center">
+                                <td class="align-middle text-dark">{{ substr($skripsi->abstrak, 0, 100) }}{{ strlen($skripsi->abstrak) > 100 ? "..." : "" }}</td>
+                                <td class="align-middle text-dark">{{ $skripsi->kodeskripsis->kode_skripsi }}</td>                                <td class="align-middle text-center">
                                     <a href="/detail-skripsi/{{ $skripsi->id }}" class="badge badge-primary"><i class="fas fa-fw fa-regular fa-eye"></i></a> | <a href="/tampil-skripsi/{{ $skripsi->id }}" class="badge badge-success"><i class="fas fa-fw fa-edit"></i></a> | 
                                     <a href="javascript:if(confirm('Anda yakin ingin menghapus data Program Studi'))window.location.href = '/delete-skripsi/{{ $skripsi->id }}'" class="badge badge-danger"><i class="fas fa-fw fa-trash"></i></a>
                                 </td>

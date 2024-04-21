@@ -12,9 +12,9 @@ class DosenController extends Controller
         if($request->has('search')){
             $dospems = Dosen::where('nip', 'LIKE', '%' . $request->search . '%')
                         ->orWhere('nama', 'LIKE', '%' . $request->search . '%')
-                        ->paginate(5);
+                        ->paginate(10);
         }else {
-            $dospems = Dosen::with('prodis')->paginate(5);
+            $dospems = Dosen::with('prodis')->paginate(10);
         }
         return view('admin.dosen_pembimbing.data-dospem', [
             'dospems' => $dospems

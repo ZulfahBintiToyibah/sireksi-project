@@ -33,7 +33,7 @@
         <ul class="navbar-nav bg-side sidebar sidebar-dark accordion" id="accordionSidebar">
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon">
-                    <img src="template/img/login/lOGO SIREKSI.png" alt="Sireksi Logo" style="width: 185px; height: auto;">  
+                    <img src="../template/img/login/lOGO SIREKSI.png" alt="Sireksi Logo" style="width: 185px; height: auto;">  
                 </div>
             </a>
             <!-- Divider -->
@@ -128,7 +128,7 @@
 
             <!-- Nav Item - Profil Admin -->
             <li class="nav-item">
-                <a class="nav-link pb-0" href="#">
+                <a class="nav-link pb-0" href="{{ route('profiladmin') }}">
                 <i class="fas fa-fw fa-user"></i>
                     <span>My Profile</span></a>
             </li>

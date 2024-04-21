@@ -35,12 +35,12 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block" style="background-image: url('template/img/login/login_bg.png'); background-size: cover; padding: 244px 0;">
+                            <div class="col-lg-6 d-none d-lg-block" style="background-image: url('template/img/login/login_bg.png'); background-size: cover; padding: 250px 0;">
                                 <div class="logo text-center">
                                     <img src="template/img/login/lOGO SIREKSI.png" alt="uLibrary Logo" style="width: 300px;">
                                 </div>
                             </div>
-                            <div class="col-lg-6" style="padding: 80px 0;">
+                            <div class="col-lg-6" style="padding: 75px 0;">
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 mb-4" style="color: #3C096C; font-size: 32px;">Login</h1>
@@ -48,22 +48,22 @@
                                     <form class="user" action="loginproces" method="post">
                                         @csrf
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user" placeholder="Username" name="username" autocomplete="off">
+                                            <input type="text" class="form-control" placeholder="Username" name="username" autocomplete="off">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" placeholder="Password" name="password" autocomplete="off">
+                                            <input type="password" class="form-control" placeholder="Password" name="password" autocomplete="off">
                                         </div>
                                         <div class="form-group">
-                                            <select class="form-control" name="role" id="exampleFormControlSelect1">
-                                              <option value="">-- Pilih Level Pengguna --</option> 
-                                              <option value="admin">Admin</option>
+                                            <select class="form-control" name="role" id="role">
+                                              <option value="">Pilih Level Pengguna</option> 
+                                              <option value="admin">Administrator</option>
                                               <option value="mahasiswa">Mahasiswa</option>
                                             </select>
-                                          </div>
-                                        <button type="submit" name="login" class="btn btn-user btn-block" style="background-color: #3C096C; color: #F4F4F4; font-size: 14px; border: 1px solid #3C096C;">
-                                            Login
-                                        </button>
-                                    </form>
+                                </div>
+                                <button type="submit" name="login" class="btn btn-user btn-block" style="background-color: #3C096C; color: #F4F4F4; font-size: 16px; border: 1px solid #3C096C; border-radius: 10px;">
+                                    Login
+                                </button>
+                                                                    </form>
                                     <hr>
                                 </div>
                             </div>
