@@ -15,7 +15,7 @@ class CreateDosensTable extends Migration
     {
         Schema::create('dosens', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('nip');
+            $table->bigInteger('nip')->unique();
             $table->string('nama');
             $table->unsignedBigInteger('prodis_id');
             $table->foreign('prodis_id')->references('id')->on('prodis')->onUpdate('cascade')->onDelete('cascade');

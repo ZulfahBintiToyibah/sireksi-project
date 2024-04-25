@@ -13,19 +13,38 @@
             </div>
             <div class="card-body p-3">
                 <div class="row mb-2">
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <form class="navbar-search" action="/skripsi" method="GET">
                             <div class="input-group">
-                                <input type="search" class="form-control bg-light border-1 small" placeholder="Search for..." name="search">
+                                <input type="text" class="form-control form-control-sm  bg-light border-1 small" placeholder="Search for ..." name="katakunci_kode" autocomplete="off">
                                 <div class="input-group-append">
-                                    <button class="btn btn-primary" type="submit">
+                                    <button class="btn btn-primary btn-sm" type="submit">
                                         <i class="fas fa-search fa-sm"></i>
                                     </button>
                                 </div>
                             </div>
                         </form>
                     </div>
-                </div>
+                    <div class="col-md-4">
+                        <form class="navbar-search" action="/skripsi" method="GET">
+                            <div class="input-group">
+                                <select class="form-control form-control-sm selectpicker" name="prodis_id" id="prodis_id" data-live-search="true">
+                                    <option value="0">-- Pilih Program Studi --</option>
+                                    @foreach($skripsis as $skripsi)
+                                    <option value="{{ $skripsi->id }}">{{ $skripsi->mahasiswas->prodis->nama_prodi }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary btn-sm" type="submit">
+                                        <i class="fas fa-search fa-sm"> Cari</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                                    
+            </div>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size: 14px;">
                         <thead>

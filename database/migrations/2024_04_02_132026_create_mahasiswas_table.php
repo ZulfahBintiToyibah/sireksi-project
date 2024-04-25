@@ -15,7 +15,7 @@ class CreateMahasiswasTable extends Migration
     {
         Schema::create('mahasiswas', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('nim');
+            $table->bigInteger('nim')->unique();
             $table->string('nama');
             $table->enum('jenkel', ['Laki-Laki', 'Perempuan'])->nullable();
             $table->unsignedBigInteger('prodis_id');

@@ -29,4 +29,9 @@ class Mahasiswa extends Authenticatable
     {
         return $this->hasMany(Skripsi::class);
     }
+
+    public function pengumpulans()
+    {
+        return $this->hasMany(Pengumpulan::class);
+    }
 }

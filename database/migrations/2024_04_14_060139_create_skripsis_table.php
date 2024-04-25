@@ -18,12 +18,13 @@ class CreateSkripsisTable extends Migration
             $table->unsignedBigInteger('mahasiswas_id');
             $table->foreign('mahasiswas_id')->references('id')->on('mahasiswas')->onUpdate('cascade')->onDelete('cascade');
             $table->string('judul');
-            $table->string('tahun');
+            $table->unsignedSmallInteger ('tahun');            
             $table->unsignedBigInteger('dosens_id');
             $table->foreign('dosens_id')->references('id')->on('dosens')->onUpdate('cascade')->onDelete('cascade');
             $table->text('abstrak');
             $table->unsignedBigInteger('kodeskripsis_id');
             $table->foreign('kodeskripsis_id')->references('id')->on('kodeskripsis')->onUpdate('cascade')->onDelete('cascade');
+            $table->enum('status', ['Diajukan', 'Dikonfirmasi'])->default('Diajukan');            
             $table->timestamps();
         });
     }

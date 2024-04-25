@@ -2,14 +2,14 @@
 
 @section('container')
 <!-- Page Heading -->
-<h1 class="h4 mb-3 text-gray-800">Tambah Data Mahasiswa</h1>
+<h1 class="h4 mb-3 text-gray-800">Edit Data Mahasiswa</h1>
 
 <div class="row">
     <div class="col-lg-12">
         <!-- Default Card Example -->
         <div class="card shadow mb-4 border-primary">
             <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                <h6 class="m-0 font-weight-bold text-dark card-title">Form Tambah Data Mahasiswa</h6>
+                <h6 class="m-0 font-weight-bold text-dark card-title">Form Edit Data Mahasiswa</h6>
                 <div class="card-tools">
                     <a href="{{ route('mahasiswa') }}" class="btn btn-primary btn-sm float-right"><i class="fas fa-fw fa-solid fa-arrow-left"></i> Kembali</a>
                 </div>

@@ -36,92 +36,60 @@
                     <img src="../template/img/login/lOGO SIREKSI.png" alt="Sireksi Logo" style="width: 185px; height: auto;">  
                 </div>
             </a>
+            
             <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Admin
+               MENU
             </div>
 
+            @if(auth()->guard('mahasiswa')->user()->role == 1)
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link pb-0" href="{{ route('dashboard') }}">
+                <a class="nav-link pb-0" href="{{ route('dashboard2') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
+            @endif
+
+            @if(auth()->guard('mahasiswa')->user()->role == 2)
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link pb-0" href="{{ route('dashboard3') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+            @endif
+
+            @if(auth()->guard('mahasiswa')->user()->role == 1)
+            <!-- Nav Item - Pengumpulan Skripsi -->
+            <li class="nav-item">
+                <a class="nav-link pb-0" href="{{ route('konfirmasi-pengumpulan') }}">
+                <i class="fas fa-fw fa-solid fa-check-circle" aria-hidden="true"></i>
+                    <span>Konfirmasi Pengumpulan</span></a>
+            </li>
+            @endif
+
+            <!-- Nav Item - Cari Rekomendasi -->
+            <li class="nav-item">
+                <a class="nav-link pb-0" href="">
+                <i class="fas fa-fw fa-solid fa-file" aria-hidden="true"></i>
+                    <span>Cari Rekomendasi</span></a>
+            </li>
+
+            @if(auth()->guard('mahasiswa')->user()->role == 2)
+            <!-- Nav Item - Cari Rekomendasi -->
+            <li class="nav-item">
+                <a class="nav-link pb-0" href="{{ route('create-skripsi') }}">
+                <i class="fas fa-fw fa-solid fa-file" aria-hidden="true"></i>
+                    <span>Pengumpulan Skripsi</span></a>
+            </li>
+            @endif
 
             <!-- Divider -->
             <hr class="sidebar-divider mt-3">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Master Data
-            </div>
-            
-            <li class="nav-item">
-                    <a class="nav-link collapsed pb-0" href="{{ route('mahasiswa') }}">
-                    <i class="fa fa-users" aria-hidden="true"></i>
-                        <span>Data Pengguna</span></a>
-                </li>
-            </li>
-
-            <!-- Nav Item - Skripsi -->
-            <li class="nav-item">
-                <a class="nav-link collapsed pb-0" href="" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-solid fa-book"></i>
-                    <span>Skripsi</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('skripsi') }}"><i class="fas fa-fw fa-book mr-1"></i>Data Skripsi</a>
-                        <a class="collapse-item" href="{{ route('kodeskripsi') }}"><i class="fa fa-fw fa-server mr-1"></i>Data Kode Skripsi</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Program Studi -->
-            <li class="nav-item">
-                <a class="nav-link pb-0" href="{{ route('prodi') }}">
-                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                    <span>Program Studi</span></a>
-            </li>
-
-            <!-- Nav Item - Dosen Pembimbing -->
-            <li class="nav-item">
-                <a class="nav-link pb-0" href="{{ route('dospem') }}">
-                    <i class="fas fa-fw fa-sharp fa-solid fa-clipboard"></i>
-                    <span>Dosen Pembimbing</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider mt-3">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Laporan
-            </div>
-
-            <!-- Nav Item - Laporan -->
-            <li class="nav-item mb-3">
-                <a class="nav-link collapsed pb-0" href="#" data-toggle="collapse" data-target="#collapseLaporan"
-                    aria-expanded="true" aria-controls="collapseLaporan">
-                    <i class="fas fa-fw fa-solid fa-file"></i>
-                    <span>Laporan</span>
-                </a>
-                <div id="collapseLaporan" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar" style="width: 200px;">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('laporan-mahasiswa') }}">Laporan Data Pengguna</a>
-                        <a class="collapse-item" href="{{ route('laporan-konfir') }}">Laporan Data Pengumpulan</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider mt">
 
             <!-- Heading -->
             <div class="sidebar-heading">
@@ -185,7 +153,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Mahasiswa</span>
                                 <img class="img-profile rounded-circle"
                                     src="template/img/undraw_profile.svg">
                             </a>

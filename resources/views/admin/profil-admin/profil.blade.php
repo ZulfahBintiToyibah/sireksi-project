@@ -19,7 +19,7 @@
                                     <label for="nama" class="col-form-label">Nama</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" id="nama" class="form-control" value="">
+                                    <input type="text" id="nama" class="form-control" value="{{ $user ? $user->nama : '' }}">
                                 </div>
                             </div>
                             <div class="row mb-2 g-3 align-items-center">
@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                         </fieldset>
-                        <a href="index.php?include=edit-profil&data=" class="btn btn-primary btn-block"><i class="fas fa-fw fa-edit"></i> Edit Profile</a>
+                        <a href="/edit-profil/{id}" class="btn btn-primary btn-block"><i class="fas fa-fw fa-edit"></i> Edit Profile</a>
                     </div>
                 </div>
             </div>

@@ -48,23 +48,35 @@
                                     <form class="user" action="loginproces" method="post">
                                         @csrf
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Username" name="username" autocomplete="off">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control" placeholder="Username" name="username" autocomplete="off">
+                                            </div>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="Password" name="password" autocomplete="off">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                                </div>
+                                                <input type="password" class="form-control" placeholder="Password" name="password" autocomplete="off">
+                                            </div>
                                         </div>
                                         <div class="form-group">
-                                            <select class="form-control" name="role" id="role">
-                                              <option value="">Pilih Level Pengguna</option> 
-                                              <option value="admin">Administrator</option>
-                                              <option value="mahasiswa">Mahasiswa</option>
-                                            </select>
-                                </div>
-                                <button type="submit" name="login" class="btn btn-user btn-block" style="background-color: #3C096C; color: #F4F4F4; font-size: 16px; border: 1px solid #3C096C; border-radius: 10px;">
-                                    Login
-                                </button>
-                                                                    </form>
-                                    <hr>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-user-tag"></i></span>
+                                                </div>
+                                                <select class="form-control" name="role" id="role">
+                                                    <option value="">Pilih Level Pengguna</option>
+                                                    <option value="admin">Administrator</option>
+                                                    <option value="mahasiswa">Mahasiswa</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                                    </form>                                    
                                 </div>
                             </div>
                         </div>

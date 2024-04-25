@@ -22,6 +22,18 @@ class MahasiswaController extends Controller
         'mahasiswas' => $mahasiswas
     ]);
 }
+    public function index2(Request $request){
+
+        if ($request->has('search')) {
+            $mahasiswas = Mahasiswa::where('nama', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('role', 'LIKE', '%' . $request->search . '%')
+                ->paginate(10);
+        } else {
+            $mahasiswas = Mahasiswa::with('prodis')->paginate(10);
+        }
+        return view('admin.laporan.laporan-user', [
+            'mahasiswas' => $mahasiswas
+        ]);    } 
 
     public function create(){
         $mahasiswas = Prodi::all();

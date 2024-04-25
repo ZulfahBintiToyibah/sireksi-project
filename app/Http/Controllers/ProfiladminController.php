@@ -9,19 +9,14 @@ use Illuminate\Http\Request;
 class ProfiladminController extends Controller
 {
     public function index(Request $request){
-        // Mengambil data profil admin yang sedang login
-        $user = Auth::user();
-        
-        // Memeriksa apakah user ada sebelum mengakses properti 'foto'
-        if ($user) {
-            return view('admin.profil-admin.profil', compact('user')); // Mengirimkan variabel $user ke view
-        } else {
-            // Jika user tidak ditemukan, mungkin Anda ingin menangani ini dengan cara lain
-            // Misalnya, arahkan pengguna ke halaman tertentu dengan pesan kesalahan
-            return redirect()->back()->with('error', 'Profil tidak ditemukan');
-        }
+        return view('admin.profil-admin.profil'); // Mengirimkan variabel $user ke view
     }
     
+    public function show($id){
+        $user = User::find($id);
+
+        return view('admin.profil-admin.edit-profil', compact('user'));
+    }
     
     public function edit(Request $request, $id){
         $user = User::find($id);
