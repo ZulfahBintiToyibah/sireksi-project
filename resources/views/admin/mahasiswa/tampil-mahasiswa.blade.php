@@ -40,12 +40,12 @@
                                                 </select>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="prodis_id" class="form-label text-dark">Program Studi</label>
-                                        <select class="form-control" id="prodis_id" name="prodis_id">
-                                            @foreach($prodis as $prodi)
-                                                <option value="{{ $prodi->id }}" {{ $prodi->id == $mahasiswas->prodis_id ? 'selected' : '' }}>{{ $prodi->nama_prodi }}</option>
-                                            @endforeach
-                                        </select>
+                                            <label for="prodis_id" class="form-label text-dark">Program Studi</label>
+                                            <select class="form-control" id="prodis_id" name="prodis_id">
+                                                @foreach($prodis as $prodi)
+                                                    <option value="{{ $prodi->id }}" {{ $prodi->id == $mahasiswas->prodis_id ? 'selected' : '' }}>{{ $prodi->nama_prodi }}</option>
+                                                @endforeach
+                                            </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6">

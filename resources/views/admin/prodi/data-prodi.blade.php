@@ -16,12 +16,12 @@
             </div>
             <div class="card-body p-3">
                 <div class="row mb-2">
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <form class="navbar-search" action="/prodi" method="GET">
                             <div class="input-group">
-                                <input type="search" class="form-control bg-light border-1 small" placeholder="Search for..." name="search">
+                                <input type="search" class="form-control form-control-sm bg-light border-1 small" placeholder="Masukkan program studi..." name="search" autocomplete="off">
                                 <div class="input-group-append">
-                                    <button class="btn btn-primary" type="submit">
+                                    <button class="btn btn-primary btn-sm" type="submit">
                                         <i class="fas fa-search fa-sm"></i>
                                     </button>
                                 </div>
@@ -29,6 +29,13 @@
                         </form>
                     </div>
                 </div>
+                @if ($prodis->isEmpty())
+                <div class="alert alert-info" role="alert">
+                    Tidak ada data yang cocok dengan kriteria pencarian.
+                </div>
+                @else
+                    <!-- Kode tabel Anda untuk menampilkan data -->
+                @endif
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size: 14px;">
                         <thead>

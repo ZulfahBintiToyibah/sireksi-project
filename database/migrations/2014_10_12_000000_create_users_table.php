@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('username');
             $table->string('password')->nullable();
             $table->enum('jenkel', ['Laki-Laki', 'Perempuan'])->nullable();
+            $table->string('no_telp')->nullable();
+            $table->string('alamat')->nullable();
             $table->string('email')->nullable();
             $table->string('foto')->nullable();
             $table->timestamps();

@@ -13,12 +13,28 @@
             </div>
             <div class="card-body p-3">
                 <div class="row mb-2">
-                    <div class="col-md-5">
-                        <form class="navbar-search" action="/mahasiswa" method="GET">
+                    <div class="col-md-4">
+                        <form class="navbar-search" action="/laporan-mahasiswa" method="GET">
                             <div class="input-group">
-                                <input type="search" class="form-control bg-light border-1 small" placeholder="Search for..." name="search">
+                                <select class="form-control form-control-sm selectpicker" name="role" id="role" data-live-search="true">
+                                    <option value="0">-- Pilih Role Pengguna --</option>
+                                    <option value="1">Asisten Laboratorium</option>
+                                    <option value="2">Mahasiswa</option>
+                                </select>
                                 <div class="input-group-append">
-                                    <button class="btn btn-primary" type="submit">
+                                    <button class="btn btn-primary btn-sm" type="submit">
+                                        <i class="fas fa-search fa-sm"> Cari</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-4">
+                        <form class="navbar-search" action="/laporan-mahasiswa" method="GET">
+                            <div class="input-group">
+                                <input type="search" class="form-control form-control-sm bg-light border-1 small" placeholder="Masukkan Nama/Nomor Induk Mahasiswa..." name="search" autocomplete="off">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary btn-sm" type="submit">
                                         <i class="fas fa-search fa-sm"></i>
                                     </button>
                                 </div>
@@ -26,6 +42,13 @@
                         </form>
                     </div>
                 </div>
+                @if ($mahasiswas->isEmpty())
+                <div class="alert alert-info" role="alert">
+                    Tidak ada data yang cocok dengan kriteria pencarian.
+                </div>
+                @else
+                    <!-- Kode tabel Anda untuk menampilkan data -->
+                @endif
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size: 14px;">
                         <thead>

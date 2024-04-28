@@ -13,18 +13,47 @@ use App\Models\Pengumpulan;
 
 class SkripsiController extends Controller
 {
-    public function index(Request $request){
-        if($request->has('search')){
-            $skripsis = Skripsi::where('judul', 'LIKE', '%' . $request->search . '%')
-                        ->orWhere('tahun', 'LIKE', '%' . $request->search . '%')
-                        ->paginate(10);
-        } else {
-            $skripsis = Skripsi::with('mahasiswas', 'dosens', 'kodeskripsis')->paginate(10);
-        }
-        return view('admin.skripsi.data-skripsi', [
-            'skripsis' => $skripsis
-        ]);
-    }     
+    // public function index(Request $request){
+    //     if($request->has('search')){
+    //         $skripsis = Skripsi::where('judul', 'LIKE', '%' . $request->search . '%')
+    //                     ->orWhere('tahun', 'LIKE', '%' . $request->search . '%')
+    //                     ->paginate(10);
+    //     } else {
+    //         $skripsis = Skripsi::with('mahasiswas', 'dosens', 'kodeskripsis')->paginate(10);
+    //     }
+    //     return view('admin.skripsi.data-skripsi', [
+    //         'skripsis' => $skripsis
+    //     ]);
+    // } 
+    
+    public function index(Request $request)
+{
+    $search = $request->input('search');
+    $selectedkodeSkripsis = (array) $request->input('kodeskripsis_id'); // Ensure $selectedKodeSkripsis is always an array
+
+    $skripsis = Skripsi::query();
+
+    if ($search) {
+        $skripsis->where('judul', 'like', '%' . $search . '%');
+    }
+
+    if (!empty($selectedkodeSkripsis)) {
+        // Hanya ambil ID dari kodeskripsi yang dipilih
+        $skripsis->whereIn('kodeskripsis_id', $selectedkodeSkripsis);
+    }    
+
+    $result = $skripsis->paginate(10);
+
+    // Mengambil data Kode Skripsi hanya jika diperlukan, misalnya untuk menampilkan dropdown
+    $kodeskripsis = Kodeskripsi::all();
+
+    return view('admin.skripsi.data-skripsi', [
+        'skripsis' => $result, 
+        'kodeskripsis' => $kodeskripsis, // Mengirimkan data kode skripsi untuk dropdown
+        'selectedkodeSkripsis' => $selectedkodeSkripsis, // Mengirimkan kode skripsi yang dipilih untuk menandai opsi yang dipilih dalam dropdown
+    ]);
+}
+
 
     public function show($id){
         $skripsis = Skripsi::with('mahasiswas', 'dosens', 'kodeskripsis')->find($id);
@@ -35,7 +64,6 @@ class SkripsiController extends Controller
     
         return view('admin.skripsi.tampil-skripsi', compact('skripsis', 'mahasiswas', 'dosens', 'kodeskripsis', 'prodis'));
     }
-    
 
     public function edit(Request $request, $id){
         $skripsis = Skripsi::find($id);
@@ -97,7 +125,8 @@ class SkripsiController extends Controller
 }
 
     // Metode untuk mengkonfirmasi skripsi
-    public function confirmSkripsi(Request $request)
+// Metode untuk mengkonfirmasi skripsi
+public function confirmSkripsi(Request $request)
 {
     // Validasi request
     $request->validate([
@@ -111,9 +140,6 @@ class SkripsiController extends Controller
         // Ubah status skripsi menjadi "Dikonfirmasi"
         $skripsi->status = 'Dikonfirmasi';
         $skripsi->save();
-
-        // Hapus entri pengumpulan dari tabel pengumpulan
-        $skripsi->pengumpulan()->delete();
 
         // Redirect dengan pesan sukses
         return redirect()->back()->with('success', 'Skripsi berhasil dikonfirmasi.');

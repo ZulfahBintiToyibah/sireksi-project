@@ -10,6 +10,7 @@ use App\Http\Controllers\AslabController;
 use App\Http\Controllers\SkripsiController;
 use App\Http\Controllers\ProfiladminController;
 use App\Http\Controllers\PengumpulanController;
+use App\Http\Controllers\CarirekomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,10 +26,10 @@ use App\Http\Controllers\PengumpulanController;
 Route::get('dashboard', function () {
     return view('admin/dashboard');
 })->name('dashboard');
-Route::get('dashboard2', function () {
+Route::get('dashboard-aslab', function () {
     return view('aslab/dashboard');
 })->name('dashboard2');
-Route::get('dashboard3', function () {
+Route::get('dashboard-mahasiswa', function () {
     return view('mahasiswa/dashboard');
 })->name('dashboard3');
 
@@ -64,6 +65,10 @@ Route::get('/tampil-mahasiswa/{id}', [MahasiswaController::class, 'show'])->name
 Route::get('/detail-mahasiswa/{id}', [MahasiswaController::class, 'detail'])->name('detail-mahasiswa');
 Route::post('/update-mahasiswa/{id}', [MahasiswaController::class, 'edit'])->name('update-mahasiswa');
 Route::get('/delete-mahasiswa/{id}', [MahasiswaController::class, 'destroy'])->name('delete-mahasiswa');
+Route::get('/my-profil', [MahasiswaController::class, 'index_profil'])->name('my-profil');
+Route::get('/profil-edit/{id}', [MahasiswaController::class, 'show_profil'])->name('profil-edit');
+Route::post('/profil-update/{id}', [MahasiswaController::class, 'edit_profil'])->name('profil-update');
+Route::get('/password-change', [MahasiswaController::class, 'password'])->name('password-change');
 
 Route::get('/skripsi', [SkripsiController::class, 'index'])->name('skripsi');
 Route::get('/tampil-skripsi/{id}', [SkripsiController::class, 'show'])->name('tampil-skripsi');
@@ -77,6 +82,8 @@ Route::post('/confirm-skripsi', [SkripsiController::class, 'confirmSkripsi'])->n
 Route::get('/profiladmin', [ProfiladminController::class, 'index'])->name('profiladmin');
 Route::get('/edit-profil/{id}', [ProfiladminController::class, 'show'])->name('edit-profil');
 Route::post('/update-profil/{id}', [ProfiladminController::class, 'edit'])->name('update-profil');
+Route::get('/ubah-password', [ProfiladminController::class, 'password'])->name('ubah-password');
+Route::post('/update-password', [ProfiladminController::class, 'updatePassword'])->name('update-password');
 
 Route::get('/konfirmasi-pengumpulan', [PengumpulanController::class, 'index'])->name('konfirmasi-pengumpulan');
 Route::get('/laporan-konfir', [PengumpulanController::class, 'index2'])->name('laporan-konfir');
@@ -85,4 +92,6 @@ Route::post('/update-konfirmasi/{id}', [PengumpulanController::class, 'edit'])->
 Route::get('/delete-konfirmasi/{id}', [PengumpulanController::class, 'destroy'])->name('delete-konfirmasi');
 Route::post('/konfir-pengumpulan/{id}', [PengumpulanController::class, 'konfir'])->name('konfir-pengumpulan');
 
-
+Route::get('/cari-rekom', [CarirekomController::class, 'index'])->name('cari-rekom');
+Route::get('/tampil-rekom/{id}', [CarirekomController::class, 'show'])->name('tampil-rekom');
+Route::get('/cek-rekom', [CarirekomController::class, 'hasil'])->name('cek-rekom');

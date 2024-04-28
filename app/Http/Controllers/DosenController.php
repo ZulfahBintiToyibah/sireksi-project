@@ -8,18 +8,36 @@ use App\Models\Prodi;
 
 class DosenController extends Controller
 {
-    public function index(Request $request){
-        if($request->has('search')){
-            $dospems = Dosen::where('nip', 'LIKE', '%' . $request->search . '%')
-                        ->orWhere('nama', 'LIKE', '%' . $request->search . '%')
-                        ->paginate(10);
-        }else {
-            $dospems = Dosen::with('prodis')->paginate(10);
-        }
-        return view('admin.dosen_pembimbing.data-dospem', [
-            'dospems' => $dospems
-        ]);
-    } 
+
+    public function index(Request $request)
+{
+    $search = $request->input('search');
+    $selectedProdis = (array) $request->input('prodis_id'); // Ensure $selectedProdis is always an array
+
+    $dospems = Dosen::query();
+
+    if ($search) {
+        $dospems->where('nama', 'like', '%' . $search . '%')
+            ->orWhere('nip', 'like', '%' . $search . '%');
+    }
+
+    if (!empty($selectedProdis)) {
+        // Hanya ambil ID dari prodi yang dipilih
+        $dospems->whereIn('prodis_id', $selectedProdis);
+    }
+
+    $result = $dospems->paginate(10);
+
+    // Mengambil data Prodi hanya jika diperlukan, misalnya untuk menampilkan dropdown
+    $prodis = Prodi::all();
+
+    return view('admin.dosen_pembimbing.data-dospem', [
+        'dospems' => $result, 
+        'prodis' => $prodis, // Mengirimkan data prodi untuk dropdown
+        'selectedProdis' => $selectedProdis, // Mengirimkan prodi yang dipilih untuk menandai opsi yang dipilih dalam dropdown
+    ]);
+}
+
 
     public function create(){
         $dospems = Prodi::all();

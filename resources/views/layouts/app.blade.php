@@ -137,7 +137,7 @@
 
             <!-- Nav Item - Ubah Password -->
             <li class="nav-item">
-                <a class="nav-link pb-0" href="#">
+                <a class="nav-link pb-0" href="{{ route('ubah-password') }}">
                 <i class="fas fa-fw fa-solid fa-key"></i>
                     <span>Ubah Password</span></a>
             </li>
@@ -147,7 +147,7 @@
 
             <!-- Nav Item - Logout -->
             <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
+                <a class="nav-link" href="{{ route('login') }}" data-toggle="modal" data-target="#logoutModal">
                     <i class="fas fa-fw fa-sign-out-alt"></i>
                     <span>Logout</span>
                 </a>
@@ -180,31 +180,37 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <div class="topbar-divider d-none d-sm-block"></div>
-
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-                                <img class="img-profile rounded-circle"
-                                    src="template/img/undraw_profile.svg">
+                    
+                    <!-- Nav Item - User Information -->
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                @if(Auth::check()) <!-- Mengecek apakah pengguna sudah login -->
+                                    {{ Auth::user()->nama }} <!-- Menampilkan nama pengguna yang login -->
+                                @else
+                                    Guest <!-- Menampilkan sebagai guest jika belum login -->
+                                @endif
+                            </span>
+                            <!-- Menampilkan foto profil dari database jika tersedia, jika tidak, menampilkan foto default -->
+                            <img class="img-profile rounded-circle" src="{{ Auth::check() && Auth::user()->foto ? asset('storage/foto-admin/' . Auth::user()->foto) : asset('template/img/undraw_profile.svg') }}">
+                        </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="{{ route('profiladmin') }}">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Profile
                             </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
-
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ route('login') }}" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </li>
                     </ul>
+                    
 
                 </nav>
                 <!-- End of Topbar -->
@@ -255,7 +261,7 @@
                 <div class="modal-body">Apakah anda yakin akan keluar dari aplikasi ini?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">OK</a>
+                    <a class="btn btn-primary" href="{{ route('login') }}">OK</a>
                 </div>
             </div>
         </div>

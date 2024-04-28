@@ -101,3 +101,16 @@
     <!-- Custom scripts for all pages-->
     <script src="../template/js/sb-admin-2.min.js"></script>
 
+@include('sweetalert::alert')
+
+@if(session('success'))
+    <script>
+        swal("Success!", "{{ session('success') }}", "success");
+    </script>
+@endif
+
+@if(session('error'))
+    <script>
+        swal("Error!", "{{ session('error') }}", "error");
+    </script>
+@endif

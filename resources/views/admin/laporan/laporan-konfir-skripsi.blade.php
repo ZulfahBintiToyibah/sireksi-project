@@ -59,7 +59,13 @@
                             <td class="align-middle text-dark">{{ $pengumpulan->skripsis->mahasiswas->prodis->nama_prodi }}</td>
                             <td class="align-middle text-dark">{{ $pengumpulan->skripsis->judul }}</td>
                             <td class="align-middle text-dark text-center">{{ \Carbon\Carbon::parse($pengumpulan->skripsis->created_at)->format('d F Y') }}</td>
-                            <td class="align-middle text-dark text-center"><span class="badge rounded-pill text-white bg-danger">{{ $pengumpulan->skripsis->status }}</span></td>
+                            <td class="align-middle text-dark text-center">
+                                @if($pengumpulan->skripsis->status == 'Diajukan')
+                                    <span class="badge rounded-pill text-white bg-danger">{{ $pengumpulan->skripsis->status }}</span>
+                                @elseif($pengumpulan->skripsis->status == 'Dikonfirmasi')
+                                    <span class="badge rounded-pill text-white bg-success">{{ $pengumpulan->skripsis->status }}</span>
+                                @endif
+                            </td>                        
                         </tr>
                         @endforeach
                     </tbody>

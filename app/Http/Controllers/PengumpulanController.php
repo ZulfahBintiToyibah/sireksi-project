@@ -18,8 +18,10 @@ class PengumpulanController extends Controller
                         ->orWhere('tahun', 'LIKE', '%' . $request->search . '%')
                         ->paginate(10);
         } else {
-            $pengumpulans = Pengumpulan::with('mahasiswas', 'skripsis')->paginate(10);
-        }
+            $pengumpulans = Pengumpulan::with('mahasiswas', 'skripsis')->whereHas('skripsis', function ($query) {
+                $query->where('status', '!=', 'Dikonfirmasi');
+            })->paginate(10);
+                    }
         return view('aslab.konfir_pengumpulan.konfir-pengumpulan', [
             'pengumpulans' => $pengumpulans
         ]);
@@ -37,7 +39,6 @@ class PengumpulanController extends Controller
         return view('admin.laporan.laporan-konfir-skripsi', [
             'pengumpulans' => $pengumpulans
         ]);    } 
-
 
     public function show($id){
         $pengumpulans = Pengumpulan::with('mahasiswas', 'skripsis')->find($id);
@@ -62,7 +63,6 @@ class PengumpulanController extends Controller
         Pengumpulan::create([
             'mahasiswas_id' => $mahasiswaId,
             'skripsis_id' => $skripsiId,
-            'status_arsip' => $status_arsip
         ]);
 
         // Redirect atau respons sesuai kebutuhan
@@ -72,8 +72,6 @@ class PengumpulanController extends Controller
     public function destroy($id){
         $pengumpulans = Pengumpulan::find($id);
     
-        // Set status_arsip menjadi true
-        $pengumpulans->status_arsip = true;
         $pengumpulans->save();
     
         // Hapus entri dari tabel pengumpulan
