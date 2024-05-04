@@ -9,7 +9,7 @@
         <div class="card mb-3">
             <div class="row">
                 <div class="col-md-3 m-auto">
-                    <img src="{{ Auth::user()->foto ? asset('storage/foto-admin/' . Auth::user()->foto) : asset('template/img/undraw_profile.svg') }}" class="img-fluid rounded" alt="...">
+                    <img src="{{ Auth::user()->foto ? asset('storage/foto-admin/' . Auth::user()->foto) : asset('template/img/default.jpg') }}" class="img-fluid rounded" alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">

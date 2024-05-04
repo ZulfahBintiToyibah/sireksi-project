@@ -72,7 +72,7 @@
                                 <td class="align-middle text-dark">{{ $dospem->nama }}</td>
                                 <td class="align-middle text-dark">{{ $dospem->prodis->nama_prodi }}</td>
                                 <td class="align-middle text-center">
-                                    <a href="/tampil-dospem/{{ $dospem->id }}" class="badge badge-success"><i class="fas fa-fw fa-edit"></i><span> Edit</span></a> | <a href="javascript:if(confirm('Anda yakin ingin menghapus data Program Studi'))window.location.href = '/delete-dospem/{{ $dospem->id }}'" class="badge badge-danger"><i class="fas fa-fw fa-trash"></i><span> Hapus</span></a>
+                                    <a href="/tampil-dospem/{{ $dospem->id }}" class="badge badge-success"><i class="fas fa-fw fa-edit"></i><span> Edit</span></a> | <a href="javascript:if(confirm('Anda yakin ingin menghapus data Dosen Pembimbing {{ $dospem->nama }} ?'))window.location.href = '/delete-dospem/{{ $dospem->id }}'" class="badge badge-danger"><i class="fas fa-fw fa-trash"></i><span> Hapus</span></a>
                                 </td>
                             </tr>
                             @endforeach

@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     {{-- <input type="text" id="nama" class="form-control form-control-sm text-dark" name="nama" value="{{ $pengumpulans->mahasiswas->nama }}" readonly> --}}
-                                    <input type="text" id="nama" class="form-control form-control-sm text-danger" name="nama" value="{{ $pengumpulans->skripsis->mahasiswas}}" readonly>
+                                    <input type="text" id="nama" class="form-control form-control-sm text-danger" name="nama" value="Belum di Konfirmasi" readonly>
                                 </div>
                             </div>
                         </div>

@@ -11,6 +11,9 @@
 
     <title>Sireksi</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../template/img/favicon.ico">
+
     <!-- Custom fonts for this template-->
     <link href="../template/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -244,6 +247,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="../template/js/sb-admin-2.min.js"></script>
+    
 
 </body>
 

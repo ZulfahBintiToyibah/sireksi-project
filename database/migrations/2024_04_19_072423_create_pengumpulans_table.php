@@ -19,7 +19,6 @@ class CreatePengumpulansTable extends Migration
             $table->foreign('mahasiswas_id')->references('id')->on('mahasiswas')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('skripsis_id');
             $table->foreign('skripsis_id')->references('id')->on('skripsis')->onUpdate('cascade')->onDelete('cascade');
-            $table->boolean('status_arsip')->default(false); // Tambahkan kolom status_arsip
             $table->timestamps();
         });
     }

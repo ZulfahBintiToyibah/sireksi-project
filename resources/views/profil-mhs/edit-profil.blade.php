@@ -25,7 +25,7 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label for="nama" class="form-label">Nama Lengkap</label>
-                                                    <input type="text" class="form-control" id="nama" name="nama" value="{{ $mahasiswa ? $mahasiswa->nama : '' }}">
+                                                    <input type="text" class="form-control" id="nama" name="nama" value="{{ $mahasiswa ? $mahasiswa->nama : '' }}" readonly>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="jenkel" class="form-label">Jenis Kelamin</label><br>
@@ -50,7 +50,7 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label for="nim" class="form-label">Nomor Induk Mahasiswa (NIM)</label>
-                                                    <input type="text" class="form-control" id="nim" name="nim" value="{{ $mahasiswa ? $mahasiswa->nim : '' }}">
+                                                    <input type="text" class="form-control" id="nim" name="nim" value="{{ $mahasiswa ? $mahasiswa->nim : '' }}" readonly>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="no_telp" class="form-label">No Telepon</label>
@@ -79,8 +79,6 @@
                                                 <img src="{{ isset($mahasiswa) && $mahasiswa->foto ? asset('storage/foto-mahasiswa/' . $mahasiswa->foto) : asset('template/img/preview/preview.png') }}" class="card-img rounded" id="preview-img">
                                             </div>
                                         </div>
-                                        </div>
-                                    </div>
                                     </div>
                                 </div>
                             </div>

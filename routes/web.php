@@ -6,11 +6,12 @@ use App\Http\Controllers\KodeskripsiController;
 use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\AslabController;
 use App\Http\Controllers\SkripsiController;
 use App\Http\Controllers\ProfiladminController;
 use App\Http\Controllers\PengumpulanController;
 use App\Http\Controllers\CarirekomController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomepageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,16 +23,12 @@ use App\Http\Controllers\CarirekomController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/beranda', [HomepageController::class, 'beranda'])->name('beranda');
+Route::get('/informasi', [HomepageController::class, 'informasi'])->name('informasi');
 
-Route::get('dashboard', function () {
-    return view('admin/dashboard');
-})->name('dashboard');
-Route::get('dashboard-aslab', function () {
-    return view('aslab/dashboard');
-})->name('dashboard2');
-Route::get('dashboard-mahasiswa', function () {
-    return view('mahasiswa/dashboard');
-})->name('dashboard3');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard2', [DashboardController::class, 'index2'])->name('dashboard2');
+Route::get('/dashboard3', [DashboardController::class, 'index3'])->name('dashboard3');
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/loginproces', [AuthController::class, 'processLogin'])->name('loginproces');
@@ -87,6 +84,7 @@ Route::post('/update-password', [ProfiladminController::class, 'updatePassword']
 
 Route::get('/konfirmasi-pengumpulan', [PengumpulanController::class, 'index'])->name('konfirmasi-pengumpulan');
 Route::get('/laporan-konfir', [PengumpulanController::class, 'index2'])->name('laporan-konfir');
+Route::get('/tampil-laporan/{id}', [PengumpulanController::class, 'showlaporan'])->name('tampil-laporan');
 Route::get('/tampil-konfirmasi/{id}', [PengumpulanController::class, 'show'])->name('tampil-konfirmasi');
 Route::post('/update-konfirmasi/{id}', [PengumpulanController::class, 'edit'])->name('update-konfirmasi');
 Route::get('/delete-konfirmasi/{id}', [PengumpulanController::class, 'destroy'])->name('delete-konfirmasi');
@@ -95,3 +93,4 @@ Route::post('/konfir-pengumpulan/{id}', [PengumpulanController::class, 'konfir']
 Route::get('/cari-rekom', [CarirekomController::class, 'index'])->name('cari-rekom');
 Route::get('/tampil-rekom/{id}', [CarirekomController::class, 'show'])->name('tampil-rekom');
 Route::get('/cek-rekom', [CarirekomController::class, 'hasil'])->name('cek-rekom');
+

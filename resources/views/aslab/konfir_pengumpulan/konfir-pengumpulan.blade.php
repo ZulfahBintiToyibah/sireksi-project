@@ -14,22 +14,13 @@
             <div class="card-body p-3">
                 <div class="row mb-2">
                     <div class="col-md-4">
-                        <form class="navbar-search" action="" method="GET">
+                        <form class="navbar-search" action="/konfirmasi-pengumpulan" method="GET">
                             <div class="input-group">
-                                <input type="text" class="form-control form-control-sm  bg-light border-1 small" placeholder="Masukkan nama mahasiswa ..." name="katakunci_kode" autocomplete="off">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary btn-sm" type="submit">
-                                        <i class="fas fa-search fa-sm"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-md-4">
-                        <form class="navbar-search" action="" method="GET">
-                            <div class="input-group">
-                                <select class="form-control form-control-sm selectpicker" name="" id="" data-live-search="true">
-                                    <option value="0">-- Pilih Program Studi --</option>
+                                <select class="form-control form-control-sm selectpicker" name="prodis_id" id="prodis_id" data-live-search="true">
+                                    <option value="">-- Pilih Program Studi --</option>
+                                    {{-- @foreach($prodis as $prodi)
+                                        <option value="{{ $prodi->id }}">{{ $prodi->nama_prodi }}</option>
+                                    @endforeach                                 --}}
                                 </select>
                                 <div class="input-group-append">
                                     <button class="btn btn-primary btn-sm" type="submit">
@@ -39,7 +30,26 @@
                             </div>
                         </form>
                     </div>
+                    <div class="col-md-4">
+                        <form class="navbar-search" action="/konfirmasi-pengumpulan" method="GET">
+                            <div class="input-group">
+                                <input type="search" class="form-control form-control-sm bg-light border-1 small" placeholder="Masukkan Nama Mahasiswa..." name="search" autocomplete="off">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary btn-sm" type="submit">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+                @if ($pengumpulans->isEmpty())
+                <div class="alert alert-info" role="alert">
+                    Tidak ada data yang cocok dengan kriteria pencarian.
+                </div>
+                @else
+                    <!-- Kode tabel Anda untuk menampilkan data -->
+                @endif
                 <form action="/confirm-skripsi" method="POST">
                     @csrf <!-- Tambahkan CSRF token untuk keamanan -->
                 
@@ -65,9 +75,11 @@
                                 <td class="align-middle text-dark text-center">{{ \Carbon\Carbon::parse($pengumpulan->skripsis->created_at)->format('d F Y') }}</td>
                                 <td class="align-middle text-dark text-center"><span class="badge rounded-pill text-white bg-danger">{{ $pengumpulan->skripsis->status }}</span></td>
                                 <td class="align-middle text-center">
-                                    <button type="submit" name="skripsi_id" value="{{ $pengumpulan->skripsis->id }}" class="badge badge-success konfirmasi-btn"><i class="fas fa-fw fa-regular fa-eye"></i> Konfirmasi</button>
+                                    <button type="submit" name="skripsi_id" value="{{ $pengumpulan->skripsis->id }}" class="badge badge-success konfirmasi-btn" style="border: none;" onclick="return confirm('Apakah Anda yakin mengkonfirmasi pengumpulan skripsi dengan NIM {{ $pengumpulan->skripsis->mahasiswas->nim }}?')">
+                                        <i class="fas fa-fw fa-regular fa-eye"></i> Konfirmasi
+                                    </button>
                                     <a href="/tampil-konfirmasi/{{ $pengumpulan->id }}" class="badge badge-primary"><i class="fas fa-fw fa-regular fa-eye"></i> Detail</a>
-                                    <a href="javascript:if(confirm('Anda yakin ingin menghapus data Konfirmasi Skripsi ?'))window.location.href = '/delete-konfirmasi/{{ $pengumpulan->id }}'" class="badge badge-danger"><i class="fas fa-fw fa-trash"></i> Hapus</a>
+                                    <a href="javascript:if(confirm('Anda yakin ingin menghapus data pengumpulan skripsi dengan NIM {{ $pengumpulan->skripsis->mahasiswas->nim }}?'))window.location.href = '/delete-konfirmasi/{{ $pengumpulan->id }}'" class="badge badge-danger"><i class="fas fa-fw fa-trash"></i> Hapus</a>
                                 </td>
                             </tr>
                             @endforeach

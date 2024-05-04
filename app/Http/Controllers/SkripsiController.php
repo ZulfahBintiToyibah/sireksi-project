@@ -12,20 +12,7 @@ use App\Models\Pengumpulan;
 
 
 class SkripsiController extends Controller
-{
-    // public function index(Request $request){
-    //     if($request->has('search')){
-    //         $skripsis = Skripsi::where('judul', 'LIKE', '%' . $request->search . '%')
-    //                     ->orWhere('tahun', 'LIKE', '%' . $request->search . '%')
-    //                     ->paginate(10);
-    //     } else {
-    //         $skripsis = Skripsi::with('mahasiswas', 'dosens', 'kodeskripsis')->paginate(10);
-    //     }
-    //     return view('admin.skripsi.data-skripsi', [
-    //         'skripsis' => $skripsis
-    //     ]);
-    // } 
-    
+{    
     public function index(Request $request)
 {
     $search = $request->input('search');
@@ -53,7 +40,6 @@ class SkripsiController extends Controller
         'selectedkodeSkripsis' => $selectedkodeSkripsis, // Mengirimkan kode skripsi yang dipilih untuk menandai opsi yang dipilih dalam dropdown
     ]);
 }
-
 
     public function show($id){
         $skripsis = Skripsi::with('mahasiswas', 'dosens', 'kodeskripsis')->find($id);
@@ -126,7 +112,7 @@ class SkripsiController extends Controller
 
     // Metode untuk mengkonfirmasi skripsi
 // Metode untuk mengkonfirmasi skripsi
-public function confirmSkripsi(Request $request)
+    public function confirmSkripsi(Request $request)
 {
     // Validasi request
     $request->validate([
@@ -140,6 +126,14 @@ public function confirmSkripsi(Request $request)
         // Ubah status skripsi menjadi "Dikonfirmasi"
         $skripsi->status = 'Dikonfirmasi';
         $skripsi->save();
+
+        // Simpan nama petugas yang melakukan konfirmasi
+        $namaPetugas = auth()->guard('mahasiswa')->user()->nama;// Mendapatkan nama petugas yang sedang login
+
+        // Simpan informasi konfirmasi skripsi beserta nama petugas yang melakukan konfirmasi
+        $skripsi->update([
+            'nama_petugas' => $namaPetugas,
+        ]);
 
         // Redirect dengan pesan sukses
         return redirect()->back()->with('success', 'Skripsi berhasil dikonfirmasi.');

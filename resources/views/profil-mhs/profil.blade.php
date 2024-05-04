@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                         </fieldset>
-                        <a href="/profil-edit/{{ auth()->guard('mahasiswa')->user()->id }}" class="btn btn-primary btn-block"><i class="fas fa-fw fa-edit"></i> Edit Profile</a>                    </div>
+                        <a href="/profil-edit/{{ auth()->guard('mahasiswa')->user()->id }}" class="btn btn-primary btn-block"><i class="fas fa-fw fa-edit"></i> Edit Profile</a></div>
                 </div>
             </div>
             <div class="row">

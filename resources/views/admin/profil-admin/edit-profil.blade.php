@@ -46,7 +46,7 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label for="username" class="form-label">Username</label>
-                                                    <input type="text" class="form-control" id="username" name="username" value="{{ $user ? $user->username : '' }}">
+                                                    <input type="text" class="form-control" id="username" name="username" value="{{ $user ? $user->username : '' }}" readonly>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="no_telp" class="form-label">No Telepon</label>
@@ -75,8 +75,6 @@
                                                 <img src="{{ isset($user) && $user->foto ? asset('storage/foto-admin/' . $user->foto) : asset('template/img/preview/preview.png') }}" class="card-img rounded" id="preview-img">
                                             </div>
                                         </div>
-                                        </div>
-                                    </div>
                                     </div>
                                 </div>
                             </div>

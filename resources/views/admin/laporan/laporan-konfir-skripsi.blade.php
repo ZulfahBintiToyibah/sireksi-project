@@ -2,7 +2,7 @@
 
 @section('container')
 <!-- Page Heading -->
-<h1 class="h4 mb-3 text-gray-800">Laporan Data Pengumpulan</h1>
+<h1 class="h4 mb-3 text-gray-800">Laporan Data Pengumpulan Skripsi</h1>
 
 <div class="row">
     <div class="col-lg-12">
@@ -14,22 +14,12 @@
             <div class="card-body p-3">
                 <div class="row mb-2">
                     <div class="col-md-4">
-                        <form class="navbar-search" action="/konfirmasi-pengumpulan" method="GET">
+                        <form class="navbar-search" action="/laporan-konfir" method="GET">
                             <div class="input-group">
-                                <input type="text" class="form-control form-control-sm  bg-light border-1 small" placeholder="Masukkan nama mahasiswa ..." name="katakunci_kode" autocomplete="off">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary btn-sm" type="submit">
-                                        <i class="fas fa-search fa-sm"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-md-4">
-                        <form class="navbar-search" action="/konfirmasi-pengumpulan" method="GET">
-                            <div class="input-group">
-                                <select class="form-control form-control-sm selectpicker" name="" id="" data-live-search="true">
-                                    <option value="0">-- Pilih Program Studi --</option>
+                                <select class="form-control form-control-sm selectpicker" name="status" id="status" data-live-search="true">
+                                    <option value="">-- Pilih Status Pengumpulan --</option>
+                                    <option value="Diajukan">Diajukan</option>
+                                    <option value="Dikonfirmasi">Dikonfirmasi</option>
                                 </select>
                                 <div class="input-group-append">
                                     <button class="btn btn-primary btn-sm" type="submit">
@@ -39,16 +29,36 @@
                             </div>
                         </form>
                     </div>
+                    <div class="col-md-4">
+                        <form class="navbar-search" action="/laporan-konfir" method="GET">
+                            <div class="input-group">
+                                <input type="search" class="form-control form-control-sm bg-light border-1 small" placeholder="Masukkan Nama Mahasiswa..." name="search" autocomplete="off">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary btn-sm" type="submit">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+                @if ($pengumpulans->isEmpty())
+                <div class="alert alert-info" role="alert">
+                    Tidak ada data yang cocok dengan kriteria pencarian.
+                </div>
+                @else
+                    <!-- Kode tabel Anda untuk menampilkan data -->
+                @endif
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size: 13px;">
                     <thead>
-                        <th class="text-dark" width="4%" style="text-align: center;">No</th>
-                        <th class="text-dark" width="7%" style="text-align: center;">NIM</th>
-                        <th class="text-dark" width="11%" style="text-align: center;">Nama</th>
-                        <th class="text-dark" width="9%" style="text-align: center;">Program Studi</th>
-                        <th class="text-dark" width="25%" style="text-align: center;">Judul SKripsi</th>
-                        <th class="text-dark" width="13%" style="text-align: center;">Tanggal Pengumpulan</th>
-                        <th class="text-dark" width="7%" style="text-align: center;">Status</th>
+                        <th class="text-dark" width="2%" style="text-align: center;">No</th>
+                        <th class="text-dark" width="4%" style="text-align: center;">NIM</th>
+                        <th class="text-dark" width="13%" style="text-align: center;">Nama</th>
+                        <th class="text-dark" width="10%" style="text-align: center;">Program Studi</th>
+                        <th class="text-dark" width="25%" style="text-align: center;">Judul Skripsi</th>
+                        <th class="text-dark" width="14%" style="text-align: center;">Tanggal Pengumpulan</th>
+                        <th class="text-dark" width="5%" style="text-align: center;">Status</th>
+                        <th class="text-dark" width="2%" style="text-align: center;">Aksi</th>
                     </thead>
                     <tbody>
                         @foreach ($pengumpulans as $pengumpulan)
@@ -65,7 +75,9 @@
                                 @elseif($pengumpulan->skripsis->status == 'Dikonfirmasi')
                                     <span class="badge rounded-pill text-white bg-success">{{ $pengumpulan->skripsis->status }}</span>
                                 @endif
-                            </td>                        
+                            </td>        
+                            <td class="align-middle text-center">
+                                <a href="/tampil-laporan/{{ $pengumpulan->id }}" class="badge badge-primary"><i class="fas fa-fw fa-regular fa-eye"></i></a>            
                         </tr>
                         @endforeach
                     </tbody>

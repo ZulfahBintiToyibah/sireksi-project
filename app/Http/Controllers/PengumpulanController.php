@@ -14,9 +14,10 @@ class PengumpulanController extends Controller
     protected $fillable = ['mahasiswas_id', 'skripsis_id'];
     public function index(Request $request){
         if($request->has('search')){
-            $pengumpulans = Pengumpulan::where('judul', 'LIKE', '%' . $request->search . '%')
-                        ->orWhere('tahun', 'LIKE', '%' . $request->search . '%')
-                        ->paginate(10);
+            $pengumpulans = Pengumpulan::join('mahasiswas', 'pengumpulans.mahasiswas_id', '=', 'mahasiswas.id')
+                                        ->join('skripsis', 'pengumpulans.skripsis_id', '=', 'skripsis.id')
+                                        ->where('mahasiswas.nama', 'LIKE', '%' . $request->search . '%')
+                                        ->paginate(10);
         } else {
             $pengumpulans = Pengumpulan::with('mahasiswas', 'skripsis')->whereHas('skripsis', function ($query) {
                 $query->where('status', '!=', 'Dikonfirmasi');
@@ -28,24 +29,39 @@ class PengumpulanController extends Controller
     }
 
     public function index2(Request $request){
-
         if ($request->has('search')) {
-            $pengumpulans = Pengumpulan::where('nama', 'LIKE', '%' . $request->search . '%')
-                ->orWhere('role', 'LIKE', '%' . $request->search . '%')
-                ->paginate(10);
+            $pengumpulans = Pengumpulan::join('mahasiswas', 'pengumpulans.mahasiswas_id', '=', 'mahasiswas.id')
+                                        ->join('skripsis', 'pengumpulans.skripsis_id', '=', 'skripsis.id')
+                                        ->where('mahasiswas.nama', 'LIKE', '%' . $request->search . '%')
+                                        ->paginate(10);
+        } elseif ($request->has('status')) {
+            $status = $request->status;
+            $pengumpulans = Pengumpulan::join('mahasiswas', 'pengumpulans.mahasiswas_id', '=', 'mahasiswas.id')
+                                        ->join('skripsis', 'pengumpulans.skripsis_id', '=', 'skripsis.id')
+                                        ->where('skripsis.status', $status) // Filter berdasarkan kolom 'status' di tabel 'skripsi'
+                                        ->paginate(10);
         } else {
             $pengumpulans = Pengumpulan::paginate(10);
         }
         return view('admin.laporan.laporan-konfir-skripsi', [
             'pengumpulans' => $pengumpulans
-        ]);    } 
-
+        ]);
+    }
+           
     public function show($id){
         $pengumpulans = Pengumpulan::with('mahasiswas', 'skripsis')->find($id);
         $mahasiswas = Mahasiswa::all();
         $skripsis = Skripsi::all();
             
         return view('aslab.konfir_pengumpulan.detail-konfir', compact('pengumpulans','mahasiswas', 'skripsis'));
+    }
+
+    public function showlaporan($id){
+        $pengumpulans = Pengumpulan::with('mahasiswas', 'skripsis')->find($id);
+        $mahasiswas = Mahasiswa::all();
+        $skripsis = Skripsi::all();
+            
+        return view('admin.laporan.detail-konfir', compact('pengumpulans','mahasiswas', 'skripsis'));
     }
 
     public function create(Request $request)

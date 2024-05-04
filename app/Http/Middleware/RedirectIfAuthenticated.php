@@ -19,10 +19,12 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check()) {
-            return redirect('/login'); // Ganti '/login' dengan rute login yang sesuai
+        if (!Auth::check()) {
+            return redirect()->route('login'); // Ubah 'login' sesuai dengan nama rute login Anda
         }
 
         return $next($request);
     }
+
+    
 }

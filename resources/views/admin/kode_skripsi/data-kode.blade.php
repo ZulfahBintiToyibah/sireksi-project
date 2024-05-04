@@ -49,7 +49,7 @@
                                 <td class="text-center align-middle text-dark">{{ $loop->iteration + ($kodeskripsis->currentPage() - 1) * $kodeskripsis->perPage() }}</td>
                                 <td class="align-middle text-dark">{{ $kodeskripsi->kode_skripsi}}</td>
                                 <td class="align-middle text-center">
-                                    <a href="/tampil-kodeskripsi/{{ $kodeskripsi->id }}" class="badge badge-success"><i class="fas fa-fw fa-edit"></i><span> Edit</span></a> | <a href="javascript:if(confirm('Anda yakin ingin menghapus data Kode Skripsi'))window.location.href = '/delete-kodeskripsi/{{ $kodeskripsi->id }}'" class="badge badge-danger"><i class="fas fa-fw fa-trash"></i><span> Hapus</span></a>
+                                    <a href="/tampil-kodeskripsi/{{ $kodeskripsi->id }}" class="badge badge-success"><i class="fas fa-fw fa-edit"></i><span> Edit</span></a> | <a href="javascript:if(confirm('Anda yakin ingin menghapus data Kode Skripsi {{ $kodeskripsi->kode_skripsi }} ?'))window.location.href = '/delete-kodeskripsi/{{ $kodeskripsi->id }}'" class="badge badge-danger"><i class="fas fa-fw fa-trash"></i><span> Hapus</span></a>
                                 </td>
                             </tr>
                             @endforeach

@@ -51,7 +51,7 @@
                                 <td class="align-middle text-dark">{{ $prodi->nama_prodi }}</td>
                                 <td class="align-middle text-dark">{{ $prodi->ket_prodi }}</td>
                                 <td class="align-middle text-center">
-                                    <a href="/tampil-prodi/{{ $prodi->id }}" class="badge badge-success"><i class="fas fa-fw fa-edit"></i><span> Edit</span></a> | <a href="javascript:if(confirm('Anda yakin ingin menghapus data Program Studi'))window.location.href = '/delete-prodi/{{ $prodi->id }}'" class="badge badge-danger"><i class="fas fa-fw fa-trash"></i><span> Hapus</span></a>
+                                    <a href="/tampil-prodi/{{ $prodi->id }}" class="badge badge-success"><i class="fas fa-fw fa-edit"></i><span> Edit</span></a> | <a href="javascript:if(confirm('Anda yakin ingin menghapus data Program Studi {{ $prodi->nama_prodi }} ?'))window.location.href = '/delete-prodi/{{ $prodi->id }}'" class="badge badge-danger"><i class="fas fa-fw fa-trash"></i><span> Hapus</span></a>
                                 </td>
                             </tr>
                             @endforeach

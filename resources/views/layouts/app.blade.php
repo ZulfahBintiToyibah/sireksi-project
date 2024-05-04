@@ -11,6 +11,10 @@
 
     <title>Sireksi</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../template/img/favicon.ico">
+
+
     <!-- Custom fonts for this template-->
     <link href="../template/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -193,7 +197,7 @@
                                 @endif
                             </span>
                             <!-- Menampilkan foto profil dari database jika tersedia, jika tidak, menampilkan foto default -->
-                            <img class="img-profile rounded-circle" src="{{ Auth::check() && Auth::user()->foto ? asset('storage/foto-admin/' . Auth::user()->foto) : asset('template/img/undraw_profile.svg') }}">
+                            <img class="img-profile rounded-circle" src="{{ Auth::check() && Auth::user()->foto ? asset('storage/foto-admin/' . Auth::user()->foto) : asset('template/img/default.jpg') }}">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -276,7 +280,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="../template/js/sb-admin-2.min.js"></script>
-
+    
 </body>
 
 </html>

@@ -51,6 +51,12 @@ class MahasiswaController extends Controller
         return view('admin.laporan.laporan-user', ['mahasiswas' => $result]);
     }
 
+    public function dashboard(){
+        $totalAslab = Mahasiswa::where('role', '1')->count(); // Hitung jumlah total Asisten Laboratorium
+        $totalMahasiswa = Mahasiswa::where('role', '2')->count(); // Hitung jumlah total Mahasiswa
+        return view('admin.dashboard', compact('totalAslab', 'totalMahasiswa'));
+    }
+
     public function create(){
         $mahasiswas = Prodi::all();
 
