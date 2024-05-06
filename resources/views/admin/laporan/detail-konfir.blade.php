@@ -74,7 +74,7 @@
                         </div>
                         <div class="col-md-12">
                             <h6 class="mt-2 text-dark"><b>Detail Data Skripsi</b></h6>
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size: 13px;">
+                            <table class="table table-bordered" id="tabel" width="100%" cellspacing="0" style="font-size: 13px;">
                                 <thead>
                                     <th class="text-dark" width="30%">Judul</th>
                                     <th class="text-dark" width="70%" style="text-align: center;">Abstrak (Dalam Bahasa Indonesia)</th>

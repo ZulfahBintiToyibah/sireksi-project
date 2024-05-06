@@ -26,6 +26,9 @@
 
     <link href="../template/css/style.css" rel="stylesheet">
 
+     <!-- Custom styles for this page -->
+     <link href="../template/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -35,7 +38,7 @@
 
         <!-- Sidebar -->
         <ul class="navbar-nav bg-side sidebar sidebar-dark accordion" id="accordionSidebar">
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
                 <div class="sidebar-brand-icon">
                     <img src="../template/img/login/lOGO SIREKSI.png" alt="Sireksi Logo" style="width: 185px; height: auto;">  
                 </div>
@@ -181,6 +184,11 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
+                    <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <a href="{{ route('homepage') }}" class="btn btn-danger btn-sm"><i class="fas fa-fw fa-solid fa-arrow-left"></i> Kembali ke Beranda</a>
+                        </div>
+                    </div>
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <div class="topbar-divider d-none d-sm-block"></div>
@@ -269,7 +277,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>	 
 
     <!-- Bootstrap core JavaScript-->
     <script src="../template/vendor/jquery/jquery.min.js"></script>
@@ -280,6 +288,20 @@
 
     <!-- Custom scripts for all pages-->
     <script src="../template/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="../template/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../template/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../template/js/demo/datatables-demo.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="../template/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../template/js/demo/chart-area-demo.js"></script>
+    <script src="../template/js/demo/chart-pie-demo.js"></script>
     
 </body>
 

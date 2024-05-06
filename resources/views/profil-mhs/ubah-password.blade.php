@@ -17,14 +17,14 @@
                     </h6>
                     <div class="card mb-4 shadow border-primary">
                         <div class="card-body">
-                            <form action="{{ route('password-change', ['id' => Auth::id()]) }}" method="POST">
+                            <form action="{{ route('updatepassword') }}" method="POST">
                                 @csrf
                                 <div class="row mb-3 g-3 align-items-center">
                                     <div class="col-md-3">
                                         <label for="passwordLama" class="col-form-label text-dark">Password Lama</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <input type="text" id="passwordLama" class="form-control" name="password_lama">
+                                        <input type="password" id="passwordLama" class="form-control" name="password_lama">
                                     </div>
                                 </div>
                                 <div class="row mb-3 g-3 align-items-center">
@@ -32,7 +32,7 @@
                                         <label for="passwordBaru" class="col-form-label text-dark">Password Baru</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <input type="text" id="passwordBaru" class="form-control" name="password_baru">
+                                        <input type="password" id="passwordBaru" class="form-control" name="password_baru">
                                     </div>
                                 </div>
                                 <div class="row mb-3 g-3 align-items-center">
@@ -40,7 +40,7 @@
                                         <label for="konfirmasiPasswordBaru" class="col-form-label text-dark">Konfirmasi Password Baru</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <input type="text" id="konfirmasiPasswordBaru" class="form-control" name="password_baru_confirmation">
+                                        <input type="password" id="konfirmasiPasswordBaru" class="form-control" name="password_baru_confirmation">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary float-right btn-block" name="submit"><i class="fas fa-fw fa-save"></i> Simpan</button>

@@ -11,7 +11,7 @@
                 <div class="card-header py-3 d-flex justify-content-between align-items-center">
                     <h6 class="m-0 font-weight-bold text-dark card-title">Form Detail Konfirmasi Pengumpulan Skripsi</h6>
                     <div class="card-tools">
-                        <a href="{{ route('konfirmasi-pengumpulan') }}" class="btn btn-primary btn-sm float-right"><i class="fas fa-fw fa-solid fa-arrow-left"></i> Kembali</a>
+                        <a href="{{ route('konfir-pengumpulan') }}" class="btn btn-primary btn-sm float-right"><i class="fas fa-fw fa-solid fa-arrow-left"></i> Kembali</a>
                     </div>
                 </div>
                 <div class="card-body" style="font-size: 13px;">
@@ -71,7 +71,7 @@
                         </div>
                         <div class="col-md-12">
                             <h6 class="mt-2 text-dark"><b>Detail Data Skripsi</b></h6>
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size: 13px;">
+                            <table class="table table-bordered" id="table" width="100%" cellspacing="0" style="font-size: 13px;">
                                 <thead>
                                     <th class="text-dark" width="30%">Judul</th>
                                     <th class="text-dark" width="70%" style="text-align: center;">Abstrak (Dalam Bahasa Indonesia)</th>

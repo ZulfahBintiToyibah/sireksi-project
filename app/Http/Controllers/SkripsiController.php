@@ -15,32 +15,9 @@ class SkripsiController extends Controller
 {    
     public function index(Request $request)
 {
-    $search = $request->input('search');
-    $selectedkodeSkripsis = (array) $request->input('kodeskripsis_id'); // Ensure $selectedKodeSkripsis is always an array
-
-    $skripsis = Skripsi::query();
-
-    if ($search) {
-        $skripsis->where('judul', 'like', '%' . $search . '%');
-    }
-
-    if (!empty($selectedkodeSkripsis)) {
-        // Hanya ambil ID dari kodeskripsi yang dipilih
-        $skripsis->whereIn('kodeskripsis_id', $selectedkodeSkripsis);
-    }    
-
-    $result = $skripsis->paginate(10);
-
-    // Mengambil data Kode Skripsi hanya jika diperlukan, misalnya untuk menampilkan dropdown
-    $kodeskripsis = Kodeskripsi::all();
-
-    return view('admin.skripsi.data-skripsi', [
-        'skripsis' => $result, 
-        'kodeskripsis' => $kodeskripsis, // Mengirimkan data kode skripsi untuk dropdown
-        'selectedkodeSkripsis' => $selectedkodeSkripsis, // Mengirimkan kode skripsi yang dipilih untuk menandai opsi yang dipilih dalam dropdown
-    ]);
+    $skripsis = Skripsi::all();
+    return view('admin.skripsi.data-skripsi',compact('skripsis'));
 }
-
     public function show($id){
         $skripsis = Skripsi::with('mahasiswas', 'dosens', 'kodeskripsis')->find($id);
         $mahasiswas = Mahasiswa::all();
@@ -141,6 +118,14 @@ class SkripsiController extends Controller
         // Tangani kesalahan jika skripsi tidak ditemukan atau operasi tidak berhasil
         return redirect()->back()->with('error', 'Gagal mengkonfirmasi skripsi: ' . $e->getMessage());
     }
+}
+
+public function detailpengumpulan($id){
+    $pengumpulans = Pengumpulan::with('mahasiswas', 'skripsis')->find($id);
+    $mahasiswas = Mahasiswa::all();
+    $skripsis = Skripsi::all();
+
+    return view('mahasiswa.pengumpulan.kumpul_skripsi', compact('skripsis', 'pengumpulans', 'skripsis'));
 }
 
 } 

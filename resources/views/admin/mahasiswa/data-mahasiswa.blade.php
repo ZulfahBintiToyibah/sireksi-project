@@ -15,61 +15,24 @@
                 </div> 
             </div>
             <div class="card-body p-3">
-                <div class="row mb-2">
-                    <div class="col-md-4">
-                        <form class="navbar-search" action="/mahasiswa" method="GET">
-                            <div class="input-group">
-                                <select class="form-control form-control-sm selectpicker" name="role" id="role" data-live-search="true">
-                                    <option value="0">-- Pilih Role Pengguna --</option>
-                                    <option value="1">Asisten Laboratorium</option>
-                                    <option value="2">Mahasiswa</option>
-                                </select>
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary btn-sm" type="submit">
-                                        <i class="fas fa-search fa-sm"> Cari</i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-md-4">
-                        <form class="navbar-search" action="/mahasiswa" method="GET">
-                            <div class="input-group">
-                                <input type="search" class="form-control form-control-sm bg-light border-1 small" placeholder="Masukkan Nama/Nomor Induk Mahasiswa..." name="search" autocomplete="off">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary btn-sm" type="submit">
-                                        <i class="fas fa-search fa-sm"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                @if ($mahasiswas->isEmpty())
-                <div class="alert alert-info" role="alert">
-                    Tidak ada data yang cocok dengan kriteria pencarian.
-                </div>
-                @else
-                    <!-- Kode tabel Anda untuk menampilkan data -->
-                @endif
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size: 14px;">
                         <thead>
                             <tr>
-                                <th class="text-dark" width="5%" style="text-align: center;">No</th>
-                                <th class="text-dark" width="13%">NIM</th>
-                                <th class="text-dark" width="16%">Nama</th>
-                                <th class="text-dark" width="12%">Program Studi</th>
-                                <th class="text-dark" width="12%">Jenis Kelamin</th>
-                                <th class="text-dark" width="10%">Alamat</th>
-                                <th class="text-dark" width="16%">Role</th>
+                                <th class="text-dark" width="4%" style="text-align: center;">No</th>
+                                <th class="text-dark" width="12%" style="text-align: center;">NIM</th>
+                                <th class="text-dark" width="16%" style="text-align: center;">Nama</th>
+                                <th class="text-dark" width="14%" style="text-align: center;">Program Studi</th>
+                                <th class="text-dark" width="13%" style="text-align: center;">Jenis Kelamin</th>
+                                <th class="text-dark" width="9%" style="text-align: center;">Alamat</th>
+                                <th class="text-dark" width="16%" style="text-align: center;">Role</th>
                                 <th class="text-dark" width="14%" style="text-align: center;">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($mahasiswas as $mahasiswa)
                             <tr>
-                                <td class="text-center align-middle text-dark">{{ $loop->iteration + ($mahasiswas->currentPage() - 1) * $mahasiswas->perPage() }}</td>
+                                <td class="text-center align-middle text-dark">{{ $loop->iteration }}</td>                                
                                 <td class="align-middle text-dark">{{ $mahasiswa->nim }}</td>
                                 <td class="align-middle text-dark">{{ $mahasiswa->nama }}</td>
                                 <td class="align-middle text-dark">{{ $mahasiswa->prodis->nama_prodi }}</td>
@@ -93,9 +56,6 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="pagination pagination-sm float-right">
-                    {{ $mahasiswas->links() }}
-                    </div>
                 </div>
             </div>
         </div>

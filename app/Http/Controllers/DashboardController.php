@@ -11,22 +11,36 @@ use App\Models\Dosen;
 class DashboardController extends Controller
 {
     public function index()
-{
-    // $totalAslab = Mahasiswa::where('role', '1')->count(); // Hitung jumlah total Asisten Laboratorium
-    // $totalMahasiswa = Mahasiswa::where('role', '2')->count(); // Hitung jumlah total Mahasiswa
-    // $totalSkripsi = Skripsi::count();
-    // $totalProgramStudi = Prodi::count();
-    // $totalDosenPembimbing = Dosen::count();
-
-    return view('admin.dashboard');
-}
+    {
+        $totalSkripsi = Skripsi::count();
+        $diajukan = Skripsi::where('status', 'Diajukan')->count(); // Count theses that are submitted
+        $dikonfirmasi = Skripsi::where('status', 'Dikonfirmasi')->count(); // Count theses that are confirmed
+        $aslab = Mahasiswa::where('role', '1')->count(); // Count theses that are submitted
+        $mahasiswa = Mahasiswa::where('role', '2')->count(); // Count theses that are submitted
+        $totalProdi = Prodi::count();
+        $totalDosen = Dosen::count();
+        return view('admin.dashboard', compact('totalSkripsi', 'diajukan', 'dikonfirmasi', 'aslab', 'mahasiswa', 'totalProdi', 'totalDosen'));
+    }
 
     public function index2(){
-        // $totalSkripsi = Skripsi::where('status', 'Diajukan')->count(); // Hitung jumlah total Asisten Laboratorium
-
-        return view('aslab.dashboard');
-    
+        $totalSkripsi = Skripsi::count();
+        $diajukan = Skripsi::where('status', 'Diajukan')->count(); // Count theses that are submitted
+        $dikonfirmasi = Skripsi::where('status', 'Dikonfirmasi')->count(); // Count theses that are confirmed
+        $aslab = Mahasiswa::where('role', '1')->count(); // Count theses that are submitted
+        $mahasiswa = Mahasiswa::where('role', '2')->count(); // Count theses that are submitted
+        $totalProdi = Prodi::count();
+        $totalDosen = Dosen::count();
+        return view('aslab.dashboard', [
+            'totalSkripsi' => $totalSkripsi,
+            'diajukan' => $diajukan,
+            'dikonfirmasi' => $dikonfirmasi,
+            'aslab' => $aslab,
+            'mahasiswa' => $mahasiswa,
+            'totalProdi' => $totalProdi,
+            'totalDosen' => $totalDosen,
+        ]);
     }
+    
 
     public function index3(){
         return view('mahasiswa.dashboard');

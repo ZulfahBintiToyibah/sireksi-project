@@ -65,7 +65,7 @@ class ProfiladminController extends Controller
 {
     $request->validate([
         'password_lama' => 'nullable',
-        'password_baru' => 'nullable|min:8|confirmed',
+        'password_baru' => 'required|confirmed',
     ]);
 
     $user = Auth::user();

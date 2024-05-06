@@ -29,23 +29,9 @@ class PengumpulanController extends Controller
     }
 
     public function index2(Request $request){
-        if ($request->has('search')) {
-            $pengumpulans = Pengumpulan::join('mahasiswas', 'pengumpulans.mahasiswas_id', '=', 'mahasiswas.id')
-                                        ->join('skripsis', 'pengumpulans.skripsis_id', '=', 'skripsis.id')
-                                        ->where('mahasiswas.nama', 'LIKE', '%' . $request->search . '%')
-                                        ->paginate(10);
-        } elseif ($request->has('status')) {
-            $status = $request->status;
-            $pengumpulans = Pengumpulan::join('mahasiswas', 'pengumpulans.mahasiswas_id', '=', 'mahasiswas.id')
-                                        ->join('skripsis', 'pengumpulans.skripsis_id', '=', 'skripsis.id')
-                                        ->where('skripsis.status', $status) // Filter berdasarkan kolom 'status' di tabel 'skripsi'
-                                        ->paginate(10);
-        } else {
-            $pengumpulans = Pengumpulan::paginate(10);
-        }
-        return view('admin.laporan.laporan-konfir-skripsi', [
-            'pengumpulans' => $pengumpulans
-        ]);
+        $pengumpulans = Pengumpulan::all();
+
+        return view('admin.laporan.laporan-konfir-skripsi', compact('pengumpulans'));
     }
            
     public function show($id){

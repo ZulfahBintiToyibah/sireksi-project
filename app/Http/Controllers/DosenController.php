@@ -11,31 +11,9 @@ class DosenController extends Controller
 
     public function index(Request $request)
 {
-    $search = $request->input('search');
-    $selectedProdis = (array) $request->input('prodis_id'); // Ensure $selectedProdis is always an array
-
-    $dospems = Dosen::query();
-
-    if ($search) {
-        $dospems->where('nama', 'like', '%' . $search . '%')
-            ->orWhere('nip', 'like', '%' . $search . '%');
-    }
-
-    if (!empty($selectedProdis)) {
-        // Hanya ambil ID dari prodi yang dipilih
-        $dospems->whereIn('prodis_id', $selectedProdis);
-    }
-
-    $result = $dospems->paginate(10);
-
-    // Mengambil data Prodi hanya jika diperlukan, misalnya untuk menampilkan dropdown
-    $prodis = Prodi::all();
-
-    return view('admin.dosen_pembimbing.data-dospem', [
-        'dospems' => $result, 
-        'prodis' => $prodis, // Mengirimkan data prodi untuk dropdown
-        'selectedProdis' => $selectedProdis, // Mengirimkan prodi yang dipilih untuk menandai opsi yang dipilih dalam dropdown
-    ]);
+    $dospems = Dosen::all();
+    
+    return view('admin.dosen_pembimbing.data-dospem', compact('dospems'));
 }
 
     public function create(){

@@ -15,39 +15,18 @@
                 </div>
             </div>
             <div class="card-body p-3">
-                <div class="row mb-2">
-                    <div class="col-md-4">
-                        <form class="navbar-search" action="/prodi" method="GET">
-                            <div class="input-group">
-                                <input type="search" class="form-control form-control-sm bg-light border-1 small" placeholder="Masukkan program studi..." name="search" autocomplete="off">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary btn-sm" type="submit">
-                                        <i class="fas fa-search fa-sm"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                @if ($prodis->isEmpty())
-                <div class="alert alert-info" role="alert">
-                    Tidak ada data yang cocok dengan kriteria pencarian.
-                </div>
-                @else
-                    <!-- Kode tabel Anda untuk menampilkan data -->
-                @endif
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size: 14px;">
                         <thead>
                             <th class="text-dark" width="5%" style="text-align: center;">No</th>
-                            <th class="text-dark" width="30%">Nama Program Studi</th>
+                            <th class="text-dark" width="30%" style="text-align: center;">Nama Program Studi</th>
                             <th class="text-dark" width="50%" style="text-align: center;">Keterangan Program Studi</th>
                             <th class="text-dark" width="15%" style="text-align: center;">Aksi</th>
                         </thead>
                         <tbody>
                             @foreach ($prodis as $prodi)
                             <tr>
-                                <td class="text-center align-middle text-dark">{{ $loop->iteration + ($prodis->currentPage() - 1) * $prodis->perPage() }}</td>
+                                <td class="text-center align-middle text-dark">{{ $loop->iteration }}</td>                                
                                 <td class="align-middle text-dark">{{ $prodi->nama_prodi }}</td>
                                 <td class="align-middle text-dark">{{ $prodi->ket_prodi }}</td>
                                 <td class="align-middle text-center">
@@ -57,9 +36,6 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="pagination pagination-sm float-right">
-                    {{ $prodis->links() }}
-                    </div>
                 </div>
             </div>
         </div>

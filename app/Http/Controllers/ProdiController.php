@@ -8,16 +8,9 @@ use App\Models\Prodi;
 class ProdiController extends Controller
 {
     public function index(Request $request){
-        if($request->has('search')){
-            $prodis = Prodi::where('nama_prodi', 'LIKE', '%' . $request->search . '%')
-                        ->orWhere('ket_prodi', 'LIKE', '%' . $request->search . '%')
-                        ->paginate(5);
-        }else {
-            $prodis = Prodi::paginate(5);
-        }
-        return view('admin.prodi.data-prodi', [
-            'prodis' => $prodis
-        ]);
+
+        $prodis = Prodi::all();
+        return view('admin.prodi.data-prodi', compact('prodis'));
     }
 
     public function create(){

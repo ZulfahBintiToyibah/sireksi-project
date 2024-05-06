@@ -25,6 +25,10 @@
 
     <link href="../template/css/style.css" rel="stylesheet">
 
+    <!-- Custom styles for this page -->
+    <link href="../template/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+
 </head>
 
 <body id="page-top">
@@ -57,35 +61,19 @@
             </li>
             @endif
 
-            @if(auth()->guard('mahasiswa')->user()->role == 2)
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link pb-0" href="{{ route('dashboard3') }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
-            @endif
-
             @if(auth()->guard('mahasiswa')->user()->role == 1)
             <!-- Nav Item - Konfirmasi Pengumpulan -->
             <li class="nav-item">
-                <a class="nav-link pb-0" href="{{ route('konfirmasi-pengumpulan') }}">
+                <a class="nav-link pb-0" href="{{ route('konfir-pengumpulan') }}">
                 <i class="fas fa-fw fa-solid fa-check-circle" aria-hidden="true"></i>
                     <span>Konfirmasi Pengumpulan</span></a>
             </li>
             @endif
 
-            {{-- <!-- Nav Item - Cari Rekomendasi -->
-            <li class="nav-item">
-                <a class="nav-link pb-0" href="{{ route('cari-rekom') }}">
-                <i class="fas fa-fw fa-solid fa-file" aria-hidden="true"></i>
-                    <span>Cari Rekomendasi</span></a>
-            </li> --}}
-
             @if(auth()->guard('mahasiswa')->user()->role == 2)
             <!-- Nav Item - Cari Rekomendasi -->
             <li class="nav-item">
-                <a class="nav-link pb-0" href="{{ route('create-skripsi') }}">
+                <a class="nav-link pb-0" href="{{ route('detail-pengumpulan') }}">
                 <i class="fas fa-fw fa-solid fa-file" aria-hidden="true"></i>
                     <span>Pengumpulan Skripsi</span></a>
             </li>
@@ -108,7 +96,7 @@
 
             <!-- Nav Item - Ubah Password -->
             <li class="nav-item">
-                <a class="nav-link pb-0" href="{{ route('password-change') }}">
+                <a class="nav-link pb-0" href="{{ route('change-password') }}">
                 <i class="fas fa-fw fa-solid fa-key"></i>
                     <span>Ubah Password</span></a>
             </li>
@@ -148,6 +136,11 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
+                    <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <a href="{{ route('homepage') }}" class="btn btn-danger btn-sm"><i class="fas fa-fw fa-solid fa-arrow-left"></i> Kembali ke Beranda</a>
+                        </div>
+                    </div>
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <div class="topbar-divider d-none d-sm-block"></div>
@@ -247,6 +240,20 @@
 
     <!-- Custom scripts for all pages-->
     <script src="../template/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="../template/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../template/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../template/js/demo/datatables-demo.js"></script>
+    <!-- Page level plugins -->
+    <script src="../template/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../template/js/demo/chart-area-demo.js"></script>
+    <script src="../template/js/demo/chart-pie-demo.js"></script>
+    
     
 
 </body>

@@ -12,44 +12,6 @@
                 <h6 class="m-0 font-weight-bold text-dark card-title"><i class="fas fa-fw fa-book"></i> Daftar Pengumpulan Skripsi</h6>
             </div>
             <div class="card-body p-3">
-                <div class="row mb-2">
-                    <div class="col-md-4">
-                        <form class="navbar-search" action="/konfirmasi-pengumpulan" method="GET">
-                            <div class="input-group">
-                                <select class="form-control form-control-sm selectpicker" name="prodis_id" id="prodis_id" data-live-search="true">
-                                    <option value="">-- Pilih Program Studi --</option>
-                                    {{-- @foreach($prodis as $prodi)
-                                        <option value="{{ $prodi->id }}">{{ $prodi->nama_prodi }}</option>
-                                    @endforeach                                 --}}
-                                </select>
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary btn-sm" type="submit">
-                                        <i class="fas fa-search fa-sm"> Cari</i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-md-4">
-                        <form class="navbar-search" action="/konfirmasi-pengumpulan" method="GET">
-                            <div class="input-group">
-                                <input type="search" class="form-control form-control-sm bg-light border-1 small" placeholder="Masukkan Nama Mahasiswa..." name="search" autocomplete="off">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary btn-sm" type="submit">
-                                        <i class="fas fa-search fa-sm"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                @if ($pengumpulans->isEmpty())
-                <div class="alert alert-info" role="alert">
-                    Tidak ada data yang cocok dengan kriteria pencarian.
-                </div>
-                @else
-                    <!-- Kode tabel Anda untuk menampilkan data -->
-                @endif
                 <form action="/confirm-skripsi" method="POST">
                     @csrf <!-- Tambahkan CSRF token untuk keamanan -->
                 
@@ -57,10 +19,10 @@
                         <thead>
                             <tr>
                                 <th class="text-dark" width="5%" style="text-align: center;">No</th>
-                                <th class="text-dark" width="14%" style="text-align: center;">NIM</th>
-                                <th class="text-dark" width="21%" style="text-align: center;">Nama</th>
-                                <th class="text-dark" width="12%" style="text-align: center;">Program Studi</th>
-                                <th class="text-dark" width="17%" style="text-align: center;">Tanggal Pengumpulan</th>
+                                <th class="text-dark" width="12%" style="text-align: center;">NIM</th>
+                                <th class="text-dark" width="19%" style="text-align: center;">Nama</th>
+                                <th class="text-dark" width="14%" style="text-align: center;">Program Studi</th>
+                                <th class="text-dark" width="19%" style="text-align: center;">Tanggal Pengumpulan</th>
                                 <th class="text-dark" width="7%" style="text-align: center;">Status</th>
                                 <th class="text-dark" width="24%" style="text-align: center;">Aksi</th>
                             </tr>
@@ -68,7 +30,7 @@
                         <tbody>
                             @foreach ($pengumpulans as $pengumpulan)
                             <tr>
-                                <td class="text-center align-middle text-dark">{{ $loop->iteration + ($pengumpulans->currentPage() - 1) * $pengumpulans->perPage() }}</td>
+                                <td class="text-center align-middle text-dark">{{ $loop->iteration }}</td>                                
                                 <td class="align-middle text-dark">{{ $pengumpulan->skripsis->mahasiswas->nim }}</td>
                                 <td class="align-middle text-dark">{{ $pengumpulan->skripsis->mahasiswas->nama }}</td>
                                 <td class="align-middle text-dark">{{ $pengumpulan->skripsis->mahasiswas->prodis->nama_prodi }}</td>
@@ -86,10 +48,6 @@
                         </tbody>
                     </table>
                 </form>
-                
-                <div class="pagination pagination-sm float-right">
-                    {{ $pengumpulans->links() }}
-            </div>
         </div>
     </div>
 </div>

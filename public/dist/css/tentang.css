@@ -7,12 +7,13 @@
 }
 
 #tentangsatu {
-    padding-top: 60px; /* Sesuaikan nilai padding sesuai kebutuhan */
+    padding-top: 70px; /* Sesuaikan nilai padding sesuai kebutuhan */
 }
 
 #tentangsatu-new {
-    padding-top: 80px; /* Sesuaikan nilai padding sesuai kebutuhan */
-    background-color: #3C096C;
+    padding-top: 70px; /* Sesuaikan nilai padding sesuai kebutuhan */
+    background-color: #e2d3d3;
+    padding-bottom: 115px;
 }
 
 
@@ -36,14 +37,13 @@
     border-radius: 30px;
     width: 100%;
     height: 60px;
-    background-color: #e2d3d3;
-    border: 2px solid black; 
+    background-color: #3C096C;
 }
 
 
 .kedua-new h2{
     font-size: 30px;
-    color: #3C096C;
+    color: #ffffff;
     font-weight: bold;
     text-align: center;
     padding-top: 13px;
@@ -55,6 +55,23 @@
     padding-top: 3px;   
     width: 70%;
     border-radius: 30px;
+}
+
+.ketiga-new{
+    background-color: #ffffff;
+    padding-bottom: 3px;
+    padding-top: 3px;   
+    width: 70%;
+    border-radius: 30px;
+}
+
+.ketiga-new ul {
+    font-size: 18px;
+    margin-top: 30px;
+    padding-right: 30px;
+    padding-left: 40px;
+    text-align: justify;
+    color: #571594;
 }
 
 .navbar .nav-link.active .icon-beranda {
@@ -110,6 +127,7 @@
     text-align: justify;
     color: #3C096C;
 }
+
 
 .containerempat{
     position: relative;

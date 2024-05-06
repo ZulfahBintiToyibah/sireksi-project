@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Auth;
-
+use App\Models\Mahasiswa;
+use App\Models\Skripsi;
+use App\Models\Prodi;
+use App\Models\Dosen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -15,6 +18,14 @@ class AuthController extends Controller
     }
 
     public function processLogin(Request $request) {
+        $totalSkripsi = Skripsi::count();
+        $diajukan = Skripsi::where('status', 'Diajukan')->count();
+        $dikonfirmasi = Skripsi::where('status', 'Dikonfirmasi')->count();
+        $aslab = Mahasiswa::where('role', '1')->count(); // Count theses that are submitted
+        $mahasiswa = Mahasiswa::where('role', '2')->count(); // Count theses that are submitted
+        $totalProdi = Prodi::count();
+        $totalDosen = Dosen::count();
+
         if ($request->role == "mahasiswa") {
             if (auth()->guard('mahasiswa')->attempt(['nim' => $request->username, 'password' => $request->password])) {
                 // User is logged in
@@ -26,7 +37,7 @@ class AuthController extends Controller
                     Session::put('nim', $mahasiswa->nim);
                     Session::put('nama', $mahasiswa->nama);    
                     // Menampilkan SweetAlert
-                    return view('mahasiswa.dashboard')->with('success', 'Login berhasil');
+                    return view('mahasiswa.pengumpulan.kumpul_skripsi', compact('totalSkripsi', 'diajukan', 'dikonfirmasi', 'aslab', 'mahasiswa','totalProdi', 'totalDosen'))->with('success', 'Login berhasil');
                 }
             } else {
                 // Menampilkan SweetAlert jika username atau password salah
@@ -35,7 +46,7 @@ class AuthController extends Controller
         } elseif ($request->role == "admin") {
             if (auth()->guard('admin')->attempt(['username' =>$request->username, 'password' => $request->password])) {
                 // Menampilkan SweetAlert
-                return view('admin.dashboard')->with('success', 'Login berhasil');
+                return view('admin.dashboard', compact('totalSkripsi', 'diajukan', 'dikonfirmasi', 'aslab', 'mahasiswa','totalProdi', 'totalDosen'))->with('success', 'Login berhasil');
             } else {
                 // Menampilkan SweetAlert jika username atau password salah
                 return back()->withInput()->with('error', 'Maaf Username atau password salah');

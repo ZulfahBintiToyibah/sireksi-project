@@ -7,16 +7,9 @@ use App\Models\Kodeskripsi;
 
 class KodeskripsiController extends Controller
 {
-    
     public function index(Request $request){
-        if($request->has('search')){
-            $kodeskripsis = Kodeskripsi::where('kode_skripsi', 'LIKE', '%' .$request->search. '%')->paginate(5);
-        }else {
-            $kodeskripsis = Kodeskripsi::paginate(5);
-        }
-        return view('admin.kode_skripsi.data-kode', [
-            'kodeskripsis' => $kodeskripsis
-        ]);
+        $kodeskripsis = Kodeskripsi::all();
+        return view('admin.kode_skripsi.data-kode', compact('kodeskripsis'));
     } 
 
     public function create(){

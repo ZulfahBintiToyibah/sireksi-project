@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Mahasiswa;
 use App\Models\Prodi;
@@ -11,50 +12,16 @@ class MahasiswaController extends Controller
 {
     public function index(Request $request)
     {
-        $search = $request->input('search');
-        $role = $request->input('role');
+        $mahasiswas = Mahasiswa::all();
 
-        $mahasiswas = Mahasiswa::query();
-
-        if ($search) {
-            $mahasiswas->where('nama', 'like', '%' . $search . '%')
-                    ->orWhere('nim', 'like', '%' . $search . '%');
-        }
-
-        if ($role) {
-            $mahasiswas->where('role', $role);
-        }
-
-        $result = $mahasiswas->paginate(10); // Ubah 10 sesuai dengan jumlah item per halaman yang Anda inginkan
-
-        return view('admin.mahasiswa.data-mahasiswa', ['mahasiswas' => $result]);
+        return view('admin.mahasiswa.data-mahasiswa',  compact('mahasiswas'));
     }
 
     public function index2(Request $request)
     {
-        $search = $request->input('search');
-        $role = $request->input('role');
+        $mahasiswas = Mahasiswa::all();
 
-        $mahasiswas = Mahasiswa::query();
-
-        if ($search) {
-            $mahasiswas->where('nama', 'like', '%' . $search . '%')
-                    ->orWhere('nim', 'like', '%' . $search . '%');
-        }
-
-        if ($role) {
-            $mahasiswas->where('role', $role);
-        }
-
-        $result = $mahasiswas->paginate(10); // Ubah 10 sesuai dengan jumlah item per halaman yang Anda inginkan
-
-        return view('admin.laporan.laporan-user', ['mahasiswas' => $result]);
-    }
-
-    public function dashboard(){
-        $totalAslab = Mahasiswa::where('role', '1')->count(); // Hitung jumlah total Asisten Laboratorium
-        $totalMahasiswa = Mahasiswa::where('role', '2')->count(); // Hitung jumlah total Mahasiswa
-        return view('admin.dashboard', compact('totalAslab', 'totalMahasiswa'));
+        return view('admin.laporan.laporan-user',  compact('mahasiswas'));
     }
 
     public function create(){
@@ -215,8 +182,43 @@ class MahasiswaController extends Controller
         return redirect()->route('my-profil')->with('success', 'Data Berhasil Diedit!');
     }
 
-    public function password(Request $request)
+    public function password_change(Request $request)
     {
         return view('profil-mhs.ubah-password'); 
     }
+
+    public function update_Password(Request $request)
+{
+    $request->validate([
+        'password_lama' => 'nullable',
+        'password_baru' => 'required|confirmed',
+    ]);
+
+    $mahasiswa = auth()->guard('mahasiswa')->user();
+
+    // Jika password lama tidak kosong, lakukan validasi
+    if ($request->filled('password_lama')) {
+        // Periksa apakah password lama sesuai dengan yang ada di database
+        if (!Hash::check($request->password_lama, $mahasiswa->password)) {
+            return back()->with('error', 'Password lama salah');
+        }
+    }
+
+        // Update password baru jika password baru diinput
+        if ($request->filled('password_baru')) {
+        // Update password
+        $mahasiswa->password = Hash::make($request->password_baru);
+        $mahasiswa->save();
+
+        // Logout pengguna saat ini
+        Auth::guard('mahasiswa')->logout();
+
+        // Redirect pengguna ke halaman login
+        return redirect()->route('login')->with('success', 'Password berhasil diubah. Silakan login kembali.');
+    }
+
+    // Jika password lama kosong dan password baru kosong,
+    // kembalikan pengguna dengan pesan bahwa tidak ada perubahan
+    return back()->with('warning', 'Tidak ada perubahan password.');
+}
 }
