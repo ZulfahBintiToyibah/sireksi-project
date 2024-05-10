@@ -2,14 +2,14 @@
 
 @section('container')
 <!-- Page Heading -->
-<h1 class="h4 mb-3 text-gray-800">Tambah Skripsi</h1>
+<h1 class="h4 mb-3 text-gray-800">Pengumpulan Skripsi</h1>
 
 <div class="row">
     <div class="col-lg-12">
         <!-- Default Card Example -->
         <div class="card shadow border-primary">
             <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                <h6 class="m-0 font-weight-bold text-dark card-title">Form Edit Skripsi</h6>
+                <h6 class="m-0 font-weight-bold text-dark card-title">Form Pengumpulan Skripsi</h6>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -83,9 +83,6 @@
                   
                 </div>
             </div>
-            <!-- <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-            </div> -->
         </div>
     </div>
 </div>

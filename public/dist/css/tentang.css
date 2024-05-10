@@ -1,13 +1,21 @@
+
 .containerdua{
     position: relative;
     margin-top: 50px;
     width: 23%;
     height: 40px;
+    /* --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    width: 100%;
+    padding-right: calc(var(--bs-gutter-x)* .5);
+    padding-left: calc(var(--bs-gutter-x)* .5);
+    margin-right: auto;
+    margin-left: auto;  */
     /* border: 5px solid blue; */
 }
 
 #tentangsatu {
-    padding-top: 70px; /* Sesuaikan nilai padding sesuai kebutuhan */
+    padding-top: 70px; 
 }
 
 #tentangsatu-new {

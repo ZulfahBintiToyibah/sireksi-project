@@ -83,7 +83,7 @@
       </div>
       <br>
       <div class="row">
-      <form action="hasil.php" method="post">
+      <form action="" method="post">
         <div class="col-5" style="text-align: justify">
           <div class="input-group mb-3">
             <input type="text" class="form-control" name="kata" id="nama" aria-describedby="basic-addon2" style="border-color: #5F68AE; ">
@@ -91,7 +91,6 @@
           </div>
         </div>
         </form>
-
       </div>
     </div>
   </section><!-- End Hero -->

@@ -90,7 +90,5 @@ Route::get('/tampil-konfirmasi/{id}', [PengumpulanController::class, 'show'])->n
 Route::post('/update-konfirmasi/{id}', [PengumpulanController::class, 'edit'])->name('update-konfirmasi');
 Route::get('/delete-konfirmasi/{id}', [PengumpulanController::class, 'destroy'])->name('delete-konfirmasi');
 
-Route::get('/cari-rekom', [CarirekomController::class, 'index'])->name('cari-rekom');
-Route::get('/tampil-rekom/{id}', [CarirekomController::class, 'show'])->name('tampil-rekom');
-Route::get('/cek-rekom', [CarirekomController::class, 'hasil'])->name('cek-rekom');
-
+Route::get('/hasil-rekom', [CarirekomController::class, 'hasil'])->name('hasil-rekom');
+Route::get('/tampil-rekom', [CarirekomController::class, 'show'])->name('tampil-rekom');

@@ -71,15 +71,15 @@ class PengumpulanController extends Controller
         return redirect()->back()->with('success', 'Skripsi berhasil diajukan.');
     }
 
-    public function destroy($id){
-        $pengumpulans = Pengumpulan::find($id);
-    
-        $pengumpulans->save();
-    
-        // Hapus entri dari tabel pengumpulan
+    public function destroy($id)
+    {
+        $pengumpulans = Pengumpulan::find($id);    
+        if (!$pengumpulans) {
+            return redirect()->route('konfir-pengumpulan')->with('error', 'Data tidak ditemukan!');
+        }
         $pengumpulans->delete();
     
-        return redirect()->route('konfirmasi-pengumpulan')->with('success', 'Data Berhasil Dihapus!');
+        return redirect()->route('konfir-pengumpulan')->with('success', 'Data Berhasil Dihapus!');
     }
-    
+        
 }

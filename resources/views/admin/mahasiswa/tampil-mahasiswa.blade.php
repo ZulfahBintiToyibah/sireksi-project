@@ -71,7 +71,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-block" name="submit"><i class="fas fa-fw fa-plus"></i> Tambah</button>
+                                    <button type="submit" class="btn btn-primary btn-block" name="submit"><i class="fas fa-fw fa-edit"></i> Edit</button>
                                 </form>
                             </div>
                         </div>

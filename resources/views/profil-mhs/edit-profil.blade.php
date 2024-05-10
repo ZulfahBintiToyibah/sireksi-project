@@ -60,7 +60,7 @@
                                                     <label for="foto" class="form-label">Masukkan Foto</label>
                                                     <input type="file" class="form-control" id="foto" name="foto" value="{{ isset($mahasiswa) ? $mahasiswa->foto : '' }}">
                                                 </div>
-                                                <button type="submit" class="btn btn-primary btn-block float-right" name="submit">Edit</button>
+                                                <button type="submit" class="btn btn-primary btn-block float-right" name="submit"><i class="fas fa-fw fa-edit"></i> Edit</button>
                                             </div>
                                         </div>
                                     </form>

@@ -29,7 +29,7 @@
                                         <label for="ket_prodi" class="form-label text-dark">Keterangan Program Studi</label>
                                         <input type="text" class="form-control" id="ket_prodi" name="ket_prodi" value="{{ $prodis->ket_prodi }}">
                                     </div>
-                                    <button type="submit" class="btn btn-primary float-right" name="submit">Edit Program Studi</button>
+                                    <button type="submit" class="btn btn-primary float-right" name="submit"><i class="fas fa-fw fa-edit"></i> Edit Program Studi</button>
                                 </div>
                             </div>
                         </form>

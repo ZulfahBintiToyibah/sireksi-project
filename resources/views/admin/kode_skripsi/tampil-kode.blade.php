@@ -27,7 +27,7 @@
                                     <input type="text" id="kode_skripsi" class="form-control text-dark" name="kode_skripsi" value="{{ $kodeskripsis->kode_skripsi }}">
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary float-right btn-block" name="submit">Edit Kode Skripsi</button>
+                            <button type="submit" class="btn btn-primary float-right btn-block" name="submit"><i class="fas fa-fw fa-edit"></i> Edit Kode Skripsi</button>
                         </form>
                     </div>
                 </div>

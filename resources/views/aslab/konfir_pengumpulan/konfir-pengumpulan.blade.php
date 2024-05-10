@@ -34,7 +34,7 @@
                                 <td class="align-middle text-dark">{{ $pengumpulan->skripsis->mahasiswas->nim }}</td>
                                 <td class="align-middle text-dark">{{ $pengumpulan->skripsis->mahasiswas->nama }}</td>
                                 <td class="align-middle text-dark">{{ $pengumpulan->skripsis->mahasiswas->prodis->nama_prodi }}</td>
-                                <td class="align-middle text-dark text-center">{{ \Carbon\Carbon::parse($pengumpulan->skripsis->created_at)->format('d F Y') }}</td>
+                                <td class="align-middle text-dark text-center">{{ \Carbon\Carbon::parse($pengumpulan->skripsis->created_at)->translatedFormat('d F Y') }}</td>
                                 <td class="align-middle text-dark text-center"><span class="badge rounded-pill text-white bg-danger">{{ $pengumpulan->skripsis->status }}</span></td>
                                 <td class="align-middle text-center">
                                     <button type="submit" name="skripsi_id" value="{{ $pengumpulan->skripsis->id }}" class="badge badge-success konfirmasi-btn" style="border: none;" onclick="return confirm('Apakah Anda yakin mengkonfirmasi pengumpulan skripsi dengan NIM {{ $pengumpulan->skripsis->mahasiswas->nim }}?')">

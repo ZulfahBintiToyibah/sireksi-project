@@ -16,3 +16,47 @@
     border: solid #3C096C;
 }
 
+/* Custom CSS */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #3C096C;
+}
+.skripsi {
+    margin-bottom: 20px;
+}
+.skripsi .card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+.skripsi .card:hover {
+    transform: translateY(-5px);
+}
+.skripsi .card-body {
+    padding: 20px;
+}
+.skripsi .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+.skripsi .card-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+    .contain-fluid {
+        margin-top: 40px; /* Sesuaikan nilai sesuai dengan preferensi Anda */
+    }
+
+    body {
+        margin: 0;
+        font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #858796;
+        text-align: left;
+        background-color: #fff;
+      }

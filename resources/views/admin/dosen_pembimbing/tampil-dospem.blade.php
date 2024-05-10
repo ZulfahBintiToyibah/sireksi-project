@@ -37,7 +37,7 @@
                                             @endforeach
                                         </select>
                                     </div>                                    
-                                    <button type="submit" class="btn btn-primary float-right" name="submit">Edit Dosen Pembimbing</button>
+                                    <button type="submit" class="btn btn-primary float-right" name="submit"><i class="fas fa-fw fa-edit"></i> Edit Dosen Pembimbing</button>
                                 </div>
                             </div>
                         </form>

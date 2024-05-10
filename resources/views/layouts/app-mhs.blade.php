@@ -38,9 +38,12 @@
 
         <!-- Sidebar -->
         <ul class="navbar-nav bg-side sidebar sidebar-dark accordion" id="accordionSidebar">
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
                 <div class="sidebar-brand-icon">
-                    <img src="../template/img/login/lOGO SIREKSI.png" alt="Sireksi Logo" style="width: 185px; height: auto;">  
+                    <img src="../template/img/login/lOGO1.png" alt="Sireksi Logo" style="width: 60px;">  
+                </div>
+                <div class="sidebar-brand-text mx-3">
+                    <img src="../template/img/login/lOGO2.png" alt="Sireksi Logo" style="width: 105px; margin-left: -10px; margin-top: 2px;">  
                 </div>
             </a>
             
@@ -61,6 +64,15 @@
             </li>
             @endif
 
+            @if(auth()->guard('mahasiswa')->user()->role == 2)
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link pb-0" href="{{ route('dashboard3') }}">
+                    <i class="fas fa-info-circle" aria-hidden="true"></i>
+                    <span> Instruksi Pengumpulan</span></a>
+            </li>
+            @endif
+
             @if(auth()->guard('mahasiswa')->user()->role == 1)
             <!-- Nav Item - Konfirmasi Pengumpulan -->
             <li class="nav-item">
@@ -73,8 +85,8 @@
             @if(auth()->guard('mahasiswa')->user()->role == 2)
             <!-- Nav Item - Cari Rekomendasi -->
             <li class="nav-item">
-                <a class="nav-link pb-0" href="{{ route('detail-pengumpulan') }}">
-                <i class="fas fa-fw fa-solid fa-file" aria-hidden="true"></i>
+                <a class="nav-link pb-0" href="{{ route('create-skripsi') }}">
+                <i class="fas fa-upload fa-lg" aria-hidden="true"></i>
                     <span>Pengumpulan Skripsi</span></a>
             </li>
             @endif
@@ -247,6 +259,7 @@
 
     <!-- Page level custom scripts -->
     <script src="../template/js/demo/datatables-demo.js"></script>
+
     <!-- Page level plugins -->
     <script src="../template/vendor/chart.js/Chart.min.js"></script>
 
@@ -254,6 +267,47 @@
     <script src="../template/js/demo/chart-area-demo.js"></script>
     <script src="../template/js/demo/chart-pie-demo.js"></script>
     
+    <!-- SweetAlert -->
+    <link href="../template/sw/sweetalert2.min.css" rel="stylesheet">
+    <script src="../template/sw/sweetalert2.min.js"></script>
+    <script src="../template/sw/sweetalert2.all.min.js"></script>
+
+    <!-- Datepicker -->
+    <link href="../template/vendor/datepicker/css/datepicker.css" rel="stylesheet">
+    <link href="../template/vendor/datepicker/css/datepicker.min.css" rel="stylesheet">
+
+    <!-- Datepicker -->
+    <script src="../template/vendor/datepicker/js/bootstrap-datepicker.js"></script>
+
+    <!-- datepicker -->
+    <script>
+    // date picker
+    $('#datepicker-year').datepicker({
+        format: "yyyy",
+        orientation: "top auto",
+        viewMode: "years", 
+        minViewMode: "years",
+        autoclose: true
+    });
+
+    // date picker
+    $('#datepicker-date').datepicker({
+        format: "yyyy-mm-dd",
+        orientation: "top auto",
+        // viewMode: "years", 
+        // minViewMode: "years",
+        autoclose: true
+    });
+
+    // date picker
+    $('#datepicker-date2').datepicker({
+        format: "yyyy-mm-dd",
+        orientation: "top auto",
+        // viewMode: "years", 
+        // minViewMode: "years",
+        autoclose: true
+    });
+</script>
     
 
 </body>

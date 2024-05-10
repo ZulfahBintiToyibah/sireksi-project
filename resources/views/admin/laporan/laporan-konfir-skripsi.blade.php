@@ -2,8 +2,12 @@
 
 @section('container')
 <!-- Page Heading -->
-<h1 class="h4 mb-3 text-gray-800">Laporan Data Pengumpulan Skripsi</h1>
-
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-3">
+    <h1 class="h4 mb-3 text-gray-800">Laporan Data Pengumpulan Skripsi</h1>
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+        class="fas fa-file-excel"></i>   Unduh Laporan</a>
+</div> 
 <div class="row">
     <div class="col-lg-12">
         <!-- Default Card Example -->
@@ -28,10 +32,10 @@
                         <tr>
                             <td class="text-center align-middle text-dark">{{ $loop->iteration }}</td>                                
                             <td class="align-middle text-dark">{{ $pengumpulan->skripsis->mahasiswas->nim }}</td>
-                            <td class="align-middle text-dark">{{ $pengumpulan->skripsis->mahasiswas->nama }}</td>
+                            <td class="align-middle text-dark">{{ $pengumpulan->mahasiswas->nama }}</td>
                             <td class="align-middle text-dark">{{ $pengumpulan->skripsis->mahasiswas->prodis->nama_prodi }}</td>
                             <td class="align-middle text-dark">{{ $pengumpulan->skripsis->judul }}</td>
-                            <td class="align-middle text-dark text-center">{{ \Carbon\Carbon::parse($pengumpulan->skripsis->created_at)->format('d F Y') }}</td>
+                            <td class="align-middle text-dark text-center">{{ \Carbon\Carbon::parse($pengumpulan->skripsis->created_at)->translatedFormat('d F Y') }}</td>
                             <td class="align-middle text-dark text-center">
                                 @if($pengumpulan->skripsis->status == 'Diajukan')
                                     <span class="badge rounded-pill text-white bg-danger">{{ $pengumpulan->skripsis->status }}</span>

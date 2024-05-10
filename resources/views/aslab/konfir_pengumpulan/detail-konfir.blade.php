@@ -48,7 +48,7 @@
                                     <label for="tgl_pengumpulan" class="col-form-label text-dark">Tanggal Pengumpulan</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" id="tgl_pengumpulan" class="form-control form-control-sm text-dark" name="tgl_pengumpulan" value="{{ \Carbon\Carbon::parse($pengumpulans->tgl_pengumpulan)->format('d F Y') }}" readonly>
+                                    <input type="text" id="created_at" class="form-control form-control-sm text-dark" name="created_at" value="{{ \Carbon\Carbon::parse($pengumpulans->skripsis->created_at)->translatedFormat('d F Y') }}" readonly>
                                 </div>
                             </div>
                             <div class="row mb-2 align-items-center">

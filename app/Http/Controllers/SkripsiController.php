@@ -88,8 +88,7 @@ class SkripsiController extends Controller
 }
 
     // Metode untuk mengkonfirmasi skripsi
-// Metode untuk mengkonfirmasi skripsi
-    public function confirmSkripsi(Request $request)
+public function confirmSkripsi(Request $request)
 {
     // Validasi request
     $request->validate([
@@ -100,17 +99,16 @@ class SkripsiController extends Controller
         // Temukan skripsi berdasarkan ID
         $skripsi = Skripsi::findOrFail($request->skripsi_id);
 
+        // Catat ID mahasiswa yang melakukan konfirmasi
+        $mahasiswaKonfirmasiId = auth()->guard('mahasiswa')->id();
+
+        // Simpan ID mahasiswa yang melakukan konfirmasi ke dalam kolom yang sesuai pada tabel Skripsi
+        $skripsi->mahasiswas_id = $mahasiswaKonfirmasiId;
+        $skripsi->save();
+
         // Ubah status skripsi menjadi "Dikonfirmasi"
         $skripsi->status = 'Dikonfirmasi';
         $skripsi->save();
-
-        // Simpan nama petugas yang melakukan konfirmasi
-        $namaPetugas = auth()->guard('mahasiswa')->user()->nama;// Mendapatkan nama petugas yang sedang login
-
-        // Simpan informasi konfirmasi skripsi beserta nama petugas yang melakukan konfirmasi
-        $skripsi->update([
-            'nama_petugas' => $namaPetugas,
-        ]);
 
         // Redirect dengan pesan sukses
         return redirect()->back()->with('success', 'Skripsi berhasil dikonfirmasi.');

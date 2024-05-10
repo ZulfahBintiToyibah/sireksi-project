@@ -12,17 +12,17 @@
             </div>
             <div class="card-body">
                 <div class="text-center">
-                    <h1 class="display-2 text-home"><i class="fas fa-graduation-cap"></i></h1>
-                    <h2 class="display-4 mb-3">200</h2>
+                    <h1 class="display-2 text-home"><i class="fas fa-book-open"></i></h1>
+                    <h2 class="display-4 mb-3">{{ $totalPengumpulan }}</h2>
                     <p class="lead">Jumlah Pengumpulan Skripsi</p>
                 </div>
                 <div class="mt-4">
                     <h6 class="text-home">Status Pengumpulan</h6>
                     <div class="progress mt-2 mb-2">
-                        <div class="progress-bar bg-danger" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50% Diajukan</div>
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: {{ $totalDiajukan / $totalPengumpulan * 100 }}%" aria-valuenow="{{ $totalDiajukan }}" aria-valuemin="0" aria-valuemax="{{ $totalPengumpulan }}">{{ $totalDiajukan }} Diajukan</div>
                     </div>
                     <div class="progress mb-2">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75% Dikonfirmasi</div>
+                        <div class="progress-bar bg-success" role="progressbar" style="width: {{ $totalDikonfirmasi / $totalPengumpulan * 100 }}%" aria-valuenow="{{ $totalDikonfirmasi }}" aria-valuemin="0" aria-valuemax="{{ $totalPengumpulan }}">{{ $totalDikonfirmasi }} Dikonfirmasi</div>
                     </div>
                 </div>
             </div>

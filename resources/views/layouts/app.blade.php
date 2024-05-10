@@ -40,7 +40,10 @@
         <ul class="navbar-nav bg-side sidebar sidebar-dark accordion" id="accordionSidebar">
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
                 <div class="sidebar-brand-icon">
-                    <img src="../template/img/login/lOGO SIREKSI.png" alt="Sireksi Logo" style="width: 185px; height: auto;">  
+                    <img src="../template/img/login/lOGO1.png" alt="Sireksi Logo" style="width: 60px;">  
+                </div>
+                <div class="sidebar-brand-text mx-3">
+                    <img src="../template/img/login/lOGO2.png" alt="Sireksi Logo" style="width: 105px; margin-left: -10px; margin-top: 2px;">  
                 </div>
             </a>
             <!-- Divider -->
@@ -77,14 +80,14 @@
             <li class="nav-item">
                 <a class="nav-link collapsed pb-0" href="" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-solid fa-book"></i>
-                    <span>Skripsi</span>
+                    <i class="fas fa-book-open" aria-hidden="true"></i>
+                    <span>   Skripsi</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('skripsi') }}"><i class="fas fa-fw fa-book mr-1"></i>Data Skripsi</a>
-                        <a class="collapse-item" href="{{ route('kodeskripsi') }}"><i class="fa fa-fw fa-server mr-1"></i>Data Kode Skripsi</a>
+                        <a class="collapse-item" href="{{ route('skripsi') }}"><i class="fas fa-book-open mr-1"></i> Data Skripsi</a>
+                        <a class="collapse-item" href="{{ route('kodeskripsi') }}"><i class="fa fa-fw fa-server mr-1"></i> Data Kode Skripsi</a>
                     </div>
                 </div>
             </li>
@@ -99,7 +102,7 @@
             <!-- Nav Item - Dosen Pembimbing -->
             <li class="nav-item">
                 <a class="nav-link pb-0" href="{{ route('dospem') }}">
-                    <i class="fas fa-fw fa-sharp fa-solid fa-clipboard"></i>
+                    <i class="fas fa-chalkboard-teacher"></i>
                     <span>Dosen Pembimbing</span></a>
             </li>
 
@@ -303,6 +306,47 @@
     <script src="../template/js/demo/chart-area-demo.js"></script>
     <script src="../template/js/demo/chart-pie-demo.js"></script>
     
+    <!-- SweetAlert -->
+    <link href="../template/sw/sweetalert2.min.css" rel="stylesheet">
+    <script src="../template/sw/sweetalert2.min.js"></script>
+    <script src="../template/sw/sweetalert2.all.min.js"></script>
+
+    <!-- Datepicker -->
+    <link href="../template/vendor/datepicker/css/datepicker.css" rel="stylesheet">
+    <link href="../template/vendor/datepicker/css/datepicker.min.css" rel="stylesheet">
+
+    <!-- Datepicker -->
+    <script src="../template/vendor/datepicker/js/bootstrap-datepicker.js"></script>
+
+    <!-- datepicker -->
+    <script>
+    // date picker
+    $('#datepicker-year').datepicker({
+        format: "yyyy",
+        orientation: "top auto",
+        viewMode: "years", 
+        minViewMode: "years",
+        autoclose: true
+    });
+
+    // date picker
+    $('#datepicker-date').datepicker({
+        format: "yyyy-mm-dd",
+        orientation: "top auto",
+        // viewMode: "years", 
+        // minViewMode: "years",
+        autoclose: true
+    });
+
+    // date picker
+    $('#datepicker-date2').datepicker({
+        format: "yyyy-mm-dd",
+        orientation: "top auto",
+        // viewMode: "years", 
+        // minViewMode: "years",
+        autoclose: true
+    });
+</script>
 </body>
 
 </html>
