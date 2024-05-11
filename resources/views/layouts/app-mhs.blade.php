@@ -279,6 +279,19 @@
     <!-- Datepicker -->
     <script src="../template/vendor/datepicker/js/bootstrap-datepicker.js"></script>
 
+    <!-- Bootsrap-select -->
+    <script src="../template/vendor/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!-- Bootsrap-select -->
+    <link href="../template/vendor/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet">
+    <link href="../template/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+    
+    <script>
+        $(document).ready(function() {
+            $('.selectpicker').selectpicker();
+        });
+    </script>
+    
     <!-- datepicker -->
     <script>
     // date picker

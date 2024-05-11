@@ -83,13 +83,14 @@ class SkripsiController extends Controller
         'skripsis_id' => $skripsi->id,
     ]);
 
-    // Redirect dengan pesan sukses
-    return redirect()->back()->with('success', 'Skripsi berhasil diajukan.');
-}
+    // // Redirect dengan pesan sukses
+    // return redirect()->back()->with('success', 'Skripsi berhasil diajukan.');
+    // // Redirect ke halaman detail skripsi yang baru saja dibuat
+    return redirect()->route('detail-pengumpulan', ['id' => $skripsi->id])->with('success', 'Skripsi berhasil diajukan.');}
 
     // Metode untuk mengkonfirmasi skripsi
-public function confirmSkripsi(Request $request)
-{
+    public function confirmSkripsi(Request $request)
+    {
     // Validasi request
     $request->validate([
         'skripsi_id' => 'required|exists:skripsis,id',
@@ -119,11 +120,13 @@ public function confirmSkripsi(Request $request)
 }
 
 public function detailpengumpulan($id){
-    $pengumpulans = Pengumpulan::with('mahasiswas', 'skripsis')->find($id);
+    $skripsis = Skripsi::with('mahasiswas', 'dosens', 'kodeskripsis')->find($id);
     $mahasiswas = Mahasiswa::all();
-    $skripsis = Skripsi::all();
+    $prodis = Prodi::all();
+    $dosens = Dosen::all();
+    $kodeskripsis = Kodeskripsi::all();
 
-    return view('mahasiswa.pengumpulan.kumpul_skripsi', compact('skripsis', 'pengumpulans', 'skripsis'));
+    return view('mahasiswa.pengumpulan.kumpul_skripsi', compact('skripsis', 'mahasiswas', 'dosens', 'kodeskripsis', 'prodis'));
 }
 
 } 

@@ -36,7 +36,7 @@
                     <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Isi formulir pengumpulan dengan lengkap. Pastikan untuk memasukkan judul skripsi, abstrak, dosen pembimbing, tahun terbit, dan kode skripsi dengan benar.</li>
                     <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Unggah file skripsi Anda menggunakan tombol "Simpan" untuk menyelesaikan proses pengumpulan.</li>
                     <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Setelah mengunggah, akan muncul detail data skripsi lengkap yang telah diunggah tadi.</li>
-                    <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Selesai, selanjutnya data skripsi akan dikonfirmasi oleh Asisten Laboratorium</li>
+                    <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Selesai, selanjutnya data skripsi akan dikonfirmasi oleh Asisten Laboratorium.</li>
                 </ol>                
             </div>
             <div class="modal-footer">

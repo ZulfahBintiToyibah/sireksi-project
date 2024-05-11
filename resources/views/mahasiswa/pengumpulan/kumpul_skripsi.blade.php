@@ -2,7 +2,7 @@
 
 @section('container')
     <!-- Page Heading -->
-    <h1 class="h4 mb-3 text-gray-800">Pengumpulan Skripsi</h1>
+    <h1 class="h4 mb-3 text-gray-800">Detail Pengumpulan Skripsi</h1>
 
     <div class="row">
         <div class="col-lg-12">
@@ -10,9 +10,6 @@
             <div class="card shadow border-primary">
                 <div class="card-header py-3 d-flex justify-content-between align-items-center">
                     <h6 class="m-0 font-weight-bold text-dark card-title">Form Detail Pengumpulan Skripsi</h6>
-                    <div class="card-tools">
-                        <a href="{{ route('create-skripsi') }}" class="btn btn-primary btn-sm float-right"><i class="fas fa-fw fa-plus"></i> Kumpulkan Skripsi</a>
-                    </div>
                 </div>
                 <div class="card-body" style="font-size: 13px;">
                     <div class="row">
@@ -22,7 +19,7 @@
                                     <label for="nim" class="col-form-label text-dark">Nomor Induk Mahasiswa</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" id="nim" class="form-control form-control-sm text-dark" name="nim" value="" readonly>
+                                    <input type="text" id="nim" class="form-control form-control-sm text-dark" name="nim" value="{{ $skripsis->mahasiswas->nim }}" readonly>
                                 </div>
                             </div>
                             <div class="row mb-2 align-items-center">
@@ -30,7 +27,7 @@
                                     <label for="nama" class="col-form-label text-dark">Nama Mahasiswa</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" id="nama" class="form-control form-control-sm text-dark" name="nama" value="" readonly>
+                                    <input type="text" id="nama" class="form-control form-control-sm text-dark" name="nama" value="{{ $skripsis->mahasiswas->nama }}" readonly>
                                 </div>
                             </div>
                             <div class="row mb-2 align-items-center">
@@ -38,7 +35,7 @@
                                     <label for="prodis_id" class="col-form-label text-dark">Program Studi</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" id="prodis_id" class="form-control form-control-sm text-dark" name="prodis_id" value="" readonly>
+                                    <input type="text" id="prodis_id" class="form-control form-control-sm text-dark" name="prodis_id" value="{{ $skripsis->mahasiswas->prodis->nama_prodi }}" readonly>
                                 </div>
                             </div>
                         </div>
@@ -48,7 +45,7 @@
                                     <label for="tgl_pengumpulan" class="col-form-label text-dark">Tanggal Pengumpulan</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" id="created_at" class="form-control form-control-sm text-dark" name="created_at" value="" readonly>
+                                    <input type="text" id="created_at" class="form-control form-control-sm text-dark" name="created_at" value="{{ \Carbon\Carbon::parse($skripsis->created_at)->translatedFormat('d F Y') }}" readonly>
                                 </div>
                             </div>
                             <div class="row mb-2 align-items-center">
@@ -56,7 +53,7 @@
                                     <label for="kodeskripsis_id" class="col-form-label text-dark">Kode Skripsi</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" id="kodeskripsis_id" class="form-control form-control-sm text-dark" name="kodeskripsis_id" value="" readonly>
+                                    <input type="text" id="kodeskripsis_id" class="form-control form-control-sm text-dark" name="kodeskripsis_id" value="{{ $skripsis->kodeskripsis->kode_skripsi }}" readonly>
                                 </div>
                             </div>
                             <div class="row mb-2 align-items-center">
@@ -64,11 +61,11 @@
                                     <label for="mahasiswas_id" class="col-form-label text-dark">Nama Petugas</label>
                                 </div>
                                 <div class="col-md-8">
-                                    {{-- @if ($pengumpulans->skripsis->status === 'Dikonfirmasi')
-                                        <input type="text" id="mahasiswas_id" class="form-control form-control-sm text-dark" name="mahasiswas_id" value="" readonly>
-                                    @else --}}
+                                    @if ($skripsis->status === 'Dikonfirmasi')
+                                        <input type="text" id="mahasiswas_id" class="form-control form-control-sm text-dark" name="mahasiswas_id" value="{{ $skripsis->mahasiswas->nama }}" readonly>
+                                    @else
                                         <input type="text" id="mahasiswas_id" class="form-control form-control-sm text-danger" name="mahasiswas_id" value="Belum Dikonfirmasi" readonly>
-                                    {{-- @endif --}}
+                                    @endif
                                 </div>
                             </div>                            
                         </div>
@@ -81,8 +78,8 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="text-justify text-dark"></td>
-                                        <td class="text-justify text-dark"></td>
+                                        <td class="text-justify text-dark">{{ $skripsis->judul}}</td>
+                                        <td class="text-justify text-dark">{{ $skripsis->abstrak}}</td>
                                     </tr>
                                     
                                 </tbody>
