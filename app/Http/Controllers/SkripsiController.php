@@ -86,7 +86,7 @@ class SkripsiController extends Controller
     // // Redirect dengan pesan sukses
     // return redirect()->back()->with('success', 'Skripsi berhasil diajukan.');
     // // Redirect ke halaman detail skripsi yang baru saja dibuat
-    return redirect()->route('detail-pengumpulan', ['id' => $skripsi->id])->with('success', 'Skripsi berhasil diajukan.');}
+    return redirect()->route('detail-pengumpulan', ['id' => $skripsi->id])->with('success', 'Skripsi berhasil diajukan, selanjutnya tunggu konfirmasi dari Asisten Laboratorium');}
 
     // Metode untuk mengkonfirmasi skripsi
     public function confirmSkripsi(Request $request)
@@ -112,7 +112,7 @@ class SkripsiController extends Controller
         $skripsi->save();
 
         // Redirect dengan pesan sukses
-        return redirect()->back()->with('success', 'Skripsi berhasil dikonfirmasi.');
+        return redirect()->back()->with('success', 'Skripsi berhasil dikonfirmasi');
     } catch (\Exception $e) {
         // Tangani kesalahan jika skripsi tidak ditemukan atau operasi tidak berhasil
         return redirect()->back()->with('error', 'Gagal mengkonfirmasi skripsi: ' . $e->getMessage());

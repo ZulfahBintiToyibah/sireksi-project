@@ -80,13 +80,13 @@
             <li class="nav-item">
                 <a class="nav-link collapsed pb-0" href="" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-book-open" aria-hidden="true"></i>
+                    <i class="fas fa-fw fa-book" aria-hidden="true"></i>
                     <span>   Skripsi</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('skripsi') }}"><i class="fas fa-book-open mr-1"></i> Data Skripsi</a>
+                        <a class="collapse-item" href="{{ route('skripsi') }}"><i class="fas fa-fw fa-book mr-1"></i> Data Skripsi</a>
                         <a class="collapse-item" href="{{ route('kodeskripsi') }}"><i class="fa fa-fw fa-server mr-1"></i> Data Kode Skripsi</a>
                     </div>
                 </div>
@@ -317,6 +317,19 @@
 
     <!-- Datepicker -->
     <script src="../template/vendor/datepicker/js/bootstrap-datepicker.js"></script>
+
+    <!-- Bootsrap-select -->
+    <script src="../template/vendor/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!-- Bootsrap-select -->
+    <link href="../template/vendor/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet">
+    <link href="../template/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+    
+    <script>
+        $(document).ready(function() {
+            $('.selectpicker').selectpicker();
+        });
+    </script>    
 
     <!-- datepicker -->
     <script>

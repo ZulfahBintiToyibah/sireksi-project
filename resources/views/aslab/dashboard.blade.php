@@ -12,7 +12,7 @@
             </div>
             <div class="card-body">
                 <div class="text-center">
-                    <h1 class="display-2 text-home"><i class="fas fa-book-open"></i></h1>
+                    <h1 class="display-2 text-home"><i class="fas fa-fw fa-book"></i></h1>
                     <h2 class="display-4 mb-3">{{ $totalPengumpulan }}</h2>
                     <p class="lead">Jumlah Pengumpulan Skripsi</p>
                 </div>

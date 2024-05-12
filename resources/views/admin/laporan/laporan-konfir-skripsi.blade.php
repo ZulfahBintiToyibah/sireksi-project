@@ -3,10 +3,8 @@
 @section('container')
 <!-- Page Heading -->
 <!-- Page Heading -->
-<div class="d-sm-flex align-items-center justify-content-between mb-3">
+<div class="d-sm-flex align-items-center justify-content-between mb-1">
     <h1 class="h4 mb-3 text-gray-800">Laporan Data Pengumpulan Skripsi</h1>
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-        class="fas fa-file-excel"></i>   Unduh Laporan</a>
 </div> 
 <div class="row">
     <div class="col-lg-12">
@@ -14,6 +12,8 @@
         <div class="card border-primary">
             <div class="card-header py-3 d-flex justify-content-between align-items-center">
                 <h6 class="m-0 font-weight-bold text-dark card-title"><i class="fas fa-fw fa-book"></i> Daftar Pengumpulan Skripsi</h6>
+                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                    class="fas fa-file-excel"></i>   Unduh Laporan</a>     
             </div>
             <div class="card-body p-3">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size: 13px;">

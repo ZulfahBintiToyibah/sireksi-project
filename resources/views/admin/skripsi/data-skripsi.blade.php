@@ -10,8 +10,13 @@
         <div class="card border-primary">
             <div class="card-header py-3 d-flex justify-content-between align-items-center">
                 <h6 class="m-0 font-weight-bold text-dark card-title"><i class="fas fa-fw fa-sharp fa-solid fa-clipboard"></i> Daftar Data Skripsi</h6>
-            </div>
+            </div>         
             <div class="card-body p-3">
+            @if(session('success'))
+                <div class="alert alert-success" style="font-size: 14px;">
+                    {{ session('success') }}
+                </div>
+            @endif
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size: 14px;">
                         <thead>
@@ -46,5 +51,15 @@
         </div>
     </div>
 </div>
-@include('sweetalert::alert')
+<!-- Script SweetAlert -->
+<script src="../template/sw/sweetalert2.min.js"></script>
+@if(session('success'))
+    <script>
+        Swal.fire({
+            text: '{{ session('success') }}',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    </script>
+@endif
 @endsection

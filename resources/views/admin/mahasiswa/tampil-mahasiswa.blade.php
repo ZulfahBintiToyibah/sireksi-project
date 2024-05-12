@@ -32,16 +32,16 @@
                                                 <input type="text" class="form-control" id="nama" name="nama" value="{{ $mahasiswas->nama }}">
                                             </div>
                                             <div class="mb-3">
-                                                <label for="jenkel" class="form-label">Jenis Kelamin</label><br>
-                                                <select class="form-control" name="jenkel">
-                                                    <option value="">-- Pilih Jenis Kelamin --</option>
-                                                    <option value="Laki-Laki" {{ $mahasiswas->jenkel == 'Laki-Laki' ? 'selected' : '' }}>Laki-laki</option>
-                                                    <option value="Perempuan" {{ $mahasiswas->jenkel == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+                                                <label for="role" class="form-label">Role</label><br>
+                                                <select class="form-control selectpicker" name="role" data-live-search="true">
+                                                    <option value="0">-- Pilih Role --</option>
+                                                    <option value="1" {{ $mahasiswas->role == '1' ? 'selected' : '' }}>Asisten Laboratorium</option>
+                                                    <option value="2" {{ $mahasiswas->role == '2' ? 'selected' : '' }}>Mahasiswa</option>
                                                 </select>
                                             </div>
                                             <div class="mb-3">
                                             <label for="prodis_id" class="form-label text-dark">Program Studi</label>
-                                            <select class="form-control" id="prodis_id" name="prodis_id">
+                                            <select class="form-control selectpicker" id="prodis_id" name="prodis_id" data-live-search="true">
                                                 @foreach($prodis as $prodi)
                                                     <option value="{{ $prodi->id }}" {{ $prodi->id == $mahasiswas->prodis_id ? 'selected' : '' }}>{{ $prodi->nama_prodi }}</option>
                                                 @endforeach
@@ -58,11 +58,11 @@
                                                 <input type="text" class="form-control" id="alamat" name="alamat" value="{{ $mahasiswas->alamat }}">
                                             </div>
                                             <div class="mb-3">
-                                                <label for="role" class="form-label">Role</label><br>
-                                                <select class="form-control" name="role">
-                                                    <option value="">-- Pilih Role --</option>
-                                                    <option value="1" {{ $mahasiswas->role == '1' ? 'selected' : '' }}>Asisten Laboratorium</option>
-                                                    <option value="2" {{ $mahasiswas->role == '2' ? 'selected' : '' }}>Mahasiswa</option>
+                                                <label for="jenkel" class="form-label">Jenis Kelamin</label><br>
+                                                <select class="form-control" name="jenkel">
+                                                    <option value="">-- Pilih Jenis Kelamin --</option>
+                                                    <option value="Laki-Laki" {{ $mahasiswas->jenkel == 'Laki-Laki' ? 'selected' : '' }}>Laki-laki</option>
+                                                    <option value="Perempuan" {{ $mahasiswas->jenkel == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
                                                 </select>
                                             </div>
                                             <div class="mb-5">

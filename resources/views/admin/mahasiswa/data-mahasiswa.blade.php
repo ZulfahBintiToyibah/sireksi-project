@@ -11,10 +11,16 @@
             <div class="card-header py-3 d-flex justify-content-between align-items-center">
                 <h6 class="m-0 font-weight-bold text-dark card-title"><i class="fas fa-fw fa-sharp fa-solid fa-clipboard"></i> Daftar Data Pengguna</h6>
                 <div class="card-tools">
-                    <a href="{{ route('create-mahasiswa') }}" class="btn btn-primary btn-sm float-right"><i class="fas fa-fw fa-plus"></i> Tambah Data Pengguna</a>
+                    <a href="{{ route('create-mahasiswa') }}" class="btn btn-primary btn-sm mr-2"><i class="fas fa-fw fa-plus"></i> Tambah Data Pengguna</a>
+                    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-file-excel"></i> Upload Data Pengguna</a>     
                 </div> 
             </div>
             <div class="card-body p-3">
+                @if(session('success'))
+                <div class="alert alert-success" style="font-size: 14px;">
+                    {{ session('success') }}
+                </div>
+                @endif
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size: 14px;">
                         <thead>
@@ -61,5 +67,16 @@
         </div>
     </div>
 </div>
-@include('sweetalert::alert')
+<!-- Script SweetAlert -->
+<script src="../template/sw/sweetalert2.min.js"></script>
+@if(session('success'))
+    <script>
+        Swal.fire({
+            text: '{{ session('success') }}',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    </script>
+@endif
+
 @endsection

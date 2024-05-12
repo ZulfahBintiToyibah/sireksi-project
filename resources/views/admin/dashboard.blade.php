@@ -129,9 +129,17 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        
                     </div>
-
-@include('sweetalert::alert')
+                    
+<!-- Script SweetAlert -->
+<script src="../template/sw/sweetalert2.min.js"></script>
+@if(session('success'))
+    <script>
+        Swal.fire({
+            text: '{{ session('success') }}',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    </script>
+@endif
 @endsection

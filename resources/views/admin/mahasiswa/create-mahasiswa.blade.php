@@ -23,6 +23,11 @@
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6">
+                                            @if(session('error'))
+                                                <div class="alert alert-error" style="font-size: 14px;">
+                                                    {{ session('error') }}
+                                                </div>
+                                            @endif
                                             <div class="mb-3">
                                                 <label for="nim" class="form-label">Nomor Induk Mahasiswa (NIM)</label>
                                                 <input type="number" class="form-control" id="nim" name="nim">
@@ -32,17 +37,17 @@
                                                 <input type="text" class="form-control" id="nama" name="nama">
                                             </div>
                                             <div class="mb-3">
-                                                <label for="jenkel" class="form-label">Jenis Kelamin</label><br>
-                                                <select class="form-control" name="jenkel">
-                                                    <option value="">-- Pilih Jenis Kelamin --</option>
-                                                    <option value="Laki-Laki">Laki-laki</option>
-                                                    <option value="Perempuan">Perempuan</option>
+                                                <label for="role" class="form-label">Role</label><br>
+                                                <select class="form-control selectpicker" name="role" data-live-search="true">
+                                                    <option value="0">-- Pilih Role --</option>
+                                                    <option value="1">Asisten Laboratorium</option>
+                                                    <option value="2">Mahasiswa</option>
                                                 </select>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="prodis_id" class="form-label text-dark">Program Studi</label>
-                                                <select class="form-control" id="prodis_id" name="prodis_id">
-                                                    <option value="">-- Pilih Program Studi --</option>
+                                                <select class="form-control selectpicker" id="prodis_id" name="prodis_id" data-live-search="true">
+                                                    <option value="0">-- Pilih Program Studi --</option>
                                                     @foreach($mahasiswas as $mahasiswa)
                                                         <option value="{{ $mahasiswa->id }}">{{ $mahasiswa->nama_prodi }}</option>
                                                     @endforeach
@@ -59,11 +64,11 @@
                                                 <input type="text" class="form-control" id="alamat" name="alamat">
                                             </div>
                                             <div class="mb-3">
-                                                <label for="role" class="form-label">Jenis Kelamin</label><br>
-                                                <select class="form-control" name="role">
-                                                    <option value="">-- Pilih Role --</option>
-                                                    <option value="1">Asisten Laboratorium</option>
-                                                    <option value="2">Mahasiswa</option>
+                                                <label for="jenkel" class="form-label">Jenis Kelamin</label><br>
+                                                <select class="form-control" name="jenkel">
+                                                    <option value="">-- Pilih Jenis Kelamin --</option>
+                                                    <option value="Laki-Laki">Laki-laki</option>
+                                                    <option value="Perempuan">Perempuan</option>
                                                 </select>
                                             </div>
                                             <div class="mb-5">
@@ -111,4 +116,23 @@
     var fileInput = document.getElementById('foto');
     fileInput.addEventListener('change', previewImage);
 </script>
+
+<!-- Script SweetAlert -->
+<script src="../template/sw/sweetalert2.min.js"></script>
+@if($errors->any())
+    <script>
+        var errorMessages = "";
+        @foreach ($errors->all() as $error)
+            errorMessages += "{{ $error }}\n";
+        @endforeach
+
+        Swal.fire({
+            text: errorMessages,
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    </script>
+@endif
+
+
 @endsection

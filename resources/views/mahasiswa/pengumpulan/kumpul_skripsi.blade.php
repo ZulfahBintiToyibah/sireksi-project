@@ -12,6 +12,11 @@
                     <h6 class="m-0 font-weight-bold text-dark card-title">Form Detail Pengumpulan Skripsi</h6>
                 </div>
                 <div class="card-body" style="font-size: 13px;">
+                    @if(session('success'))
+                    <div class="alert alert-success" style="font-size: 14px;">
+                        {{ session('success') }}
+                    </div>
+                    @endif        
                     <div class="row">
                         <div class="col-md-6">
                             <div class="row mb-2 align-items-center">
@@ -73,15 +78,22 @@
                             <h6 class="mt-2 text-dark"><b>Detail Data Skripsi</b></h6>
                             <table class="table table-bordered" id="tabel" width="100%" cellspacing="0" style="font-size: 13px;">
                                 <thead>
-                                    <th class="text-dark" width="30%">Judul</th>
-                                    <th class="text-dark" width="70%" style="text-align: center;">Abstrak (Dalam Bahasa Indonesia)</th>
+                                    <th class="text-dark" width="30%" style="text-align: center;">Judul</th>
+                                    <th class="text-dark" width="63%" style="text-align: center;">Abstrak (Dalam Bahasa Indonesia)</th>
+                                    <th class="text-dark" width="7%" style="text-align: center;">Status</th>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td class="text-justify text-dark">{{ $skripsis->judul}}</td>
                                         <td class="text-justify text-dark">{{ $skripsis->abstrak}}</td>
-                                    </tr>
-                                    
+                                        <td class="text-justify text-dark">
+                                            @if($skripsis->status == 'Diajukan')
+                                                <span class="badge rounded-pill text-white bg-danger">{{ $skripsis->status }}</span>
+                                            @elseif($skripsis->status == 'Dikonfirmasi')
+                                                <span class="badge rounded-pill text-white bg-success">{{ $skripsis->status }}</span>
+                                            @endif
+                                        </td> 
+                                    </tr>                                   
                                 </tbody>
                             </table>
                             <nav aria-label="Page navigation example">
@@ -94,5 +106,15 @@
             </div>
         </div>
     </div>
-
+<!-- Script SweetAlert -->
+<script src="../template/sw/sweetalert2.min.js"></script>
+@if(session('success'))
+    <script>
+        Swal.fire({
+            text: '{{ session('success') }}',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    </script>
+@endif
 @endsection

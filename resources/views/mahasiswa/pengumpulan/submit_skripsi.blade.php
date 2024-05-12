@@ -31,14 +31,12 @@
                                                         <label for="nama">Nama Mahasiswa</label>
                                                         <input type="text" class="form-control" id="nama" value="{{ session('nama') }}" readonly>
                                                     </div>
-                                                    
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label for="nama">NIM Mahasiswa</label>
                                                         <input type="text" class="form-control" id="nama" value="{{ session('nim') }}" readonly>
                                                     </div>
-                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -53,14 +51,14 @@
                                                 </select>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="kodeskripsis_id" class="form-label text-dark">Kode Skripsi</label><br>
-                                                <select class="form-control selectpicker" name="kodeskripsis_id" id="kodeskripsis_id" data-live-search="true">
-                                                    <option value="0">-- Pilih Kode Skripsi --</option>
-                                                    @foreach($kodeskripsis as $kodeskripsi)
-                                                        <option value="{{ $kodeskripsi->id }}">{{ $kodeskripsi->kode_skripsi }}</option>
+                                                <label for="prodis_id" class="form-label text-dark">Program Studi</label><br>
+                                                <select class="form-control selectpicker" name="prodis_id" id="prodis_id" data-live-search="true">
+                                                    <option value="0">-- Pilih Program Studi --</option>
+                                                    @foreach($prodis as $prodi)
+                                                        <option value="{{ $prodi->id }}">{{ $prodi->nama_prodi }}</option>
                                                     @endforeach
                                                 </select>
-                                            </div>
+                                            </div>      
                                         </div>
                                     </div>
                                     <div class="row">
@@ -72,14 +70,23 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="mb-3">
+                                                <label for="kodeskripsis_id" class="form-label text-dark">Kode Skripsi</label><br>
+                                                <select class="form-control selectpicker" name="kodeskripsis_id" id="kodeskripsis_id" data-live-search="true">
+                                                    <option value="0">-- Pilih Kode Skripsi --</option>
+                                                    @foreach($kodeskripsis as $kodeskripsi)
+                                                        <option value="{{ $kodeskripsi->id }}">{{ $kodeskripsi->kode_skripsi }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>                            
+                                            <div class="mb-3">
                                                 <label for="datepicker-year" class="form-label text-dark">Tahun Terbit</label>
                                                 <div class="input-group">
                                                     <input type="text" class="form-control" name="tahun" id="datepicker-year" autocomplete="off">
-                                                    <div class="input-group-append">
-                                                        <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
-                                                    </div>
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
                                                 </div>
                                             </div>
+                                        </div>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-fw fa-save"></i> Simpan</button>

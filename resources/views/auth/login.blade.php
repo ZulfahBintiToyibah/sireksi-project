@@ -103,17 +103,31 @@
 
     <!-- Custom scripts for all pages-->
     <script src="../template/js/sb-admin-2.min.js"></script>
+    <!-- SweetAlert -->
+    <link href="../template/sw/sweetalert2.min.css" rel="stylesheet">
+    <script src="../template/sw/sweetalert2.min.js"></script>
+    <script src="../template/sw/sweetalert2.all.min.js"></script>
+    
+    <!-- Script SweetAlert -->
+    <script src="../template/sw/sweetalert2.min.js"></script>
+    @if(session('success'))
+        <script>
+            Swal.fire({
+                text: '{{ session('success') }}',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        </script>
+    @endif
 
-@include('sweetalert::alert')
-
-@if(session('success'))
+    <script src="../template/sw/sweetalert2.min.js"></script>
+    @if(session('error'))
     <script>
-        swal("Success!", "{{ session('success') }}", "success");
+        Swal.fire({
+            title: "Error!",
+            text: "{{ session('error') }}",
+            icon: "error",
+            confirmButtonText: "OK"
+        });
     </script>
-@endif
-
-@if(session('error'))
-    <script>
-        swal("Error!", "{{ session('error') }}", "error");
-    </script>
-@endif
+    @endif

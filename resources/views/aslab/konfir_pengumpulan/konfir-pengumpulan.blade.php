@@ -12,6 +12,11 @@
                 <h6 class="m-0 font-weight-bold text-dark card-title"><i class="fas fa-fw fa-book"></i> Daftar Pengumpulan Skripsi</h6>
             </div>
             <div class="card-body p-3">
+                @if(session('success'))
+                <div class="alert alert-success" style="font-size: 14px;">
+                    {{ session('success') }}
+                </div>
+                @endif    
                 <form action="/confirm-skripsi" method="POST">
                     @csrf <!-- Tambahkan CSRF token untuk keamanan -->
                 
@@ -52,7 +57,17 @@
     </div>
 </div>
 </div>
-@include('sweetalert::alert')
+<!-- Script SweetAlert -->
+<script src="../template/sw/sweetalert2.min.js"></script>
+@if(session('success'))
+    <script>
+        Swal.fire({
+            text: '{{ session('success') }}',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    </script>
+@endif
 @endsection
 
 <script>

@@ -59,7 +59,7 @@ class AuthController extends Controller
                     Session::put('nim', $mahasiswa->nim);
                     Session::put('nama', $mahasiswa->nama);    
                     // Menampilkan SweetAlert
-                    return view('mahasiswa.dashboard')->with('success', 'Login berhasil');
+                    return view('mahasiswa.dashboard')->with('success', 'Anda Berhasil Login');
                 }
             } else {
                 // Menampilkan SweetAlert jika username atau password salah
@@ -68,7 +68,7 @@ class AuthController extends Controller
         } elseif ($request->role == "admin") {
             if (auth()->guard('admin')->attempt(['username' =>$request->username, 'password' => $request->password])) {
                 // Menampilkan SweetAlert
-                return view('admin.dashboard', compact('totalSkripsi', 'totalSkripsiPGSD', 'totalSkripsiPBSI', 'totalSkripsiPIF', 'totalSkripsiPIPA', 'totalSkripsiPGPAUD', 'totalPengumpulan', 'totalDiajukan', 'totalDikonfirmasi', 'aslab', 'mahasiswa', 'totalProdi', 'totalDosen'))->with('success', 'Login berhasil');
+                return view('admin.dashboard', compact('totalSkripsi', 'totalSkripsiPGSD', 'totalSkripsiPBSI', 'totalSkripsiPIF', 'totalSkripsiPIPA', 'totalSkripsiPGPAUD', 'totalPengumpulan', 'totalDiajukan', 'totalDikonfirmasi', 'aslab', 'mahasiswa', 'totalProdi', 'totalDosen'))->with('success', 'Anda Berhasil Login');
             } else {
                 // Menampilkan SweetAlert jika username atau password salah
                 return back()->withInput()->with('error', 'Maaf Username atau password salah');
