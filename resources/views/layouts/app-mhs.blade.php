@@ -83,11 +83,20 @@
             @endif
 
             @if(auth()->guard('mahasiswa')->user()->role == 2)
-            <!-- Nav Item - Cari Rekomendasi -->
+            <!-- Nav Item - Pengumpulan Skripsi -->
             <li class="nav-item">
                 <a class="nav-link pb-0" href="{{ route('create-skripsi') }}">
                 <i class="fas fa-upload fa-lg" aria-hidden="true"></i>
                     <span>Pengumpulan Skripsi</span></a>
+            </li>
+            @endif
+
+            @if(auth()->guard('mahasiswa')->user()->role == 2 )
+            <!-- Nav Item - Cari Rekomendasi -->
+            <li class="nav-item">
+                <a class="nav-link pb-0" href="">
+                    <i class="fas fa-history fa-lg" aria-hidden="true"></i>
+                    <span>Riwayat Pengumpulan</span></a>
             </li>
             @endif
 
@@ -169,7 +178,7 @@
                                 @endif
                             </span>
                             <!-- Menampilkan foto profil dari database jika tersedia, jika tidak, menampilkan foto default -->
-                            <img class="img-profile rounded-circle" src="{{ Auth::check() && auth()->guard('mahasiswa')->user()->foto ? asset('storage/foto-mahasiswa/' . auth()->guard('mahasiswa')->user()->foto) : asset('template/img/undraw_profile.svg') }}">
+                            <img class="img-profile rounded-circle" src="{{ Auth::check() && auth()->guard('mahasiswa')->user()->foto ? asset('storage/foto-mahasiswa/' . auth()->guard('mahasiswa')->user()->foto) : asset('template/img/default.jpg') }}">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

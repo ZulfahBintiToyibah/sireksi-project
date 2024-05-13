@@ -40,21 +40,6 @@ class MahasiswaController extends Controller
             'alamat' => 'nullable|max:255',
             'foto' => 'nullable|file|mimes:png,jpg,jpeg|max:1024',
             'role' => 'required|max:11',
-
-        ], [
-            'nim.required' => 'NIM harus diisi.',
-            'nim.max' => 'NIM tidak boleh lebih dari :max karakter.',
-            'nama.required' => 'Nama harus diisi.',
-            'nama.max' => 'Nama tidak boleh lebih dari :max karakter.',
-            'jenkel.in' => 'Jenis kelamin harus Laki-Laki atau Perempuan.',
-            'prodis_id.required' => 'Prodi harus diisi.',
-            'prodis_id.max' => 'Prodi tidak boleh lebih dari :max karakter.',
-            'no_telp.max' => 'Nomor telepon tidak boleh lebih dari :max karakter.',
-            'alamat.max' => 'Alamat tidak boleh lebih dari :max karakter.',
-            'foto.mimes' => 'Foto harus berupa file dengan format .png, .jpg, atau .jpeg.',
-            'foto.max' => 'Ukuran file foto tidak boleh lebih dari :max kilobita.',
-            'role.required' => 'Peran harus diisi.',
-            'role.max' => 'Peran tidak boleh lebih dari :max karakter.',
         ]);
         
         // Set username (NIM) dan password

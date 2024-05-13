@@ -120,7 +120,7 @@ class SkripsiController extends Controller
 }
 
 public function detailpengumpulan($id){
-    $skripsis = Skripsi::with('mahasiswas', 'dosens', 'kodeskripsis')->find($id);
+    $skripsis = Skripsi::with('mahasiswas', 'dosens', 'kodeskripsis')->findOrFail($id);    
     $mahasiswas = Mahasiswa::all();
     $prodis = Prodi::all();
     $dosens = Dosen::all();

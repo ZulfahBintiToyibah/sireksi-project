@@ -15,7 +15,7 @@ class CreatePengumpulansTable extends Migration
     {
         Schema::create('pengumpulans', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('mahasiswas_id');
+            $table->unsignedBigInteger('mahasiswas_id')->unique();
             $table->foreign('mahasiswas_id')->references('id')->on('mahasiswas')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('skripsis_id');
             $table->foreign('skripsis_id')->references('id')->on('skripsis')->onUpdate('cascade')->onDelete('cascade');

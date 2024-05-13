@@ -31,27 +31,39 @@
                                             <div class="mb-3">
                                                 <label for="nim" class="form-label">Nomor Induk Mahasiswa (NIM)</label>
                                                 <input type="number" class="form-control" id="nim" name="nim">
+                                                @error('nim')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                             <div class="mb-3">
                                                 <label for="nama" class="form-label">Nama Lengkap</label>
                                                 <input type="text" class="form-control" id="nama" name="nama">
+                                                @error('nama')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                             <div class="mb-3">
                                                 <label for="role" class="form-label">Role</label><br>
                                                 <select class="form-control selectpicker" name="role" data-live-search="true">
-                                                    <option value="0">-- Pilih Role --</option>
+                                                    <option value="">-- Pilih Role --</option>
                                                     <option value="1">Asisten Laboratorium</option>
                                                     <option value="2">Mahasiswa</option>
                                                 </select>
+                                                @error('role')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                             <div class="mb-3">
                                                 <label for="prodis_id" class="form-label text-dark">Program Studi</label>
                                                 <select class="form-control selectpicker" id="prodis_id" name="prodis_id" data-live-search="true">
-                                                    <option value="0">-- Pilih Program Studi --</option>
+                                                    <option value="">-- Pilih Program Studi --</option>
                                                     @foreach($mahasiswas as $mahasiswa)
                                                         <option value="{{ $mahasiswa->id }}">{{ $mahasiswa->nama_prodi }}</option>
                                                     @endforeach
                                                 </select>
+                                                @error('prodis_id')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -117,22 +129,6 @@
     fileInput.addEventListener('change', previewImage);
 </script>
 
-<!-- Script SweetAlert -->
-<script src="../template/sw/sweetalert2.min.js"></script>
-@if($errors->any())
-    <script>
-        var errorMessages = "";
-        @foreach ($errors->all() as $error)
-            errorMessages += "{{ $error }}\n";
-        @endforeach
-
-        Swal.fire({
-            text: errorMessages,
-            icon: 'error',
-            confirmButtonText: 'OK'
-        });
-    </script>
-@endif
 
 
 @endsection

@@ -24,6 +24,7 @@ class CreateMahasiswasTable extends Migration
             $table->string('no_telp')->nullable();
             $table->string('alamat')->nullable();
             $table->enum('role', ['1', '2']);
+            $table->enum('status', ['sudah', 'belum'])->nullable();
             $table->string('foto')->nullable();
             $table->timestamps();
         });

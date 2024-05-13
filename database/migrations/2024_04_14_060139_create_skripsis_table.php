@@ -15,9 +15,9 @@ class CreateSkripsisTable extends Migration
     {
         Schema::create('skripsis', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('mahasiswas_id');
+            $table->unsignedBigInteger('mahasiswas_id')->unique();
             $table->foreign('mahasiswas_id')->references('id')->on('mahasiswas')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('judul');
+            $table->string('judul')->unique();
             $table->unsignedSmallInteger ('tahun');            
             $table->unsignedBigInteger('dosens_id');
             $table->foreign('dosens_id')->references('id')->on('dosens')->onUpdate('cascade')->onDelete('cascade');
