@@ -55,6 +55,7 @@ Route::get('/delete-dospem/{id}', [DosenController::class, 'destroy'])->name('de
 
 Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
 Route::get('/laporan-mahasiswa', [MahasiswaController::class, 'index2'])->name('laporan-mahasiswa');
+Route::get('/data-yudisiawan', [MahasiswaController::class, 'index3'])->name('data-yudisiawan');
 Route::get('/create-mahasiswa', [MahasiswaController::class, 'create'])->name('create-mahasiswa');
 Route::post('/insert-mahasiswa', [MahasiswaController::class, 'store'])->name('insert-mahasiswa');
 Route::get('/tampil-mahasiswa/{id}', [MahasiswaController::class, 'show'])->name('tampil-mahasiswa');
@@ -66,6 +67,8 @@ Route::get('/profil-edit/{id}', [MahasiswaController::class, 'show_profil'])->na
 Route::post('/profil-update/{id}', [MahasiswaController::class, 'edit_profil'])->name('profil-update');
 Route::get('/change-password', [MahasiswaController::class, 'password_change'])->name('change-password');
 Route::post('/updatepassword', [MahasiswaController::class, 'update_Password'])->name('updatepassword');
+Route::post('/import-to-excel', [MahasiswaController::class, 'importToExcel'])->name('importToExcel');
+Route::get('/export-ToExcel', [MahasiswaController::class, 'exportToExcel'])->name('export-ToExcel');
 
 Route::get('/skripsi', [SkripsiController::class, 'index'])->name('skripsi');
 Route::get('/tampil-skripsi/{id}', [SkripsiController::class, 'show'])->name('tampil-skripsi');
@@ -89,6 +92,8 @@ Route::get('/tampil-laporan/{id}', [PengumpulanController::class, 'showlaporan']
 Route::get('/tampil-konfirmasi/{id}', [PengumpulanController::class, 'show'])->name('tampil-konfirmasi');
 Route::post('/update-konfirmasi/{id}', [PengumpulanController::class, 'edit'])->name('update-konfirmasi');
 Route::get('/delete-konfirmasi/{id}', [PengumpulanController::class, 'destroy'])->name('delete-konfirmasi');
+Route::get('/export-to-excel', [PengumpulanController::class, 'exportToExcel'])->name('exportToExcel');
+
 
 Route::get('/hasil-rekom', [CarirekomController::class, 'hasil'])->name('hasil-rekom');
 Route::get('/tampil-rekom', [CarirekomController::class, 'show'])->name('tampil-rekom');

@@ -41,6 +41,14 @@
                                     <input type="text" id="prodis_id" class="form-control form-control-sm text-dark" name="prodis_id" value="{{ $pengumpulans->skripsis->mahasiswas->prodis->nama_prodi }}" readonly>
                                 </div>
                             </div>
+                            <div class="row mb-2 align-items-center">
+                                <div class="col-md-4">
+                                    <label for="prodis_id" class="col-form-label text-dark">Dosen Pembimbing</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" id="prodis_id" class="form-control form-control-sm text-dark" name="prodis_id" value="{{ $pengumpulans->skripsis->dosens->nama }}" readonly>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <div class="row mb-2 align-items-center">
@@ -49,6 +57,14 @@
                                 </div>
                                 <div class="col-md-8">
                                     <input type="text" id="created_at" class="form-control form-control-sm text-dark" name="created_at" value="{{ \Carbon\Carbon::parse($pengumpulans->skripsis->created_at)->translatedFormat('d F Y') }}" readonly>
+                                </div>
+                            </div>
+                            <div class="row mb-2 align-items-center">
+                                <div class="col-md-4">
+                                    <label for="kodeskripsis_id" class="col-form-label text-dark">Tahun Terbit</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" id="kodeskripsis_id" class="form-control form-control-sm text-dark" name="kodeskripsis_id" value="{{ $pengumpulans->skripsis->tahun }}" readonly>
                                 </div>
                             </div>
                             <div class="row mb-2 align-items-center">

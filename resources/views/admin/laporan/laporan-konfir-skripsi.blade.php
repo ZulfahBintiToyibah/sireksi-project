@@ -12,7 +12,7 @@
         <div class="card border-primary">
             <div class="card-header py-3 d-flex justify-content-between align-items-center">
                 <h6 class="m-0 font-weight-bold text-dark card-title"><i class="fas fa-fw fa-book"></i> Daftar Pengumpulan Skripsi</h6>
-                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                <a href="{{ route('exportToExcel', ['nomor' => 1]) }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                     class="fas fa-file-excel"></i>   Unduh Laporan</a>     
             </div>
             <div class="card-body p-3">
@@ -38,7 +38,7 @@
                             <td class="align-middle text-dark text-center">{{ \Carbon\Carbon::parse($pengumpulan->skripsis->created_at)->translatedFormat('d F Y') }}</td>
                             <td class="align-middle text-dark text-center">
                                 @if($pengumpulan->skripsis->status == 'Diajukan')
-                                    <span class="badge rounded-pill text-white bg-danger">{{ $pengumpulan->skripsis->status }}</span>
+                                    <span class="badge rounded-pill text-white bg-warning">{{ $pengumpulan->skripsis->status }}</span>
                                 @elseif($pengumpulan->skripsis->status == 'Dikonfirmasi')
                                     <span class="badge rounded-pill text-white bg-success">{{ $pengumpulan->skripsis->status }}</span>
                                 @endif
@@ -53,4 +53,5 @@
     </div>
 </div>
 </div>
+
 @endsection

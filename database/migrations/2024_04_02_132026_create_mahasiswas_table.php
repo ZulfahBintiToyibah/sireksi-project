@@ -17,14 +17,13 @@ class CreateMahasiswasTable extends Migration
             $table->id();
             $table->bigInteger('nim')->unique();
             $table->string('nama');
-            $table->enum('jenkel', ['Laki-Laki', 'Perempuan'])->nullable();
             $table->unsignedBigInteger('prodis_id');
             $table->foreign('prodis_id')->references('id')->on('prodis')->onUpdate('cascade')->onDelete('cascade');
+            $table->enum('role', ['1', '2']);
             $table->string('password')->nullable();
+            $table->enum('jenkel', ['Laki-Laki', 'Perempuan'])->nullable();
             $table->string('no_telp')->nullable();
             $table->string('alamat')->nullable();
-            $table->enum('role', ['1', '2']);
-            $table->enum('status', ['sudah', 'belum'])->nullable();
             $table->string('foto')->nullable();
             $table->timestamps();
         });

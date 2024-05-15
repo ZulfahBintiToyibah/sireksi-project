@@ -22,7 +22,68 @@
 
     <!-- Custom styles for this template-->
     <link href="../template/css/sb-admin-2.min.css" rel="stylesheet">
+<style>
+    .bg-gradient-secondary {
+        background: linear-gradient(180deg, #6c757d 10%, #3C096C 100%);
+        background-size: cover;
+    }
 
+    .card {
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    .card-body {
+        padding: 2rem;
+    }
+
+    .input-group-text {
+        background-color: #3C096C;
+        color: white;
+    }
+
+    .btn-primary {
+        background-color: #3C096C;
+        border-color: #3C096C;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #3C096C;
+        border-color: #3C096C;
+    }
+
+    .form-control {
+        border-radius: 50px;
+    }
+
+    .input-group-text {
+        border-radius: 50px 0 0 50px;
+    }
+
+    .input-group .form-control {
+        border-radius: 0 50px 50px 0;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .text-center h1 {
+        color: #3C096C;
+        font-weight: 700;
+    }
+    .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+    .logo img {
+        width: 260px;
+    }
+    
+</style>
 </head>
 
 <body class="bg-gradient-secondary">
@@ -38,22 +99,22 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block" style="background-image: url('template/img/login/login_bg.png'); background-size: cover; padding: 250px 0;">
+                            <div class="col-lg-6 d-none d-lg-block" style="background-image: url('template/img/login/login_bg.png'); background-size: cover; padding: 150px 0;">
                                 <div class="logo text-center">
-                                    <img src="template/img/login/lOGO SIREKSI.png" alt="uLibrary Logo" style="width: 300px;">
+                                    <img src="template/img/login/lOGO SIREKSI.png" alt="Sireksi Logo">
                                 </div>
                             </div>
                             <div class="col-lg-6" style="padding: 75px 0;">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 mb-4" style="color: #3C096C; font-size: 32px;">Login</h1>
+                                        <h1 class="h4 mb-4">Login</h1>
                                     </div>
                                     <form class="user" action="loginproces" method="post">
                                         @csrf
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                                    <span class="input-group-text px-3"><i class="fas fa-user"></i></span>
                                                 </div>
                                                 <input type="text" class="form-control" placeholder="Username" name="username" autocomplete="off">
                                             </div>
@@ -61,7 +122,7 @@
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                                    <span class="input-group-text px-3"><i class="fas fa-lock"></i></span>
                                                 </div>
                                                 <input type="password" class="form-control" placeholder="Password" name="password" autocomplete="off">
                                             </div>
@@ -69,7 +130,7 @@
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="fas fa-user-tag"></i></span>
+                                                    <span class="input-group-text"><i class="fas fa-user-check"></i></span>
                                                 </div>
                                                 <select class="form-control" name="role" id="role">
                                                     <option value="">Pilih Level Pengguna</option>
@@ -78,7 +139,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">Login</button>
                                     </form>                                    
                                 </div>
                             </div>
@@ -91,8 +152,6 @@
         </div>
 
     </div>
-    
-<!-- </body> -->
 
     <!-- Bootstrap core JavaScript-->
     <script src="../template/vendor/jquery/jquery.min.js"></script>
@@ -107,7 +166,7 @@
     <link href="../template/sw/sweetalert2.min.css" rel="stylesheet">
     <script src="../template/sw/sweetalert2.min.js"></script>
     <script src="../template/sw/sweetalert2.all.min.js"></script>
-    
+
     <!-- Script SweetAlert -->
     <script src="../template/sw/sweetalert2.min.js"></script>
     @if(session('success'))
@@ -120,7 +179,6 @@
         </script>
     @endif
 
-    <script src="../template/sw/sweetalert2.min.js"></script>
     @if(session('error'))
     <script>
         Swal.fire({
@@ -131,3 +189,7 @@
         });
     </script>
     @endif
+
+</body>
+
+</html>

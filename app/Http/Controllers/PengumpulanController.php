@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Illuminate\Http\Request;
 use App\Models\Pengumpulan;
 use App\Models\Mahasiswa;
 use App\Models\Skripsi;
-
+use PhpOffice\PhpSpreadsheet\Spreadsheet; // Import kelas Spreadsheet dari PhpSpreadsheet
 
 class PengumpulanController extends Controller
 {
@@ -82,4 +82,44 @@ class PengumpulanController extends Controller
         return redirect()->route('konfir-pengumpulan')->with('success', 'Data Berhasil Dihapus!');
     }
         
+
+    public function exportToExcel()
+{
+    // Query data yang ingin Anda ekspor
+    $pengumpulans = Pengumpulan::all(); // Atau query sesuai kebutuhan
+
+    // Buat objek Spreadsheet
+    $spreadsheet = new Spreadsheet();
+    $sheet = $spreadsheet->getActiveSheet();
+
+    // Header kolom
+    $sheet->setCellValue('A1', 'No');
+    $sheet->setCellValue('B1', 'NIM');
+    $sheet->setCellValue('C1', 'Nama');
+    $sheet->setCellValue('D1', 'Program Studi');
+    $sheet->setCellValue('E1', 'Judul Skripsi');
+    $sheet->setCellValue('F1', 'Tanggal Pengumpulan');
+    $sheet->setCellValue('G1', 'Status');
+
+    // Data
+    $row = 2;
+    foreach ($pengumpulans as $pengumpulan) {
+        $sheet->setCellValue('A' . $row, $row - 1); // Nomor baris dimulai dari 1        
+        $sheet->setCellValue('B' . $row, $pengumpulan->skripsis->mahasiswas->nim);
+        $sheet->setCellValue('C' . $row, $pengumpulan->mahasiswas->nama);
+        $sheet->setCellValue('D' . $row, $pengumpulan->skripsis->mahasiswas->prodis->nama_prodi);
+        $sheet->setCellValue('E' . $row, $pengumpulan->skripsis->judul);
+        $sheet->setCellValue('F' . $row, \Carbon\Carbon::parse($pengumpulan->skripsis->created_at)->translatedFormat('d F Y'));
+        $sheet->setCellValue('G' . $row, $pengumpulan->skripsis->status);
+        $row++;
+    }
+
+    // Simpan file
+    $writer = new Xlsx($spreadsheet);
+    $fileName = 'data_pengumpulan_skripsi.xlsx'; // Nama file yang diinginkan
+    $writer->save($fileName);
+
+    // Download file
+    return response()->download($fileName)->deleteFileAfterSend(true);
+}
 }
