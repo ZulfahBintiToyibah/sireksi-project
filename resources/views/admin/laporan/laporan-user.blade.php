@@ -9,7 +9,7 @@
         <!-- Default Card Example -->
         <div class="card border-primary">
             <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                <h6 class="m-0 font-weight-bold text-dark card-title"><i class="fas fa-fw fa-sharp fa-solid fa-clipboard"></i> Daftar Data Pengguna</h6>
+                <h6 class="m-0 font-weight-bold text-dark card-title"><i class="fas fa-fw fa-sharp fas fa-fw fa-solid fa-file"></i> Daftar Data Pengguna</h6>
             </div>
             <div class="card-body p-3">
                 <div class="table-responsive">

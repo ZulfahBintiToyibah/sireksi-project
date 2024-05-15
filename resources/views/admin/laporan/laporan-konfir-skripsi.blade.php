@@ -11,11 +11,49 @@
         <!-- Default Card Example -->
         <div class="card border-primary">
             <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                <h6 class="m-0 font-weight-bold text-dark card-title"><i class="fas fa-fw fa-book"></i> Daftar Pengumpulan Skripsi</h6>
+                <h6 class="m-0 font-weight-bold text-dark card-title"><i class="fas fa-fw fa-solid fa-file"></i> Daftar Pengumpulan Skripsi</h6>
                 <a href="{{ route('exportToExcel', ['nomor' => 1]) }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                     class="fas fa-file-excel"></i>   Unduh Laporan</a>     
             </div>
             <div class="card-body p-3">
+                <form action="" method="post">
+                    <div class="row mb-1">
+                        <div class="col-md-5">
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <label for="datepicker-date2" class="col-form-label form-control-sm text-dark">Dari</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control form-control-sm" name="tgl1" id="datepicker-date2" autocomplete="off">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <label for="datepicker-date" class="col-form-label form-control-sm text-dark">Sampai</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control form-control-sm" name="tgl2" id="datepicker-date" autocomplete="off">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" name="submit" class="btn btn-primary btn-sm btn-block"><i class="fas fa-search fa-sm"></i> Cari</button>
+                        </div>
+                    </div>
+                    </form>
+                    <hr class="border-primary">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size: 13px;">
                     <thead>
                         <th class="text-dark" width="2%" style="text-align: center;">No</th>

@@ -9,7 +9,7 @@
         <!-- Default Card Example -->
         <div class="card border-primary">
             <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                <h6 class="m-0 font-weight-bold text-dark card-title"><i class="fas fa-fw fa-sharp fa-solid fa-clipboard"></i> Daftar Dosen Pembimbing</h6>
+                <h6 class="m-0 font-weight-bold text-dark card-title"><i class="fas fa-fw fa-sharp fas fa-chalkboard-teacher"></i> Daftar Dosen Pembimbing</h6>
                 <div class="card-tools">
                     <a href="{{ route('create-dospem') }}" class="btn btn-primary btn-sm float-right"><i class="fas fa-fw fa-plus"></i> Tambah Dosen Pembimbing</a>
                 </div> 

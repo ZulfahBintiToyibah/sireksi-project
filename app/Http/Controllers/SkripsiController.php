@@ -66,6 +66,16 @@ class SkripsiController extends Controller
         'kodeskripsis_id' => 'required|exists:kodeskripsis,id', // Pastikan kodeskripsis_id ada di tabel kodeskripsis
     ]);
 
+    // Cek apakah skripsi sudah diajukan atau sudah dikonfirmasi
+    $skripsi = Skripsi::where('mahasiswas_id', $request->mahasiswa_id)
+    ->whereIn('status', ['Diajukan', 'Dikonfirmasi'])
+    ->first();
+
+    if ($skripsi) {
+    // Jika sudah diajukan atau sudah dikonfirmasi, arahkan ke halaman detail pengumpulan dengan pesan peringatan
+    return redirect()->route('detail-pengumpulan', ['id' => $skripsi->id])->with('warning', 'Anda sudah mengumpulkan atau telah dikonfirmasi skripsi sebelumnya.');
+    }
+
     // Buat skripsi baru
     $skripsi = Skripsi::create([
         'mahasiswas_id' => $request->mahasiswa_id, // Mendapatkan ID mahasiswa yang sedang login
@@ -90,7 +100,7 @@ class SkripsiController extends Controller
 
     // Metode untuk mengkonfirmasi skripsi
     public function confirmSkripsi(Request $request)
-    {
+{
     // Validasi request
     $request->validate([
         'skripsi_id' => 'required|exists:skripsis,id',
@@ -99,13 +109,6 @@ class SkripsiController extends Controller
     try {
         // Temukan skripsi berdasarkan ID
         $skripsi = Skripsi::findOrFail($request->skripsi_id);
-
-        // Catat ID mahasiswa yang melakukan konfirmasi
-        $mahasiswaKonfirmasiId = auth()->guard('mahasiswa')->id();
-
-        // Simpan ID mahasiswa yang melakukan konfirmasi ke dalam kolom yang sesuai pada tabel Skripsi
-        $skripsi->mahasiswas_id = $mahasiswaKonfirmasiId;
-        $skripsi->save();
 
         // Ubah status skripsi menjadi "Dikonfirmasi"
         $skripsi->status = 'Dikonfirmasi';
@@ -118,6 +121,7 @@ class SkripsiController extends Controller
         return redirect()->back()->with('error', 'Gagal mengkonfirmasi skripsi: ' . $e->getMessage());
     }
 }
+
 
 public function detailpengumpulan($id){
     $skripsis = Skripsi::with('mahasiswas', 'dosens', 'kodeskripsis')->findOrFail($id);    

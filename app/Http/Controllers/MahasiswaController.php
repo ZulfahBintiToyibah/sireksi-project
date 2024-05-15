@@ -28,16 +28,21 @@ class MahasiswaController extends Controller
     }
 
     public function index3(Request $request)
-    {
-        $mahasiswas = Mahasiswa::where('role', '2')->get();
-    
+{
+    $mahasiswas = Mahasiswa::where('role', '2')->get();
+    $skripsis = Skripsi::all();
+
+
     foreach ($mahasiswas as $mahasiswa) {
-        $mahasiswa->status_pengumpulan = Skripsi::where('mahasiswas_id', $mahasiswa->id)->exists() ? 'Sudah Mengumpulkan' : 'Belum Mengumpulkan';
+        // Cek apakah ada skripsi dengan status 'Diajukan' atau 'Dikonfirmasi'
+        $mahasiswa->status_pengumpulan = Skripsi::where('mahasiswas_id', $mahasiswa->id)
+            ->whereIn('status', ['Diajukan', 'Dikonfirmasi'])
+            ->exists() ? 'Sudah Mengumpulkan' : 'Belum Mengumpulkan';
     }
 
-    return view('admin.laporan.laporan-yudisiawan', compact('mahasiswas'));
-    }
-    
+    return view('admin.laporan.laporan-yudisiawan', compact('mahasiswas', 'skripsis'));
+}
+
 
     public function create(){
         $mahasiswas = Prodi::all();

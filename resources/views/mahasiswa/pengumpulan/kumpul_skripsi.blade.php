@@ -43,6 +43,14 @@
                                     <input type="text" id="prodis_id" class="form-control form-control-sm text-dark" name="prodis_id" value="{{ $skripsis->mahasiswas->prodis->nama_prodi }}" readonly>
                                 </div>
                             </div>
+                            <div class="row mb-2 align-items-center">
+                                <div class="col-md-4">
+                                    <label for="prodis_id" class="col-form-label text-dark">Dosen Pembimbing</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" id="prodis_id" class="form-control form-control-sm text-dark" name="prodis_id" value="{{ $skripsis->dosens->nama }}" readonly>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <div class="row mb-2 align-items-center">
@@ -51,6 +59,14 @@
                                 </div>
                                 <div class="col-md-8">
                                     <input type="text" id="created_at" class="form-control form-control-sm text-dark" name="created_at" value="{{ \Carbon\Carbon::parse($skripsis->created_at)->translatedFormat('d F Y') }}" readonly>
+                                </div>
+                            </div>
+                            <div class="row mb-2 align-items-center">
+                                <div class="col-md-4">
+                                    <label for="kodeskripsis_id" class="col-form-label text-dark">Tahun Terbit</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" id="kodeskripsis_id" class="form-control form-control-sm text-dark" name="kodeskripsis_id" value="{{ $skripsis->tahun }}" readonly>
                                 </div>
                             </div>
                             <div class="row mb-2 align-items-center">
@@ -88,7 +104,7 @@
                                         <td class="text-justify text-dark">{{ $skripsis->abstrak}}</td>
                                         <td class="text-justify text-dark">
                                             @if($skripsis->status == 'Diajukan')
-                                                <span class="badge rounded-pill text-white bg-danger">{{ $skripsis->status }}</span>
+                                                <span class="badge rounded-pill text-white bg-warning">{{ $skripsis->status }}</span>
                                             @elseif($skripsis->status == 'Dikonfirmasi')
                                                 <span class="badge rounded-pill text-white bg-success">{{ $skripsis->status }}</span>
                                             @endif

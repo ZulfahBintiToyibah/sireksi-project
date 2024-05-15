@@ -27,7 +27,20 @@
 
     <!-- Custom styles for this page -->
     <link href="../template/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<!-- Custom styles for icons and text alignment -->
+<style>
+    .sidebar .nav-link i {
+        font-size: 1.25rem; /* Sesuaikan ukuran ikon */
+        width: 30px; /* Pastikan semua ikon memiliki lebar yang sama */
+        text-align: center; /* Pusatkan ikon */
+        margin-right: 10px; /* Tambahkan ruang antara ikon dan teks */
+    }
 
+    .sidebar .nav-link span {
+        font-size: 1rem; /* Sesuaikan ukuran teks */
+        vertical-align: middle; /* Selaraskan teks secara vertikal */
+    }
+</style>
 
 </head>
 
@@ -82,23 +95,37 @@
             </li>
             @endif
 
-            @if(auth()->guard('mahasiswa')->user()->role == 2)
+            @if(auth()->guard('mahasiswa')->check() && auth()->guard('mahasiswa')->user()->role == 2)
             <!-- Nav Item - Pengumpulan Skripsi -->
             <li class="nav-item">
-                <a class="nav-link pb-0" href="{{ route('create-skripsi') }}">
+                @php
+                    $skripsi = \App\Models\Skripsi::where('mahasiswas_id', auth()->guard('mahasiswa')->user()->id)->latest()->first();
+                @endphp
+                @if($skripsi)
+                    @if($skripsi->status === 'Diajukan' || $skripsi->status === 'Dikonfirmasi')
+                        <a class="nav-link pb-0" href="{{ route('detail-pengumpulan', ['id' => $skripsi->id]) }}">
+                    @else
+                        <a class="nav-link pb-0" href="{{ route('create-skripsi') }}">
+                    @endif
+                @else
+                    <a class="nav-link pb-0" href="{{ route('create-skripsi') }}">
+                @endif
                 <i class="fas fa-upload fa-lg" aria-hidden="true"></i>
-                    <span>Pengumpulan Skripsi</span></a>
+                <span>Pengumpulan Skripsi</span>
+                </a>
             </li>
-            @endif
+        @endif
 
-            @if(auth()->guard('mahasiswa')->user()->role == 2 )
+
+
+            {{-- @if(auth()->guard('mahasiswa')->user()->role == 2 )
             <!-- Nav Item - Cari Rekomendasi -->
             <li class="nav-item">
                 <a class="nav-link pb-0" href="">
                     <i class="fas fa-history fa-lg" aria-hidden="true"></i>
                     <span>Riwayat Pengumpulan</span></a>
             </li>
-            @endif
+            @endif --}}
 
             <!-- Divider -->
             <hr class="sidebar-divider mt-3">

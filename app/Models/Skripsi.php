@@ -10,7 +10,7 @@ class Skripsi extends Model
     use HasFactory;
     protected $table = 'skripsis';
 
-    protected $fillable = ['mahasiswas_id', 'judul', 'tahun', 'dosens_id', 'abstrak', 'kodeskripsis_id', 'status'];
+    protected $fillable = ['mahasiswas_id', 'judul', 'tahun', 'dosens_id', 'abstrak', 'kodeskripsis_id', 'status', 'created_at'];
 
     public function pengumpulan()
     {
