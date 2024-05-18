@@ -8,38 +8,15 @@
     <div class="col-lg-12">
         <!-- Default Card Example -->
         <div class="card border-primary">
-            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center flex-wrap">
                 <h6 class="m-0 font-weight-bold text-dark card-title"><i class="fas fa-fw fa-sharp fas fa-users"></i> Daftar Data Pengguna</h6>
-                <div class="card-tools">
-                    <a href="{{ route('create-mahasiswa') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-fw fa-plus"></i> Tambah Data Pengguna</a>
+                <div class="card-tools d-flex flex-wrap">
+                    <a href="{{ route('create-mahasiswa') }}" class="btn btn-sm btn-primary shadow-sm mr-2 mb-2 mb-md-0"><i class="fas fa-fw fa-plus"></i> Tambah Data Pengguna</a>
                     <!-- Button trigger modal -->
-                    <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" class="btn btn-sm btn-primary shadow-sm mb-2 mb-md-0" data-toggle="modal" data-target="#exampleModal">
                         <i class="fas fa-file-excel"></i> Unggah Data
                     </button>
-                    
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Unggah Data Pengguna</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="{{ route('importToExcel') }}" method="post" enctype="multipart/form-data">
-                                    @csrf
-                                    <input type="file" name="file" id="file" class="form-control-file mr-2">
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                            <button type="submit" class="btn btn-primary">Unggah Data</button>
-                            </div>
-                        </div>
-                        </div>
-                    </div>  
-                </div>                
+                </div>
             </div>
             <div class="card-body p-3">
                 @if(session('success'))
@@ -80,9 +57,11 @@
                                     @endif
                                 </td>
                                 <td class="align-middle text-center">
-                                    <a href="/detail-mahasiswa/{{ $mahasiswa->id }}" class="badge badge-primary"><i class="fas fa-fw fa-regular fa-eye"></i></a> | 
-                                    <a href="/tampil-mahasiswa/{{ $mahasiswa->id }}" class="badge badge-success"><i class="fas fa-fw fa-edit"></i></a> | 
-                                    <a href="javascript:if(confirm('Anda yakin ingin menghapus data Pengguna {{ $mahasiswa->nama }} ?'))window.location.href = '/delete-mahasiswa/{{ $mahasiswa->id }}'" class="badge badge-danger"><i class="fas fa-fw fa-trash"></i></a>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="/detail-mahasiswa/{{ $mahasiswa->id }}" class="badge badge-primary mr-1"><i class="fas fa-fw fa-regular fa-eye"></i></a>
+                                        <a href="/tampil-mahasiswa/{{ $mahasiswa->id }}" class="badge badge-success mr-1"><i class="fas fa-fw fa-edit"></i></a>
+                                        <a href="javascript:if(confirm('Anda yakin ingin menghapus data Pengguna {{ $mahasiswa->nama }} ?'))window.location.href = '/delete-mahasiswa/{{ $mahasiswa->id }}'" class="badge badge-danger"><i class="fas fa-fw fa-trash"></i></a>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach
@@ -104,5 +83,28 @@
         });
     </script>
 @endif
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Unggah Data Pengguna</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('importToExcel') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <input type="file" name="file" id="file" class="form-control-file mr-2">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-primary">Unggah Data</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection

@@ -14,10 +14,7 @@ class PengumpulanController extends Controller
     protected $fillable = ['mahasiswas_id', 'skripsis_id'];
     public function index(Request $request){
         if($request->has('search')){
-            $pengumpulans = Pengumpulan::join('mahasiswas', 'pengumpulans.mahasiswas_id', '=', 'mahasiswas.id')
-                                        ->join('skripsis', 'pengumpulans.skripsis_id', '=', 'skripsis.id')
-                                        ->where('mahasiswas.nama', 'LIKE', '%' . $request->search . '%')
-                                        ->paginate(10);
+            $pengumpulans = Pengumpulan::with(['skripsis', 'skripsis.mahasiswas'])->where('mahasiswas.nama', 'LIKE', '%' . $request->search . '%')->paginate(10);
         } else {
             $pengumpulans = Pengumpulan::with('mahasiswas', 'skripsis')->whereHas('skripsis', function ($query) {
                 $query->where('status', '!=', 'Dikonfirmasi');
@@ -81,12 +78,22 @@ class PengumpulanController extends Controller
     
         return redirect()->route('konfir-pengumpulan')->with('success', 'Data Berhasil Dihapus!');
     }
-        
 
-    public function exportToExcel()
+    public function exportToExcel(Request $request)
 {
-    // Query data yang ingin Anda ekspor
-    $pengumpulans = Pengumpulan::all(); // Atau query sesuai kebutuhan
+    // Ambil tanggal dari input form
+    $tgl1 = $request->input('tgl1');
+    $tgl2 = $request->input('tgl2');
+
+    // Tambahkan 1 hari ke tanggal akhir
+    $tgl2PlusOneDay = date('Y-m-d', strtotime($tgl2 . ' +1 day'));
+
+    // Query data berdasarkan rentang tanggal yang dipilih
+    $pengumpulans = Pengumpulan::whereHas('skripsis', function ($query) use ($tgl1, $tgl2PlusOneDay) {
+        $query->whereBetween('created_at', [$tgl1, $tgl2PlusOneDay]);
+    })->get();
+
+    // $pengumpulans = Pengumpulan::all();
 
     // Buat objek Spreadsheet
     $spreadsheet = new Spreadsheet();
@@ -116,10 +123,37 @@ class PengumpulanController extends Controller
 
     // Simpan file
     $writer = new Xlsx($spreadsheet);
-    $fileName = 'data_pengumpulan_skripsi.xlsx'; // Nama file yang diinginkan
+    $fileName = 'data_mahasiswa_sudah_mengumpulkan_skripsi.xlsx'; // Nama file yang diinginkan
     $writer->save($fileName);
 
     // Download file
     return response()->download($fileName)->deleteFileAfterSend(true);
 }
+
+
+    public function filterByDate(Request $request)
+    {
+        // Validasi input formulir
+        $request->validate([
+            'tgl1' => 'required|date',
+            'tgl2' => 'required|date|after_or_equal:tgl1',
+        ]);
+    
+        // Ambil tanggal awal dan akhir dari input formulir
+        $tgl1 = $request->input('tgl1');
+        $tgl2 = $request->input('tgl2');
+    
+        // Tambahkan 1 hari ke tanggal akhir
+        $tgl2PlusOneDay = date('Y-m-d', strtotime($tgl2 . ' +1 day'));
+    
+        // Query data berdasarkan rentang tanggal
+        $pengumpulans = Pengumpulan::whereHas('skripsis', function ($query) use ($tgl1, $tgl2PlusOneDay) {
+            $query->whereBetween('created_at', [$tgl1, $tgl2PlusOneDay]);
+        })->get();
+    
+        // Kembalikan tampilan dengan data yang sudah difilter
+        // Anda bisa menambahkan tombol atau link di sini untuk memicu unduhan
+        return view('admin.laporan.laporan-konfir-skripsi', compact('pengumpulans', 'tgl1', 'tgl2'));
+    }
+    
 }

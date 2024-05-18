@@ -8,10 +8,10 @@
     <div class="col-lg-12">
         <!-- Default Card Example -->
         <div class="card border-primary">
-            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center flex-column flex-md-row">
                 <h6 class="m-0 font-weight-bold text-dark card-title"><i class="fa fa-fw fa-server"></i> Daftar Kode Skripsi</h6>
-                <div class="card-tools">
-                    <a href="{{ route('create-kodeskripsi') }}" class="btn btn-primary btn-sm float-right"><i class="fas fa-fw fa-plus"></i> Tambah Kode Skripsi</a>
+                <div class="card-tools mt-2 mt-md-0">
+                    <a href="{{ route('create-kodeskripsi') }}" class="btn btn-primary btn-sm"><i class="fas fa-fw fa-plus"></i> Tambah Kode Skripsi</a>
                 </div>
             </div>
             <div class="card-body p-3">
@@ -33,8 +33,11 @@
                                 <td class="text-center align-middle text-dark">{{ $loop->iteration }}</td>                                
                                 <td class="align-middle text-dark">{{ $kodeskripsi->kode_skripsi}}</td>
                                 <td class="align-middle text-center">
-                                    <a href="/tampil-kodeskripsi/{{ $kodeskripsi->id }}" class="badge badge-success"><i class="fas fa-fw fa-edit"></i><span> Edit</span></a> | <a href="javascript:if(confirm('Anda yakin ingin menghapus data Kode Skripsi {{ $kodeskripsi->kode_skripsi }} ?'))window.location.href = '/delete-kodeskripsi/{{ $kodeskripsi->id }}'" class="badge badge-danger"><i class="fas fa-fw fa-trash"></i><span> Hapus</span></a>
-                                </td>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="/tampil-kodeskripsi/{{ $kodeskripsi->id }}" class="badge badge-success mr-1"><i class="fas fa-fw fa-edit"></i><span> Edit</span></a>
+                                        <a href="javascript:if(confirm('Anda yakin ingin menghapus data Kode Skripsi {{ $kodeskripsi->kode_skripsi }} ?'))window.location.href = '/delete-kodeskripsi/{{ $kodeskripsi->id }}'" class="badge badge-danger"><i class="fas fa-fw fa-trash"></i><span> Hapus</span></a>
+                                    </div>
+                                </td>                                
                             </tr>
                             @endforeach
                         </tbody>

@@ -89,7 +89,6 @@ class SkripsiController extends Controller
 
     // Simpan informasi pengumpulan skripsi
     Pengumpulan::create([
-        'mahasiswas_id' => $request->mahasiswa_id,
         'skripsis_id' => $skripsi->id,
     ]);
 
@@ -114,6 +113,10 @@ class SkripsiController extends Controller
         $skripsi->status = 'Dikonfirmasi';
         $skripsi->save();
 
+        $pengumpulans = Pengumpulan::where('skripsis_id', $request->skripsi_id);
+        $pengumpulans->mahasiswas_id = auth()->guard('mahasiswa')->user()->id;
+        $pengumpulans->save();
+
         // Redirect dengan pesan sukses
         return redirect()->back()->with('success', 'Skripsi berhasil dikonfirmasi');
     } catch (\Exception $e) {
@@ -126,11 +129,12 @@ class SkripsiController extends Controller
 public function detailpengumpulan($id){
     $skripsis = Skripsi::with('mahasiswas', 'dosens', 'kodeskripsis')->findOrFail($id);    
     $mahasiswas = Mahasiswa::all();
+    $pengumpulans = Pengumpulan::all();
     $prodis = Prodi::all();
     $dosens = Dosen::all();
     $kodeskripsis = Kodeskripsi::all();
 
-    return view('mahasiswa.pengumpulan.kumpul_skripsi', compact('skripsis', 'mahasiswas', 'dosens', 'kodeskripsis', 'prodis'));
+    return view('mahasiswa.pengumpulan.kumpul_skripsi', compact('skripsis', 'mahasiswas', 'dosens', 'pengumpulans','kodeskripsis', 'prodis'));
 }
 
 } 

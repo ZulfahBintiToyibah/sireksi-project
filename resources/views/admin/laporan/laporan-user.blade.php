@@ -13,7 +13,7 @@
             </div>
             <div class="card-body p-3">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size: 14px;">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size: 13px;">
                         <thead>
                             <tr>
                                 <th class="text-dark" width="5%" style="text-align: center;">No</th>
@@ -29,7 +29,7 @@
                             @foreach ($mahasiswas as $mahasiswa)
                             <tr>
                                 <td class="text-center align-middle text-dark">{{ $loop->iteration }}</td>                                
-                                <td class="text-center text-dark">{{ $mahasiswa->nim }}</td>
+                                <td class="text-center align-middle text-dark">{{ $mahasiswa->nim }}</td>
                                 <td class="align-middle text-dark">{{ $mahasiswa->nama }}</td>
                                 <td class="align-middle text-dark">{{ $mahasiswa->prodis->nama_prodi }}</td>
                                 <td class="align-middle text-dark">{{ $mahasiswa->jenkel }}</td>

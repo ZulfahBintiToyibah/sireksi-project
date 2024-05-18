@@ -30,4 +30,25 @@
     </div>
 
 </div>
+    <!-- Script SweetAlert -->
+    <script src="{{ asset('template/sw/sweetalert2.min.js') }}"></script>
+    @if(session('success'))
+        <script>
+            Swal.fire({
+                text: '{{ session('success') }}',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        </script>
+    @endif
+    @if(session('error'))
+        <script>
+            Swal.fire({
+                text: '{{ session('error') }}',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        </script>
+    @endif
+
 @endsection

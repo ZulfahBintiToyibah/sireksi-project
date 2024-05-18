@@ -307,13 +307,18 @@ public function importToExcel(Request $request)
 
 public function exportToExcel()
 {
-    // Query data yang ingin Anda ekspor
+    // Query data yang ingin Anda ekspor (hanya mahasiswa yang belum mengumpulkan)
     $mahasiswas = Mahasiswa::where('role', '2')->get();
     
     // Tambahkan status pengumpulan untuk setiap mahasiswa
     foreach ($mahasiswas as $mahasiswa) {
         $mahasiswa->status_pengumpulan = Skripsi::where('mahasiswas_id', $mahasiswa->id)->exists() ? 'Sudah Mengumpulkan' : 'Belum Mengumpulkan';
     }
+
+    // Filter hanya mahasiswa yang belum mengumpulkan
+    $mahasiswasBelumMengumpulkan = $mahasiswas->filter(function ($mahasiswa) {
+        return $mahasiswa->status_pengumpulan === 'Belum Mengumpulkan';
+    });
 
     // Buat objek Spreadsheet
     $spreadsheet = new Spreadsheet();
@@ -329,7 +334,7 @@ public function exportToExcel()
 
     // Data
     $row = 2;
-    foreach ($mahasiswas as $mahasiswa) {
+    foreach ($mahasiswasBelumMengumpulkan as $mahasiswa) {
         $sheet->setCellValue('A' . $row, $row - 1); // Nomor baris dimulai dari 1        
         $sheet->setCellValue('B' . $row, $mahasiswa->nim);
         $sheet->setCellValue('C' . $row, $mahasiswa->nama);
@@ -341,7 +346,7 @@ public function exportToExcel()
 
     // Simpan file
     $writer = new Xlsx($spreadsheet);
-    $fileName = 'data_mahasiswa_pengumpulan_skripsi.xlsx'; // Nama file yang diinginkan
+    $fileName = 'data_mahasiswa_belum_mengumpulkan_skripsi.xlsx'; // Nama file yang diinginkan
     $writer->save($fileName);
 
     // Download file

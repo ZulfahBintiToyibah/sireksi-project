@@ -88,6 +88,7 @@ Route::post('/update-password', [ProfiladminController::class, 'updatePassword']
 
 Route::get('/konfir-pengumpulan', [PengumpulanController::class, 'index'])->name('konfir-pengumpulan');
 Route::get('/laporan-konfir', [PengumpulanController::class, 'index2'])->name('laporan-konfir');
+Route::post('/laporan-konfir', [PengumpulanController::class, 'filterByDate'])->name('laporan-konfir');
 Route::get('/tampil-laporan/{id}', [PengumpulanController::class, 'showlaporan'])->name('tampil-laporan');
 Route::get('/tampil-konfirmasi/{id}', [PengumpulanController::class, 'show'])->name('tampil-konfirmasi');
 Route::post('/update-konfirmasi/{id}', [PengumpulanController::class, 'edit'])->name('update-konfirmasi');

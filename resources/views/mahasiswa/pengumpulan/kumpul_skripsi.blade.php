@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     @if ($skripsis->status === 'Dikonfirmasi')
-                                        <input type="text" id="mahasiswas_id" class="form-control form-control-sm text-dark" name="mahasiswas_id" value="{{ $skripsis->mahasiswas->nama }}" readonly>
+                                        <input type="text" id="mahasiswas_id" class="form-control form-control-sm text-dark" name="mahasiswas_id" value="{{ $skripsis->pengumpulan->mahasiswas->nama }}" readonly>
                                     @else
                                         <input type="text" id="mahasiswas_id" class="form-control form-control-sm text-danger" name="mahasiswas_id" value="Belum Dikonfirmasi" readonly>
                                     @endif

@@ -8,10 +8,10 @@
     <div class="col-lg-12">
         <!-- Default Card Example -->
         <div class="card border-primary">
-            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center flex-column flex-md-row">
                 <h6 class="m-0 font-weight-bold text-dark card-title"><i class="fa fa-graduation-cap"></i> Daftar Program Studi</h6>
-                <div class="card-tools">
-                    <a href="{{ route('create-prodi') }}" class="btn btn-primary btn-sm float-right"><i class="fas fa-fw fa-plus"></i> Tambah Program Studi</a>
+                <div class="card-tools mt-2 mt-md-0">
+                    <a href="{{ route('create-prodi') }}" class="btn btn-primary btn-sm"><i class="fas fa-fw fa-plus"></i> Tambah Program Studi</a>
                 </div>
             </div>
             <div class="card-body p-3">
@@ -23,10 +23,12 @@
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size: 14px;">
                         <thead>
-                            <th class="text-dark" width="5%" style="text-align: center;">No</th>
-                            <th class="text-dark" width="30%" style="text-align: center;">Nama Program Studi</th>
-                            <th class="text-dark" width="50%" style="text-align: center;">Keterangan Program Studi</th>
-                            <th class="text-dark" width="15%" style="text-align: center;">Aksi</th>
+                            <tr>
+                                <th class="text-dark" width="5%" style="text-align: center;">No</th>
+                                <th class="text-dark" width="30%" style="text-align: center;">Nama Program Studi</th>
+                                <th class="text-dark" width="50%" style="text-align: center;">Keterangan Program Studi</th>
+                                <th class="text-dark" width="15%" style="text-align: center;">Aksi</th>
+                            </tr>
                         </thead>
                         <tbody>
                             @foreach ($prodis as $prodi)
@@ -35,7 +37,10 @@
                                 <td class="align-middle text-dark">{{ $prodi->nama_prodi }}</td>
                                 <td class="align-middle text-dark">{{ $prodi->ket_prodi }}</td>
                                 <td class="align-middle text-center">
-                                    <a href="/tampil-prodi/{{ $prodi->id }}" class="badge badge-success"><i class="fas fa-fw fa-edit"></i><span> Edit</span></a> | <a href="javascript:if(confirm('Anda yakin ingin menghapus data Program Studi {{ $prodi->nama_prodi }} ?'))window.location.href = '/delete-prodi/{{ $prodi->id }}'" class="badge badge-danger"><i class="fas fa-fw fa-trash"></i><span> Hapus</span></a>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="/tampil-prodi/{{ $prodi->id }}" class="badge badge-success mr-1"><i class="fas fa-fw fa-edit"></i><span> Edit</span></a>
+                                        <a href="javascript:if(confirm('Anda yakin ingin menghapus data Program Studi {{ $prodi->nama_prodi }} ?'))window.location.href = '/delete-prodi/{{ $prodi->id }}'" class="badge badge-danger"><i class="fas fa-fw fa-trash"></i><span> Edit</span></a>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach

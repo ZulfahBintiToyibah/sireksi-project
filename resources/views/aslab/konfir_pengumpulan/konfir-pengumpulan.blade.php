@@ -19,7 +19,7 @@
                 @endif    
                 <form action="/confirm-skripsi" method="POST">
                     @csrf <!-- Tambahkan CSRF token untuk keamanan -->
-                
+                    <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size: 13px;">
                         <thead>
                             <tr>
@@ -39,19 +39,29 @@
                                 <td class="align-middle text-dark">{{ $pengumpulan->skripsis->mahasiswas->nim }}</td>
                                 <td class="align-middle text-dark">{{ $pengumpulan->skripsis->mahasiswas->nama }}</td>
                                 <td class="align-middle text-dark">{{ $pengumpulan->skripsis->mahasiswas->prodis->nama_prodi }}</td>
-                                <td class="align-middle text-dark text-center">{{ \Carbon\Carbon::parse($pengumpulan->skripsis->created_at)->translatedFormat('d F Y') }}</td>
+                                <td class="align-middle text-dark text-center">{{ \Carbon\Carbon::parse($pengumpulan->skripsis->created_at)->translatedFormat('j F Y') }}</td>
                                 <td class="align-middle text-dark text-center"><span class="badge rounded-pill text-white bg-warning">{{ $pengumpulan->skripsis->status }}</span></td>
+                                {{-- <td class="align-middle text-center">
+                                    <div class="d-flex justify-content-center">
+                                        <a href="/tampil-prodi/{{ $prodi->id }}" class="badge badge-success mr-1"><i class="fas fa-fw fa-edit"></i><span> Edit</span></a>
+                                        <a href="javascript:if(confirm('Anda yakin ingin menghapus data Program Studi {{ $prodi->nama_prodi }} ?'))window.location.href = '/delete-prodi/{{ $prodi->id }}'" class="badge badge-danger"><i class="fas fa-fw fa-trash"></i><span> Edit</span></a>
+                                    </div>
+                                </td> --}}
+
                                 <td class="align-middle text-center">
-                                    <button type="submit" name="skripsi_id" value="{{ $pengumpulan->skripsis->id }}" class="badge badge-success konfirmasi-btn" style="border: none;" onclick="return confirm('Apakah Anda yakin mengkonfirmasi pengumpulan skripsi dengan NIM {{ $pengumpulan->skripsis->mahasiswas->nim }}?')">
-                                        <i class="fas fa-check-circle"></i> Konfirmasi
-                                    </button>
-                                    <a href="/tampil-konfirmasi/{{ $pengumpulan->id }}" class="badge badge-primary"><i class="fas fa-fw fa-regular fa-eye"></i> Detail</a>
-                                    <a href="javascript:if(confirm('Anda yakin ingin menghapus data pengumpulan skripsi dengan NIM {{ $pengumpulan->skripsis->mahasiswas->nim }}?'))window.location.href = '/delete-konfirmasi/{{ $pengumpulan->id }}'" class="badge badge-danger"><i class="fas fa-fw fa-trash"></i> Hapus</a>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="submit" name="skripsi_id" value="{{ $pengumpulan->skripsis->id }}" class="badge badge-success konfirmasi-btn mr-1" style="border: none;" onclick="return confirm('Apakah Anda yakin mengkonfirmasi pengumpulan skripsi dengan NIM {{ $pengumpulan->skripsis->mahasiswas->nim }}?')">
+                                            <i class="fas fa-check-circle"></i> Konfirmasi
+                                        </button>
+                                        <a href="/tampil-konfirmasi/{{ $pengumpulan->id }}" class="badge badge-primary mr-1"><i class="fas fa-fw fa-regular fa-eye"></i> Detail</a>
+                                        <a href="javascript:if(confirm('Anda yakin ingin menghapus data pengumpulan skripsi dengan NIM {{ $pengumpulan->skripsis->mahasiswas->nim }}?'))window.location.href = '/delete-konfirmasi/{{ $pengumpulan->id }}'" class="badge badge-danger"><i class="fas fa-fw fa-trash"></i> Hapus</a>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
+                </div>
                 </form>
         </div>
     </div>

@@ -43,7 +43,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@700&family=Poetsen+One&family=Poppins:wght@600&display=swap" rel="stylesheet">
 
 <!-- navbar -->
-<nav class="navbar sticky-top fixed-top navbar-expand-lg nav-bg" style="z-index: 1000;">    
+<nav class="navbar sticky-top fixed-top navbar-expand-lg nav-bg">
     <div class="container">
         <a class="navbar-brand" href="{{ route('homepage') }}">
             <img src="../template/img/login/lOGO SIREKSI.png" alt="uLibrary" class="logo-ulibrary">

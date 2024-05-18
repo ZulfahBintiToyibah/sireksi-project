@@ -27,7 +27,7 @@ class Mahasiswa extends Authenticatable
 
     public function skripsis()
     {
-        return $this->belongsTo(Skripsi::class);
+        return $this->hasOne(Skripsi::class, 'mahasiswas_id');
     }
 
     public function pengumpulans()

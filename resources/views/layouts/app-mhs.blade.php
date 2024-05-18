@@ -51,7 +51,7 @@
 
         <!-- Sidebar -->
         <ul class="navbar-nav bg-side sidebar sidebar-dark accordion" id="accordionSidebar">
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center">
                 <div class="sidebar-brand-icon">
                     <img src="../template/img/login/lOGO1.png" alt="Sireksi Logo" style="width: 60px;">  
                 </div>
@@ -184,11 +184,7 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <a href="{{ route('homepage') }}" class="btn btn-danger btn-sm"><i class="fas fa-fw fa-solid fa-arrow-left"></i> Kembali ke Beranda</a>
-                        </div>
-                    </div>
+                    
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <div class="topbar-divider d-none d-sm-block"></div>
@@ -215,7 +211,7 @@
                                 Profile
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('login') }}" data-toggle="modal" data-target="#logoutModal">
+                            <a class="dropdown-item" href="{{ route('homepage') }}" data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
                             </a>
@@ -273,7 +269,7 @@
                 <div class="modal-body">Apakah anda yakin akan keluar dari aplikasi ini?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="{{ route('login') }}">OK</a>
+                    <a class="btn btn-primary" href="{{ route('homepage') }}">OK</a>
                 </div>
             </div>
         </div>

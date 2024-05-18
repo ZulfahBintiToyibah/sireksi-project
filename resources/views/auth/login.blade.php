@@ -109,6 +109,16 @@
                                     <div class="text-center">
                                         <h1 class="h4 mb-4">Login</h1>
                                     </div>
+                                    @if(session('error'))
+                                    <div class="alert alert-danger" style="font-size: 14px;">
+                                        {{ session('error') }}
+                                    </div>
+                                    @endif
+                                    @if(session('success'))
+                                    <div class="alert alert-success" style="font-size: 14px;">
+                                        {{ session('success') }}
+                                    </div>
+                                    @endif
                                     <form class="user" action="loginproces" method="post">
                                         @csrf
                                         <div class="form-group">
@@ -139,18 +149,15 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">Login</button>
+                                        <button type="submit" class="btn btn-primary btn-user btn-block" style="font-size: 15px">Login</button>
                                     </form>                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
-
     </div>
 
     <!-- Bootstrap core JavaScript-->

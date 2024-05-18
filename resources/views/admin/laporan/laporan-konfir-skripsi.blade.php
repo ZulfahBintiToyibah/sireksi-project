@@ -10,13 +10,21 @@
     <div class="col-lg-12">
         <!-- Default Card Example -->
         <div class="card border-primary">
-            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center flex-column flex-md-row">
                 <h6 class="m-0 font-weight-bold text-dark card-title"><i class="fas fa-fw fa-solid fa-file"></i> Daftar Pengumpulan Skripsi</h6>
-                <a href="{{ route('exportToExcel', ['nomor' => 1]) }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                    class="fas fa-file-excel"></i>   Unduh Laporan</a>     
+                <div class="card-tools mt-2 mt-md-0">
+                    <form action="/export-to-excel" method="get">
+                        <input type="text" name="tgl1" id="printTgl1" hidden>
+                        <input type="text" name="tgl2" id="printTgl2" hidden>
+                        <button  class="btn btn-sm btn-primary shadow-sm" onclick="print()">
+                            <i class="fas fa-file-excel"></i> Unduh Laporan
+                        </button>
+                    </form>
+                </div>
             </div>
             <div class="card-body p-3">
-                <form action="" method="post">
+                <form id="laporan" action="/laporan-konfir" method="POST">
+                    @csrf
                     <div class="row mb-1">
                         <div class="col-md-5">
                             <div class="row mb-3">
@@ -25,7 +33,7 @@
                                 </div>
                                 <div class="col-md-9">
                                     <div class="input-group">
-                                        <input type="text" class="form-control form-control-sm" name="tgl1" id="datepicker-date2" autocomplete="off">
+                                        <input type="text" class="form-control form-control-sm" name="tgl1" id="datepicker-date" autocomplete="off">
                                         <div class="input-group-append">
                                             <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
                                         </div>
@@ -40,7 +48,7 @@
                                 </div>
                                 <div class="col-md-9">
                                     <div class="input-group">
-                                        <input type="text" class="form-control form-control-sm" name="tgl2" id="datepicker-date" autocomplete="off">
+                                        <input type="text" class="form-control form-control-sm" name="tgl2" id="datepicker-date2" autocomplete="off">
                                         <div class="input-group-append">
                                             <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
                                         </div>
@@ -54,6 +62,7 @@
                     </div>
                     </form>
                     <hr class="border-primary">
+                <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size: 13px;">
                     <thead>
                         <th class="text-dark" width="2%" style="text-align: center;">No</th>
@@ -70,7 +79,7 @@
                         <tr>
                             <td class="text-center align-middle text-dark">{{ $loop->iteration }}</td>                                
                             <td class="align-middle text-dark">{{ $pengumpulan->skripsis->mahasiswas->nim }}</td>
-                            <td class="align-middle text-dark">{{ $pengumpulan->mahasiswas->nama }}</td>
+                            <td class="align-middle text-dark">{{ $pengumpulan->skripsis->mahasiswas->nama}}</td>
                             <td class="align-middle text-dark">{{ $pengumpulan->skripsis->mahasiswas->prodis->nama_prodi }}</td>
                             <td class="align-middle text-dark">{{ $pengumpulan->skripsis->judul }}</td>
                             <td class="align-middle text-dark text-center">{{ \Carbon\Carbon::parse($pengumpulan->skripsis->created_at)->translatedFormat('d F Y') }}</td>
@@ -87,9 +96,23 @@
                         @endforeach
                     </tbody>
                 </table>
+            </div>
         </div>
     </div>
 </div>
 </div>
+<script>
+    function print(){
+        let laporanForm = document.getElementById('laporan')
+        let tgl1 = document.getElementById('datepicker-date').value
+        let tgl2 = document.getElementById('datepicker-date2').value
 
+        document.getElementById('printTgl1').value = tgl1
+        document.getElementById('printTgl2').value = tgl2
+
+        console.log(tgl1)
+
+        laporanForm.submit()
+    }
+</script>
 @endsection

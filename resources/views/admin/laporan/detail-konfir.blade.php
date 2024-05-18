@@ -30,7 +30,7 @@
                                     <label for="nama" class="col-form-label text-dark">Nama Mahasiswa</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" id="nama" class="form-control form-control-sm text-dark" name="nama" value="{{ $pengumpulans->mahasiswas->nama }}" readonly>
+                                    <input type="text" id="nama" class="form-control form-control-sm text-dark" name="nama" value="{{ $pengumpulans->skripsis->mahasiswas->nama }}" readonly>
                                 </div>
                             </div>
                             <div class="row mb-2 align-items-center">
@@ -81,7 +81,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     @if ($pengumpulans->skripsis->status === 'Dikonfirmasi')
-                                        <input type="text" id="mahasiswas_id" class="form-control form-control-sm text-dark" name="mahasiswas_id" value="{{ $pengumpulans->skripsis->mahasiswas->nama }}" readonly>
+                                        <input type="text" id="mahasiswas_id" class="form-control form-control-sm text-dark" name="mahasiswas_id" value="{{ $pengumpulans->mahasiswas->nama }}" readonly>
                                     @else
                                         <input type="text" id="mahasiswas_id" class="form-control form-control-sm text-danger" name="mahasiswas_id" value="Belum Dikonfirmasi" readonly>
                                     @endif

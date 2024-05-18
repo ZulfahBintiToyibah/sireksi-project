@@ -40,8 +40,11 @@
                                 <td class="align-middle text-dark">{{ substr($skripsi->abstrak, 0, 100) }}{{ strlen($skripsi->abstrak) > 100 ? "..." : "" }}</td>
                                 <td class="align-middle text-dark">{{ $skripsi->kodeskripsis->kode_skripsi }}</td>                                
                                 <td class="align-middle text-center">
-                                    <a href="/detail-skripsi/{{ $skripsi->id }}" class="badge badge-primary"><i class="fas fa-fw fa-regular fa-eye"></i></a> | <a href="/tampil-skripsi/{{ $skripsi->id }}" class="badge badge-success"><i class="fas fa-fw fa-edit"></i></a> | 
-                                    <a href="javascript:if(confirm('Anda yakin ingin menghapus data skripsi {{ $skripsi->mahasiswas->nama }} ?'))window.location.href = '/delete-skripsi/{{ $skripsi->id }}'" class="badge badge-danger"><i class="fas fa-fw fa-trash"></i></a>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="/detail-skripsi/{{ $skripsi->id }}" class="badge badge-primary mr-1"><i class="fas fa-fw fa-regular fa-eye"></i></a>
+                                        <a href="/tampil-skripsi/{{ $skripsi->id }}" class="badge badge-success mr-1"><i class="fas fa-fw fa-edit"></i></a>
+                                        <a href="javascript:if(confirm('Anda yakin ingin menghapus data skripsi {{ $skripsi->mahasiswas->nama }} ?'))window.location.href = '/delete-skripsi/{{ $skripsi->id }}'" class="badge badge-danger"><i class="fas fa-fw fa-trash"></i></a>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach
