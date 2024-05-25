@@ -196,8 +196,6 @@
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                                 @if(Auth::check()) <!-- Mengecek apakah pengguna sudah login -->
                                     {{ auth()->guard('mahasiswa')->user()->nama }} <!-- Menampilkan nama pengguna yang login -->
-                                @else
-                                    Guest <!-- Menampilkan sebagai guest jika belum login -->
                                 @endif
                             </span>
                             <!-- Menampilkan foto profil dari database jika tersedia, jika tidak, menampilkan foto default -->

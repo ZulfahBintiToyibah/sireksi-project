@@ -23,19 +23,6 @@
     <link href="../template/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <!-- Custom styles for icons and text alignment -->
-    <style>
-        .sidebar .nav-link i {
-            font-size: 1.25rem; /* Sesuaikan ukuran ikon */
-            width: 30px; /* Pastikan semua ikon memiliki lebar yang sama */
-            text-align: center; /* Pusatkan ikon */
-            margin-right: 10px; /* Tambahkan ruang antara ikon dan teks */
-        }
-
-        .sidebar .nav-link span {
-            font-size: 1rem; /* Sesuaikan ukuran teks */
-            vertical-align: middle; /* Selaraskan teks secara vertikal */
-        }
-    </style>
 </head>
 
 <body id="page-top">
@@ -60,7 +47,7 @@
             </div>
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
+            <li class="nav-item {{ request()->is('dashboard') ? 'active' : '' }}">
                 <a class="nav-link pb-0" href="{{ route('dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -75,15 +62,15 @@
             </div>
 
             <!-- Nav Item - Data Pengguna -->
-            <li class="nav-item">
-                <a class="nav-link collapsed pb-0" href="{{ route('mahasiswa') }}">
+            <li class="nav-item {{ request()->is('mahasiswa') ? 'active' : '' }}">
+                <a class="nav-link pb-0" href="{{ route('mahasiswa') }}">
                     <i class="fas fa-users" aria-hidden="true"></i>
                     <span>Data Pengguna</span>
                 </a>
             </li>
 
             <!-- Nav Item - Data Yudisiawan -->
-            <li class="nav-item">
+            <li class="nav-item {{ request()->is('data-yudisiawan') ? 'active' : '' }}">
                 <a class="nav-link collapsed pb-0" href="{{ route('data-yudisiawan') }}">
                     <i class="fas fa-user-graduate" aria-hidden="true"></i>
                     <span>Data Yudisiawan</span>
@@ -91,7 +78,7 @@
             </li>
 
             <!-- Nav Item - Skripsi -->
-            <li class="nav-item">
+            <li class="nav-item {{ request()->is('skripsi') || request()->is('kodeskripsi') ? 'active' : '' }}">                
                 <a class="nav-link collapsed pb-0" href="" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-book" aria-hidden="true"></i>
                     <span>Skripsi</span>
@@ -105,14 +92,14 @@
             </li>
 
             <!-- Nav Item - Program Studi -->
-            <li class="nav-item">
+            <li class="nav-item {{ request()->is('prodi') ? 'active' : '' }}">
                 <a class="nav-link pb-0" href="{{ route('prodi') }}">
                     <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                     <span>Program Studi</span></a>
             </li>
 
             <!-- Nav Item - Dosen Pembimbing -->
-            <li class="nav-item">
+            <li class="nav-item {{ request()->is('dospem') ? 'active' : '' }}">
                 <a class="nav-link pb-0" href="{{ route('dospem') }}">
                     <i class="fas fa-chalkboard-teacher"></i>
                     <span>Dosen Pembimbing</span></a>
@@ -127,7 +114,7 @@
             </div>
 
             <!-- Nav Item - Laporan -->
-            <li class="nav-item mb-3">
+            <li class="nav-item mb-3 {{ request()->is('laporan-mahasiswa') || request()->is('laporan-konfir') ? 'active' : '' }}">                
                 <a class="nav-link collapsed pb-0" href="#" data-toggle="collapse" data-target="#collapseLaporan" aria-expanded="true" aria-controls="collapseLaporan">
                     <i class="fas fa-fw fa-solid fa-file"></i>
                     <span>Laporan</span>
@@ -149,14 +136,14 @@
             </div>
 
             <!-- Nav Item - Profil Admin -->
-            <li class="nav-item">
+            <li class="nav-item {{ request()->is('profiladmin') ? 'active' : '' }}">
                 <a class="nav-link pb-0" href="{{ route('profiladmin') }}">
                     <i class="fas fa-fw fa-user"></i>
                     <span>My Profile</span></a>
             </li>
 
             <!-- Nav Item - Ubah Password -->
-            <li class="nav-item">
+            <li class="nav-item {{ request()->is('ubah-password') ? 'active' : '' }}">
                 <a class="nav-link pb-0" href="{{ route('ubah-password') }}">
                     <i class="fas fa-fw fa-solid fa-key"></i>
                     <span>Ubah Password</span></a>
@@ -205,8 +192,6 @@
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                                     @if(Auth::check())
                                         {{ Auth::user()->nama }}
-                                    @else
-                                        Guest
                                     @endif
                                 </span>
                                 <img class="img-profile rounded-circle" src="{{ Auth::check() && Auth::user()->foto ? asset('storage/foto-admin/' . Auth::user()->foto) : asset('template/img/default.jpg') }}">
