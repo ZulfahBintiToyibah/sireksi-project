@@ -49,9 +49,9 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="#hero" class="">Beranda</a></li>
-          <li><a href="#why-us">Sistem Rekomendasi</a></li>
-          <li><a href="#faq-2">Panduan</a></li>
-          <li><a href="#team">Pengembang</a></li>
+          <li><a href="#rekomendasi">Sistem Rekomendasi</a></li>
+          <li><a href="#panduan">Panduan</a></li>
+          <li><a href="#pengembang">Info Pengembang</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -72,7 +72,7 @@
             <h1 class="">Selamat Datang, di Sireksi</h1>
             <p class="">Telusuri Repository Skripsi Ruang Baca Dengan Fitur Rekomendasi</p>
             <div class="d-flex">
-                <a href="#why-us" class="btn-get-started">
+                <a href="#rekomendasi" class="btn-get-started">
                   <i class="fas fa-search"></i> Cari Rekomendasi Skripsi
                 </a>
               </div>
@@ -134,10 +134,10 @@
     </section><!-- /Clients Section -->
 
     <!-- Why Us Section -->
-<section id="why-us" class="section why-us" data-builder="section">
+<section id="rekomendasi" class="section rekomendasi" data-builder="section">
     <div class="container-fluid">
       <div class="row gy-4">
-        <div class="col-lg-5 order-1 why-us-img">
+        <div class="col-lg-5 order-1 rekomendasi-img">
           <img src="assets/img/rekomend.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="100">
         </div>
         
@@ -164,7 +164,7 @@
   
 
     <!-- Faq 2 Section -->
-    <section id="faq-2" class="faq-2 section">
+    <section id="panduan" class="panduan section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -223,7 +223,7 @@
 
     </section><!-- /Faq 2 Section -->
     <!-- Team Section -->
-    <section id="team" class="team section">
+    <section id="pengembang" class="pengembang section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -279,9 +279,9 @@
                     <div class="quick-link m-auto p-3">
                         <h3>Quick Link</h3>
                         <p><a href="#hero">Beranda</a></p>
-                        <p><a href="#why-us">Sistem Rekomendasi</a></p>
-                        <p><a href="#services">Panduan</a></p>
-                        <p><a href="#team">Pengembang</a></p>
+                        <p><a href="#rekomendasi">Sistem Rekomendasi</a></p>
+                        <p><a href="#panduan">Panduan</a></p>
+                        <p><a href="#pengembang">Pengembang</a></p>
                     </div>
                 </div>
                 <div class="col-12 col-lg-4 box3">

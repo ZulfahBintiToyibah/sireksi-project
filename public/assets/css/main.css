@@ -1032,21 +1032,21 @@ section,
 /*--------------------------------------------------------------
 # Why Us Section
 --------------------------------------------------------------*/
-.why-us {
+.rekomendasi {
   --background-color: color-mix(in srgb, var(--heading-color), transparent 95%);
   padding: 30px 0;
 }
 
-.why-us .content h3 {
+.rekomendasi .content h3 {
   font-weight: 400;
   font-size: 34px;
 }
 
-.why-us .content p {
+.rekomendasi .content p {
   color: color-mix(in srgb, var(--default-color), transparent 30%);
 }
 
-.why-us .faq-container .faq-item {
+.rekomendasi .faq-container .faq-item {
   position: relative;
   padding: 20px;
   margin-bottom: 20px;
@@ -1055,11 +1055,11 @@ section,
   overflow: hidden;
 }
 
-.why-us .faq-container .faq-item:last-child {
+.rekomendasi .faq-container .faq-item:last-child {
   margin-bottom: 0;
 }
 
-.why-us .faq-container .faq-item h3 {
+.rekomendasi .faq-container .faq-item h3 {
   font-weight: 500;
   font-size: 17px;
   line-height: 24px;
@@ -1068,17 +1068,17 @@ section,
   cursor: pointer;
 }
 
-.why-us .faq-container .faq-item h3 span {
+.rekomendasi .faq-container .faq-item h3 span {
   color: var(--accent-color);
   padding-right: 5px;
   font-weight: 600;
 }
 
-.why-us .faq-container .faq-item h3:hover {
+.rekomendasi .faq-container .faq-item h3:hover {
   color: var(--accent-color);
 }
 
-.why-us .faq-container .faq-item .faq-content {
+.rekomendasi .faq-container .faq-item .faq-content {
   display: grid;
   grid-template-rows: 0fr;
   transition: 0.3s ease-in-out;
@@ -1086,12 +1086,12 @@ section,
   opacity: 0;
 }
 
-.why-us .faq-container .faq-item .faq-content p {
+.rekomendasi .faq-container .faq-item .faq-content p {
   margin-bottom: 0;
   overflow: hidden;
 }
 
-.why-us .faq-container .faq-item .faq-icon {
+.rekomendasi .faq-container .faq-item .faq-icon {
   position: absolute;
   top: 22px;
   left: 20px;
@@ -1101,7 +1101,7 @@ section,
   color: var(--accent-color);
 }
 
-.why-us .faq-container .faq-item .faq-toggle {
+.rekomendasi .faq-container .faq-item .faq-toggle {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -1111,29 +1111,29 @@ section,
   cursor: pointer;
 }
 
-.why-us .faq-container .faq-item .faq-toggle:hover {
+.rekomendasi .faq-container .faq-item .faq-toggle:hover {
   color: var(--accent-color);
 }
 
-.why-us .faq-container .faq-active h3 {
+.rekomendasi .faq-container .faq-active h3 {
   color: var(--accent-color);
 }
 
-.why-us .faq-container .faq-active .faq-content {
+.rekomendasi .faq-container .faq-active .faq-content {
   grid-template-rows: 1fr;
   visibility: visible;
   opacity: 1;
   padding-top: 10px;
 }
 
-.why-us .faq-container .faq-active .faq-toggle {
+.rekomendasi .faq-container .faq-active .faq-toggle {
   transform: rotate(90deg);
   color: var(--accent-color);
 }
-.section.why-us .col-lg-7 {
+.section.rekomendasi .col-lg-7 {
   margin-top: -50px; /* Adjust this value to move the content up */
 }
-.why-us .why-us-img {
+.rekomendasi .rekomendasi-img {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1143,7 +1143,7 @@ section,
   text-align: justify;
 }
 
-.why-us .why-us-img img {
+.rekomendasi .rekomendasi-img img {
   max-height: 80%;
 }
 
@@ -1172,16 +1172,16 @@ section,
   padding-bottom: 10px;
 }
 
-.section.why-us .content h3 span {
+.section.rekomendasi .content h3 span {
     color: #3C096C;
   }
   
-  .section.why-us .search-form .input-group .form-control {
+  .section.rekomendasi .search-form .input-group .form-control {
     border-radius: 0;
     box-shadow: none;
   }
 
-  .section.why-us .search-form .input-group .btn {
+  .section.rekomendasi .search-form .input-group .btn {
     border-radius: 0;
     box-shadow: none;
   }
@@ -1438,7 +1438,7 @@ section,
 /*--------------------------------------------------------------
 # Team Section
 --------------------------------------------------------------*/
-.team .team-member {
+.pengembang .team-member {
   box-shadow: 0px 2px 15px color-mix(in srgb, var(--default-color), transparent 90%);
   position: relative;
   border-radius: 5px;
@@ -1448,46 +1448,46 @@ section,
 }
 
 @media (max-width: 468px) {
-  .team .team-member {
+  .pengembang .team-member {
     flex-direction: column;
     justify-content: center !important;
     align-items: center !important;
   }
 }
 
-.team .team-member .pic {
+.pengembang .team-member .pic {
   overflow: hidden;
   width: 150px;
   border-radius: 50%;
   flex-shrink: 0;
 }
 
-.team .team-member .pic img {
+.pengembang .team-member .pic img {
   transition: ease-in-out 0.3s;
 }
 
-.team .team-member:hover {
+.pengembang .team-member:hover {
   transform: translateY(-10px);
 }
 
-.team .team-member .member-info {
+.pengembang .team-member .member-info {
   padding-left: 30px;
 }
 
 @media (max-width: 468px) {
-  .team .team-member .member-info {
+  .pengembang .team-member .member-info {
     padding: 30px 0 0 0;
     text-align: center;
   }
 }
 
-.team .team-member h4 {
+.pengembang .team-member h4 {
   font-weight: 700;
   margin-bottom: 5px;
   font-size: 20px;
 }
 
-.team .team-member span {
+.pengembang .team-member span {
   display: block;
   font-size: 15px;
   padding-bottom: 10px;
@@ -1495,7 +1495,7 @@ section,
   font-weight: 500;
 }
 
-.team .team-member span::after {
+.pengembang .team-member span::after {
   content: "";
   position: absolute;
   display: block;
@@ -1507,17 +1507,17 @@ section,
 }
 
 @media (max-width: 468px) {
-  .team .team-member span::after {
+  .pengembang .team-member span::after {
     left: calc(50% - 25px);
   }
 }
 
-.team .team-member p {
+.pengembang .team-member p {
   margin: 10px 0 0 0;
   font-size: 14px;
 }
 
-.team .team-member .social {
+.pengembang .team-member .social {
   margin-top: 12px;
   display: flex;
   align-items: center;
@@ -1526,12 +1526,12 @@ section,
 }
 
 @media (max-width: 468px) {
-  .team .team-member .social {
+  .pengembang .team-member .social {
     justify-content: center;
   }
 }
 
-.team .team-member .social a {
+.pengembang .team-member .social a {
   background: color-mix(in srgb, var(--default-color), transparent 94%);
   transition: ease-in-out 0.3s;
   display: flex;
@@ -1542,21 +1542,21 @@ section,
   height: 36px;
 }
 
-.team .team-member .social a i {
+.pengembang .team-member .social a i {
   color: color-mix(in srgb, var(--default-color), transparent 20%);
   font-size: 16px;
   margin: 0 2px;
 }
 
-.team .team-member .social a:hover {
+.pengembang .team-member .social a:hover {
   background: var(--accent-color);
 }
 
-.team .team-member .social a:hover i {
+.pengembang .team-member .social a:hover i {
   color: var(--contrast-color);
 }
 
-.team .team-member .social a+a {
+.pengembang .team-member .social a+a {
   margin-left: 8px;
 }
 
@@ -1779,15 +1779,15 @@ section,
 /*--------------------------------------------------------------
 # Faq 2 Section
 --------------------------------------------------------------*/
-.faq-2 {
+.panduan {
   --background-color: color-mix(in srgb, var(--heading-color), transparent 95%);
 }
 
-.faq-2 .faq-container {
+.panduan .faq-container {
   margin-top: 15px;
 }
 
-.faq-2 .faq-container .faq-item {
+.panduan .faq-container .faq-item {
   position: relative;
   padding: 20px;
   margin-bottom: 20px;
@@ -1795,11 +1795,11 @@ section,
   overflow: hidden;
 }
 
-.faq-2 .faq-container .faq-item:last-child {
+.panduan .faq-container .faq-item:last-child {
   margin-bottom: 0;
 }
 
-.faq-2 .faq-container .faq-item h3 {
+.panduan .faq-container .faq-item h3 {
   font-weight: 600;
   font-size: 18px;
   line-height: 24px;
@@ -1808,16 +1808,16 @@ section,
   cursor: pointer;
 }
 
-.faq-2 .faq-container .faq-item h3 span {
+.panduan .faq-container .faq-item h3 span {
   color: var(--accent-color);
   padding-right: 5px;
 }
 
-.faq-2 .faq-container .faq-item h3:hover {
+.panduan .faq-container .faq-item h3:hover {
   color: var(--accent-color);
 }
 
-.faq-2 .faq-container .faq-item .faq-content {
+.panduan .faq-container .faq-item .faq-content {
   display: grid;
   grid-template-rows: 0fr;
   transition: 0.3s ease-in-out;
@@ -1825,12 +1825,12 @@ section,
   opacity: 0;
 }
 
-.faq-2 .faq-container .faq-item .faq-content p {
+.panduan .faq-container .faq-item .faq-content p {
   margin-bottom: 0;
   overflow: hidden;
 }
 
-.faq-2 .faq-container .faq-item .faq-icon {
+.panduan .faq-container .faq-item .faq-icon {
   position: absolute;
   top: 22px;
   left: 20px;
@@ -1840,7 +1840,7 @@ section,
   color: var(--accent-color);
 }
 
-.faq-2 .faq-container .faq-item .faq-toggle {
+.panduan .faq-container .faq-item .faq-toggle {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -1850,22 +1850,22 @@ section,
   cursor: pointer;
 }
 
-.faq-2 .faq-container .faq-item .faq-toggle:hover {
+.panduan .faq-container .faq-item .faq-toggle:hover {
   color: var(--accent-color);
 }
 
-.faq-2 .faq-container .faq-active h3 {
+.panduan .faq-container .faq-active h3 {
   color: var(--accent-color);
 }
 
-.faq-2 .faq-container .faq-active .faq-content {
+.panduan .faq-container .faq-active .faq-content {
   grid-template-rows: 1fr;
   visibility: visible;
   opacity: 1;
   padding-top: 10px;
 }
 
-.faq-2 .faq-container .faq-active .faq-toggle {
+.panduan .faq-container .faq-active .faq-toggle {
   transform: rotate(90deg);
   color: var(--accent-color);
 }

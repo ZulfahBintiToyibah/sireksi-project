@@ -70,7 +70,7 @@
 
             @if(auth()->guard('mahasiswa')->user()->role == 1)
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item {{ request()->is('dashboard2') ? 'active' : '' }}">
+            <li class="nav-item">
                 <a class="nav-link pb-0" href="{{ route('dashboard2') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -79,7 +79,7 @@
 
             @if(auth()->guard('mahasiswa')->user()->role == 2)
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item {{ request()->is('dashboard3') ? 'active' : '' }}">
+            <li class="nav-item">
                 <a class="nav-link pb-0" href="{{ route('dashboard3') }}">
                     <i class="fas fa-info-circle" aria-hidden="true"></i>
                     <span> Instruksi Pengumpulan</span></a>
@@ -91,29 +91,34 @@
             @php
                 $currentRoute = Route::currentRouteName();
             @endphp
-            <li class="nav-item {{ in_array($currentRoute, ['konfir-pengumpulan', 'tampil-konfirmasi']) ? 'active' : '' }}">
+            <li class="nav-item">
                 <a class="nav-link pb-0" href="{{ route('konfir-pengumpulan') }}">
                     <i class="fas fa-fw fa-solid fa-check-circle" aria-hidden="true"></i>
-                    <span>Konfirmasi Skripsi</span>
+                    <span>Konfirmasi Pengumpulan</span>
                 </a>
             </li>
         @endif
         
-            @if(auth()->guard('mahasiswa')->check() && auth()->guard('mahasiswa')->user()->role == 2)
-            <!-- Nav Item - Pengumpulan Skripsi -->
+        @if(auth()->guard('mahasiswa')->check() && auth()->guard('mahasiswa')->user()->role == 2)
+        <!-- Nav Item - Pengumpulan Skripsi -->
+        <li class="nav-item">                
             @php
                 $skripsi = \App\Models\Skripsi::where('mahasiswas_id', auth()->guard('mahasiswa')->user()->id)->latest()->first();
-                $isDetailPage = $skripsi && ($skripsi->status === 'Diajukan' || $skripsi->status === 'Dikonfirmasi');
-                $routeName = $isDetailPage ? 'detail-pengumpulan' : 'create-skripsi';
-                $routeParams = $isDetailPage ? ['id' => $skripsi->id] : [];
             @endphp
-            <li class="nav-item {{ request()->is('create-skripsi', 'detail-pengumpulan/' . ($skripsi->id ?? '')) ? 'active' : '' }}">
-                <a class="nav-link pb-0" href="{{ route($routeName, $routeParams) }}">
-                    <i class="fas fa-upload fa-lg" aria-hidden="true"></i>
-                    <span>Pengumpulan Skripsi</span>
-                </a>
-            </li>
-        @endif
+            @if($skripsi)
+                @if($skripsi->status === 'Diajukan' || $skripsi->status === 'Dikonfirmasi')
+                    <a class="nav-link pb-0" href="{{ route('detail-pengumpulan', ['id' => $skripsi->id]) }}">
+                @else
+                    <a class="nav-link pb-0" href="{{ route('create-skripsi') }}">
+                @endif
+            @else
+                <a class="nav-link pb-0" href="{{ route('create-skripsi') }}">
+            @endif
+            <i class="fas fa-upload fa-lg" aria-hidden="true"></i>
+            <span>Pengumpulan Skripsi</span>
+            </a>
+        </li>
+    @endif
         
 
             {{-- @if(auth()->guard('mahasiswa')->user()->role == 2 )
@@ -134,14 +139,14 @@
             </div>
 
             <!-- Nav Item - Profil Admin -->
-            <li class="nav-item {{ request()->is('my-profil') ? 'active' : '' }}">
+            <li class="nav-item">
                 <a class="nav-link pb-0" href="{{ route('my-profil') }}">
                 <i class="fas fa-fw fa-user"></i>
                     <span>My Profile</span></a>
             </li>
 
             <!-- Nav Item - Ubah Password -->
-            <li class="nav-item {{ request()->is('change-password') ? 'active' : '' }}">
+            <li class="nav-item">
                 <a class="nav-link pb-0" href="{{ route('change-password') }}">
                 <i class="fas fa-fw fa-solid fa-key"></i>
                     <span>Ubah Password</span></a>
@@ -207,11 +212,16 @@
                                 Profile
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('homepage') }}" data-toggle="modal" data-target="#logoutModal">
+                            <a class="dropdown-item" href="{{ route('login') }}" data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
                             </a>
-                        </div>
+                            <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ route('homepage') }}">
+                                    <i class="fas fa-home fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Kembali ke Beranda
+                                </a>
+                            </div>
                     </li>
 
                     </ul>
@@ -265,7 +275,7 @@
                 <div class="modal-body">Apakah anda yakin akan keluar dari aplikasi ini?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="{{ route('homepage') }}">OK</a>
+                    <a class="btn btn-primary" href="{{ route('login') }}">OK</a>
                 </div>
             </div>
         </div>

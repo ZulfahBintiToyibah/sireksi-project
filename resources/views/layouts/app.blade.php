@@ -47,7 +47,7 @@
             </div>
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item {{ request()->is('dashboard') ? 'active' : '' }}">
+            <li class="nav-item">
                 <a class="nav-link pb-0" href="{{ route('dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -62,7 +62,7 @@
             </div>
 
             <!-- Nav Item - Data Pengguna -->
-            <li class="nav-item {{ request()->is('mahasiswa') ? 'active' : '' }}">
+            <li class="nav-item">
                 <a class="nav-link pb-0" href="{{ route('mahasiswa') }}">
                     <i class="fas fa-users" aria-hidden="true"></i>
                     <span>Data Pengguna</span>
@@ -70,7 +70,7 @@
             </li>
 
             <!-- Nav Item - Data Yudisiawan -->
-            <li class="nav-item {{ request()->is('data-yudisiawan') ? 'active' : '' }}">
+            <li class="nav-item">
                 <a class="nav-link collapsed pb-0" href="{{ route('data-yudisiawan') }}">
                     <i class="fas fa-user-graduate" aria-hidden="true"></i>
                     <span>Data Yudisiawan</span>
@@ -78,7 +78,7 @@
             </li>
 
             <!-- Nav Item - Skripsi -->
-            <li class="nav-item {{ request()->is('skripsi') || request()->is('kodeskripsi') ? 'active' : '' }}">                
+            <li class="nav-item">                
                 <a class="nav-link collapsed pb-0" href="" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-book" aria-hidden="true"></i>
                     <span>Skripsi</span>
@@ -92,14 +92,14 @@
             </li>
 
             <!-- Nav Item - Program Studi -->
-            <li class="nav-item {{ request()->is('prodi') ? 'active' : '' }}">
+            <li class="nav-item">
                 <a class="nav-link pb-0" href="{{ route('prodi') }}">
                     <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                     <span>Program Studi</span></a>
             </li>
 
             <!-- Nav Item - Dosen Pembimbing -->
-            <li class="nav-item {{ request()->is('dospem') ? 'active' : '' }}">
+            <li class="nav-item">
                 <a class="nav-link pb-0" href="{{ route('dospem') }}">
                     <i class="fas fa-chalkboard-teacher"></i>
                     <span>Dosen Pembimbing</span></a>
@@ -114,7 +114,7 @@
             </div>
 
             <!-- Nav Item - Laporan -->
-            <li class="nav-item mb-3 {{ request()->is('laporan-mahasiswa') || request()->is('laporan-konfir') ? 'active' : '' }}">                
+            <li class="nav-item mb-3">                
                 <a class="nav-link collapsed pb-0" href="#" data-toggle="collapse" data-target="#collapseLaporan" aria-expanded="true" aria-controls="collapseLaporan">
                     <i class="fas fa-fw fa-solid fa-file"></i>
                     <span>Laporan</span>
@@ -136,14 +136,14 @@
             </div>
 
             <!-- Nav Item - Profil Admin -->
-            <li class="nav-item {{ request()->is('profiladmin') ? 'active' : '' }}">
+            <li class="nav-item">
                 <a class="nav-link pb-0" href="{{ route('profiladmin') }}">
                     <i class="fas fa-fw fa-user"></i>
                     <span>My Profile</span></a>
             </li>
 
             <!-- Nav Item - Ubah Password -->
-            <li class="nav-item {{ request()->is('ubah-password') ? 'active' : '' }}">
+            <li class="nav-item">
                 <a class="nav-link pb-0" href="{{ route('ubah-password') }}">
                     <i class="fas fa-fw fa-solid fa-key"></i>
                     <span>Ubah Password</span></a>
@@ -203,9 +203,14 @@
                                     Profile
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ route('homepage') }}" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="{{ route('login') }}" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ route('homepage') }}">
+                                    <i class="fas fa-home fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Kembali ke Beranda
                                 </a>
                             </div>
                         </li>
@@ -253,7 +258,7 @@
                 <div class="modal-body">Apakah anda yakin akan keluar dari aplikasi ini?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="{{ route('homepage') }}">OK</a>
+                    <a class="btn btn-primary" href="{{ route('login') }}">OK</a>
                 </div>
             </div>
         </div>
